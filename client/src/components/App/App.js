@@ -1,12 +1,14 @@
 import React from "react";
 import DemoData from '../DemoComponent';
-import Groceries from "../Groceries/Groceries";
+import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
+import GroceriesList from "../GroceriesList/GroceriesList";
 
 function App () {
     return (
         <div className="App">
             <h1>Ingredient Tracker Landing Page</h1>
-            <Groceries />
+            <GroceriesSearch />
+            <GroceriesList />
             < DemoData />
         </div>
     );

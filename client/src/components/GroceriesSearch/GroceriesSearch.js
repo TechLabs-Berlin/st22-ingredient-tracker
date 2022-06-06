@@ -1,17 +1,13 @@
 import React from "react";
 
-const addIngredient = (ingredient) => {
-    
-}
-
-const Groceries = () => {
+const GroceriesSearch = () => {
     return (
         <div className="searchbar">
             <label>Search</label>
             <input type="text"/>
-            <button>Add</button>
+            <button action="submit">Add</button>
         </div>
     );
 }
 
-export default Groceries;
+export default GroceriesSearch;
