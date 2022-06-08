@@ -6,6 +6,7 @@ function RegistrationForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [termsAccepted, setTermsAccepted] = useState(false);
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -20,6 +21,9 @@ function RegistrationForm() {
         }
         if (id === "confirmPassword") {
             setConfirmPassword(value);
+        }
+        if (id === "tac") {
+            setTermsAccepted(!termsAccepted);
         }
     }
 
@@ -58,13 +62,13 @@ function RegistrationForm() {
 
             <div>
                 <h3 className="is-size-6 m-2 my-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3>
-                <input type="checkbox" id="tac"></input>
+                <input type="checkbox" id="tac" onChange={(e) => handleInputChange(e)}></input>
                 <label className="checkbox" for="tac">Terms & Conditions</label>
 
             </div>
 
             <div>
-                <button onClick={() => handleSubmit()} type="submit" className="button is-primary is-medium m-2 my-4">Register</button>
+                <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className="button is-primary is-medium m-2 my-4">Register</button>
             </div>
 
         </div>
