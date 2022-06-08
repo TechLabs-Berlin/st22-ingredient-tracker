@@ -4,17 +4,9 @@ import React from "react";
 const GroceriesSearch = () => {
     return (
         <div className="searchbar">
-            <div>
-                <label class="mdc-text-field mdc-text-field--filled mdc-floating-label">
-                    <span class="mdc-floating-label">Search</span>
-                <input class="mdc-text-field__input" type="text"/>
-                </label>
-            </div>
-            <button action="submit" class="mdc-button mdc-button--raised">Add</button>
-    <label class="mdc-text-field mdc-text-field--filled">
-  <span class="mdc-floating-label" id="my-label-id">Hint text</span>
-  <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id"/>
-</label>
+            <label class="label">Search</label>
+            <input class="input is-rounded is-primary" type="text"/>
+            <button class="button is-primary" action="submit">Add</button>
         </div>
     );
 }
