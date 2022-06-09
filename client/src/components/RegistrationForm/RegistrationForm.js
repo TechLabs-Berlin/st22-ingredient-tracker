@@ -33,10 +33,10 @@ function RegistrationForm() {
 
 
     return (
-        <div className="card is-flex-direction-column m-4 p-4 is-justify-content-center">
+        <div className="card m-4 p-4">
 
             <h1 className="title m-2 has-text-primary">Registration Form</h1>
-            <h2 className="subtitle m-2 mb-6">Register to save ingredients and recipes to your Ingreduce dashboard.</h2>
+            <h2 className="subtitle m-2 mb-5">Register to save ingredients and recipes to your Ingreduce dashboard.</h2>
 
             <div>
                 <div className="username m-2">
