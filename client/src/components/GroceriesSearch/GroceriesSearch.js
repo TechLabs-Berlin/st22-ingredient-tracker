@@ -22,10 +22,16 @@ const GroceriesSearch = () => {
             setResults(data.query.search);
         };
 
-        //only search when there is a non-empty term set
-        if (term) {
-            search();
-        }
+        const timeoutId = setTimeout(() => {
+            //only search when there is a non-empty term set
+            if (term) {
+                search();
+            }
+        }, 500);
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
         
     }, [term]);
 
