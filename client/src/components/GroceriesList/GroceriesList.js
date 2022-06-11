@@ -1,4 +1,5 @@
 import React from "react";
+import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
 
 const addIngredient = (ingredient) => {
     

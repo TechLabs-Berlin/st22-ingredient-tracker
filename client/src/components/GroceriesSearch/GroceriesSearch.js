@@ -1,18 +1,44 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import GroceriesList from "../GroceriesList/GroceriesList";
 
 const GroceriesSearch = () => {
     const [term, setTerm] = useState("");
+    const [results, setResults] = useState([]);
 
     //run when component is first rendered and when the search term changes
     useEffect(() => {
         const search = async() => {
-            await axios.get("thisisnotarealURLyet");
+            const {data} = await axios.get("https://en.wikipedia.org/w/api.php", {
+                params: {
+                    action: "query",
+                    list: "search",
+                    origin: "*",
+                    format: "json",
+                    srsearch: term
+                }
+            });
+
+            setResults(data.query.search);
         };
 
-        search();
+        //only search when there is a non-empty term set
+        if (term) {
+            search();
+        }
         
     }, [term]);
+
+    const renderedResults = results.map((result) => {
+        return (
+            <div>
+                {result.title}   
+                <div class="buttons is-right">
+                    <a class="button is-primary" action="submit">Add</a>
+                </div>
+            </div>
+        )
+    });
 
     return (
         <div class="box"> 
@@ -29,8 +55,10 @@ const GroceriesSearch = () => {
                         />
                     </p>
                 </div>
-            <button class="button is-primary" action="submit">Add</button>
-
+                <div class="box">
+                    {renderedResults}
+                </div>
+            
         </div>
     );
 }
