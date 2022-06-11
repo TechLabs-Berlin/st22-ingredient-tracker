@@ -37,9 +37,9 @@ const GroceriesSearch = () => {
 
     const renderedResults = results.map((result) => {
         return (
-            <div>
-                {result.title}   
-                <div class="buttons is-right">
+            <div class="columns buttons is-right">
+                <div class="column">{result.title}</div>   
+                <div class="column is-one-quarter-mobile">
                     <a class="button is-primary" action="submit">Add</a>
                 </div>
             </div>
