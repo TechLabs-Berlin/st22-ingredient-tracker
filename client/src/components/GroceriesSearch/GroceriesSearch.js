@@ -5,6 +5,7 @@ import GroceriesList from "../GroceriesList/GroceriesList";
 const GroceriesSearch = () => {
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
+    const [listVisible, setListVisible] = useState(false);
 
     //run when component is first rendered and when the search term changes
     useEffect(() => {
@@ -54,14 +55,22 @@ const GroceriesSearch = () => {
                         <span class="icon has-text-primary"><i class="fas fa-search"></i></span>
                         <input 
                             value={term}
-                            onChange={e => setTerm(e.target.value)}
+                            onClick={e => console.log(term + "!")}
+                            onChange={e => {
+                                setTerm(e.target.value);
+                                if (term === "") {
+                                    setListVisible(false);
+                                } else {
+                                    setListVisible(true);
+                                }
+                            }}
                             class="input is-rounded is-primary" 
                             type="search" 
                             placeholder="search ingredient"
                         />
                     </p>
                 </div>
-                <div class="box">
+                <div class={`${listVisible ? "box" : ""}`}>
                     {renderedResults}
                 </div>
             
