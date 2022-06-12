@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <nav class="footer is-fixed-bottom">
+        <nav class="footer">
             <div class="navbar-brand">
                 <a class="navbar-item">
                     <img src="https://www.vhv.rs/dpng/d/82-821105_cooking-png-icon-food-transparent-png.png"/>
@@ -28,7 +28,7 @@ const Footer = () => {
 
                 <div class="navbar-end">
                     <div class="navbar-item">
-                        Copyright
+                        ©Copyright
                     </div>
                 </div>
 
