@@ -5,7 +5,7 @@ import GroceriesList from "../GroceriesList/GroceriesList";
 const GroceriesSearch = () => {
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
-    const [listVisible, setListVisible] = useState(false);
+    let listVisible = false;
 
     //run when component is first rendered and when the search term changes
     useEffect(() => {
@@ -20,7 +20,8 @@ const GroceriesSearch = () => {
                 }
             });
 
-            setResults(data.query.search);
+           setResults(data.query.search);
+
         };
 
         const timeoutId = setTimeout(() => {
@@ -55,13 +56,16 @@ const GroceriesSearch = () => {
                         <span class="icon has-text-primary"><i class="fas fa-search"></i></span>
                         <input 
                             value={term}
-                            onClick={e => console.log(term + "!")}
                             onChange={e => {
                                 setTerm(e.target.value);
+                                console.log(term);
                                 if (term === "") {
-                                    setListVisible(false);
+                                    console.log("empty");
+                                    listVisible = false;
+                                    renderedResults = [];
                                 } else {
-                                    setListVisible(true);
+                                    console.log(term);
+                                    listVisible = true;
                                 }
                             }}
                             class="input is-rounded is-primary" 
