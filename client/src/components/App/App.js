@@ -1,10 +1,11 @@
 import React from "react";
 import DemoData from '../DemoComponent';
+import Header from "../Header/Header";
 
 function App () {
     return (
         <div className="App">
-            <h1>Ingredient Tracker Landing Page</h1>
+            <Header />
             < DemoData />
         </div>
     );
