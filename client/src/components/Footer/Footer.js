@@ -3,16 +3,16 @@ import React from "react";
 const Footer = () => {
     return (
         <nav class="footer">
-            <div class="navbar-brand">
-                <a class="navbar-item">
-                    <img src="https://www.vhv.rs/dpng/d/82-821105_cooking-png-icon-food-transparent-png.png"/>
-                    <h1 class="subtitle">Ingreduce</h1>
-                </a>
-            </div>
-
+                
             <div class="navbar-menu">
+                <div class="navbar-brand">
+                    <div class="navbar-item">
+                        <img src="https://www.vhv.rs/dpng/d/82-821105_cooking-png-icon-food-transparent-png.png"/>
+                        <h1 class="subtitle">Ingreduce</h1>
+                    </div>
+                </div>
 
-                <div class="navbar-start">
+                <div class="navbar-start ">
                     <a class="navbar-item">
                         About
                     </a>
