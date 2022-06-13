@@ -28,7 +28,7 @@ const GroceriesList = ({groceries}) => {
 const GroceriesList = () => {
     return (
         <section class="box">
-            <h3 class="subtitle">My Groceries</h3>
+            <h3 class="subtitle has-text-primary">My Groceries</h3>
             <div class="box">
                 butter
                 <button class="delete is-small"></button>

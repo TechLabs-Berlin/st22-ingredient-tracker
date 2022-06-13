@@ -50,7 +50,7 @@ const GroceriesSearch = () => {
 
     return (
         <div class="box"> 
-            <label class="label">Search</label>
+            <label class="label has-text-primary">Search</label>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
                         <span class="icon has-text-primary"><i class="fas fa-search"></i></span>
