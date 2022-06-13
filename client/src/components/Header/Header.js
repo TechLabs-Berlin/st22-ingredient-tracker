@@ -19,11 +19,11 @@ const Header = () => {
             <div class="navbar-menu">
 
                 <div class="navbar-start">
-                    <a class="navbar-item">
+                    <a class="navbar-item has-text-primary">
                         My Ingredients
                     </a>
 
-                    <a class="navbar-item">
+                    <a class="navbar-item has-text-primary">
                         My Recipes
                     </a>
                 </div>
@@ -31,7 +31,7 @@ const Header = () => {
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button">
+                            <a class="button has-text-primary">
                                 Log in
                             </a>
                             <a class="button is-primary">
