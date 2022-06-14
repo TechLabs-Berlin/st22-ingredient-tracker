@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FaGoogle } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
 
 
 function LoginForm() {
@@ -32,12 +35,16 @@ function LoginForm() {
             <div className='socials m-4 my-4'>
                 <p className='subtitle has-text-weight-light'>Or Login Using:</p>
                 <p className='buttons'>
-                    <button className='button is-info'>
-                        Facebook
+                    <button className='button'>
+                        <FaFacebook />
                     </button>
 
-                    <button className='button is-danger'>
-                        Google
+                    <button className='button'>
+                        <FaGoogle />
+                    </button>
+
+                    <button className='button'>
+                        <FaTwitter />
                     </button>
                 </p>
             </div>
@@ -50,6 +57,7 @@ function LoginForm() {
         </div>
     )
 };
+
 
 export default LoginForm;
 
