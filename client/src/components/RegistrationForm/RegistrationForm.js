@@ -67,8 +67,10 @@ function RegistrationForm() {
 
             </div>
 
-            <div>
-                <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className="button is-primary is-medium m-2 my-4">Register</button>
+            <div className='level my-3'>
+                <div className='level-item'>
+                    <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
+                </div>
             </div>
 
         </div>
