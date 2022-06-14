@@ -27,7 +27,7 @@ function LoginForm() {
 
             {/* Login Button */}
             <div>
-                <button className='button is-primary is-medium m-2 my-4'>Login</button>
+                <button className='button is-primary is-medium m-2 my-5'>Login</button>
             </div>
 
 
@@ -55,7 +55,8 @@ function LoginForm() {
                                 width: '70px',
                                 textAlign: 'center',
                                 color: 'hsl(0, 0%, 48%) '
-                            }}>
+                            }}
+                            className='has-text-weight-light'>
                             OR
                         </p>
                     </div>
@@ -74,22 +75,22 @@ function LoginForm() {
                     <hr style={{ width: "25%" }}></hr>
                 </div> */}
 
-                <p className='buttons'>
-                    <button className='button is-primary is-outlined'>
+                <p className='buttons is-flex-direction-column is-align-content-center'>
+                    <button className='button is-primary is-outlined' style={{ width: '202px', margin: '6px' }}>
                         <span className='icon is-small'>
                             <FaGoogle />
                         </span>
                         <span>Login with Google</span>
                     </button>
 
-                    <button className='button is-primary is-outlined'>
+                    <button className='button is-primary is-outlined' style={{ width: '202px', margin: '6px' }}>
                         <span className='icon is-small'>
                             <FaFacebook />
                         </span>
                         <span>Login with Facebook</span>
                     </button>
 
-                    <button className='button is-primary is-outlined'>
+                    <button className='button is-primary is-outlined' style={{ width: '202px', margin: '6px' }}>
                         <span className='icon is-small'>
                             <FaTwitter />
                         </span>
