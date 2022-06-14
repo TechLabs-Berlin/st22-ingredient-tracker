@@ -4,6 +4,7 @@ import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 
 
+
 function LoginForm() {
 
     return (
@@ -35,16 +36,22 @@ function LoginForm() {
             <div className='socials m-4 my-4'>
                 <p className='subtitle has-text-weight-light'>Or Login Using:</p>
                 <p className='buttons'>
-                    <button className='button'>
-                        <FaFacebook />
+                    <button className='button is-primary is-outlined'>
+                        <span className='icon is-small'>
+                            <FaGoogle />
+                        </span>
                     </button>
 
-                    <button className='button'>
-                        <FaGoogle />
+                    <button className='button is-primary is-outlined'>
+                        <span className='icon is-small'>
+                            <FaFacebook />
+                        </span>
                     </button>
 
-                    <button className='button'>
-                        <FaTwitter />
+                    <button className='button is-primary is-outlined'>
+                        <span className='icon is-small'>
+                            <FaTwitter />
+                        </span>
                     </button>
                 </p>
             </div>
@@ -60,4 +67,5 @@ function LoginForm() {
 
 
 export default LoginForm;
+
 
