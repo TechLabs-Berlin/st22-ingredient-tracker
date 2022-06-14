@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaUser } from 'react-icons/fa';
 
 
 function RegistrationForm() {
@@ -33,10 +34,10 @@ function RegistrationForm() {
 
 
     return (
-        <div className="card m-4 p-4">
+        <div className=" form card m-4 p-4">
 
             <h1 className="title m-2 has-text-primary">Registration Form</h1>
-            <h2 className="subtitle m-2 mb-5">Register to save ingredients and recipes to your Ingreduce dashboard.</h2>
+            <h2 className=" m-2 mb-5">Register to save ingredients and recipes to your Ingreduce dashboard.</h2>
 
             <div>
                 <div className="username m-2">
@@ -60,14 +61,14 @@ function RegistrationForm() {
                 </div>
             </div>
 
-            <div>
-                <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3>
+            <div className=''>
+                {/* <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3> */}
                 <input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)}></input>
                 <label className="checkbox m-2 mb-4 has-text-grey" for="tac">I agree with the Terms & Conditions.</label>
 
             </div>
 
-            <div className='level my-3'>
+            <div className='level'>
                 <div className='level-item'>
                     <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
                 </div>
@@ -75,72 +76,6 @@ function RegistrationForm() {
 
         </div>
 
-
-
-
-        // Google's Material Design 
-        // <div className="mdc-card">
-        //     <div className='form'>
-        //         <div className='form-body'>
-        //             <div className='username'>
-        //                 <label className="mdc-text-field mdc-text-field--outlined">
-        //                     <span className="mdc-notched-outline">
-        //                         <span className="mdc-notched-outline__leading"></span>
-        //                         <span className="mdc-notched-outline__notch">
-        //                             <span className="mdc-floating-label" id="my-label-id">Username</span>
-        //                         </span>
-        //                         <span className="mdc-notched-outline__trailing"></span>
-        //                     </span>
-        //                     <input type="text" className="mdc-text-field__input" aria-labelledby="my-label-id" />
-        //                 </label>
-        //             </div>
-
-        //             <div className='email'>
-        //                 <label className="mdc-text-field mdc-text-field--outlined">
-        //                     <span className="mdc-notched-outline">
-        //                         <span className="mdc-notched-outline__leading"></span>
-        //                         <span className="mdc-notched-outline__notch">
-        //                             <span className="mdc-floating-label" id="my-label-id">Email</span>
-        //                         </span>
-        //                         <span className="mdc-notched-outline__trailing"></span>
-        //                     </span>
-        //                     <input type="email" className="mdc-text-field__input" aria-labelledby="my-label-id" value={email} onChange={(e) => handleInputChange(e)} />
-        //                 </label>
-        //             </div>
-
-        //             <div className='password'>
-        //                 <label className="mdc-text-field mdc-text-field--outlined">
-        //                     <span className="mdc-notched-outline">
-        //                         <span className="mdc-notched-outline__leading"></span>
-        //                         <span className="mdc-notched-outline__notch">
-        //                             <span className="mdc-floating-label" id="my-label-id">Password</span>
-        //                         </span>
-        //                         <span className="mdc-notched-outline__trailing"></span>
-        //                     </span>
-        //                     <input type="password" className="mdc-text-field__input" aria-labelledby="my-label-id" />
-        //                 </label>
-        //             </div>
-
-        //             <div className='confirm-password'>
-        //                 <label className="mdc-text-field mdc-text-field--outlined">
-        //                     <span className="mdc-notched-outline">
-        //                         <span className="mdc-notched-outline__leading"></span>
-        //                         <span className="mdc-notched-outline__notch">
-        //                             <span className="mdc-floating-label" id="my-label-id">Confirm Password</span>
-        //                         </span>
-        //                         <span className="mdc-notched-outline__trailing"></span>
-        //                     </span>
-        //                     <input type="password" className="mdc-text-field__input" aria-labelledby="my-label-id" />
-        //                 </label>
-        //             </div>
-
-        //             <button className="mdc-button mdc-button--raised">
-        //                 <span className="mdc-button__label">Register</span>
-        //             </button>
-
-        //         </div>
-        //     </div>
-        // </div>
     )
 };
 
