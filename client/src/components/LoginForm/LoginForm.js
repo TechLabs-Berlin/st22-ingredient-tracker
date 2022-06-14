@@ -4,7 +4,6 @@ import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 
 
-
 function LoginForm() {
 
     return (
@@ -34,26 +33,70 @@ function LoginForm() {
 
             {/* Social Media Buttons */}
             <div className='socials m-4 my-4'>
-                <p className='subtitle has-text-weight-light'>Or Login Using:</p>
+
+                {/* Separation Line */}
+                <div className='mb-6'
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center'
+                    }}>
+
+                    <div
+                        style={{
+                            flex: 1,
+                            height: '1px',
+                            backgroundColor: 'hsl(0, 0%, 71%)'
+                        }} />
+
+                    <div>
+                        <p
+                            style={{
+                                width: '70px',
+                                textAlign: 'center',
+                                color: 'hsl(0, 0%, 48%) '
+                            }}>
+                            OR
+                        </p>
+                    </div>
+
+                    <div
+                        style={{
+                            flex: 1,
+                            height: '1px',
+                            backgroundColor: 'hsl(0, 0%, 71%) '
+                        }} />
+                </div>
+
+                {/* <div className='is-flex is-align-items-center'>
+                    <hr style={{ width: "25%" }} id='hr'></hr>
+                    <p className='is-align-content-center has-text-weight-light'> OR </p>
+                    <hr style={{ width: "25%" }}></hr>
+                </div> */}
+
                 <p className='buttons'>
                     <button className='button is-primary is-outlined'>
                         <span className='icon is-small'>
                             <FaGoogle />
                         </span>
+                        <span>Login with Google</span>
                     </button>
 
                     <button className='button is-primary is-outlined'>
                         <span className='icon is-small'>
                             <FaFacebook />
                         </span>
+                        <span>Login with Facebook</span>
                     </button>
 
                     <button className='button is-primary is-outlined'>
                         <span className='icon is-small'>
                             <FaTwitter />
                         </span>
+                        <span>Login with Twitter</span>
                     </button>
                 </p>
+
             </div>
 
             {/* Registration Link */}
@@ -61,7 +104,7 @@ function LoginForm() {
                 <p>Not a member yet?</p>
                 <p className='is-clickable has-text-primary ml-1'>Register here.</p>
             </div>
-        </div>
+        </div >
     )
 };
 
