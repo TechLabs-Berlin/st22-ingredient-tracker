@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
+import './LoginForm.css'
 
 
 function LoginForm() {
@@ -9,7 +10,7 @@ function LoginForm() {
     return (
         <div className='form card card m-4 p-4'>
             {/* Title */}
-            <h1 className='title m-2 mb-5 has-text-primary'>Login</h1>
+            <h1 className='title m-2 mb-6 has-text-primary'>Login</h1>
 
             {/* Input Fields */}
             <div>
@@ -21,15 +22,14 @@ function LoginForm() {
                 <div className='password m-2 my-4'>
                     <label className='has-text-primary has-text-weight-semibold is-size-5' htmlFor='password'>Password</label>
                     <input className='input is-primary is-medium' type='password' id='password' placeholder='Password' required></input>
-                    <p className='is-clickable is-size-7 has-text-grey is-pulled-right m-1'>Forgot password?</p>
-
+                    <p className='is-clickable is-size-7 has-text-grey m-2 mr-5' id='forgotPassword'>Forgot password?</p>
                 </div>
             </div>
 
             {/* Login Button */}
-            <div className='level'>
+            <div className='level my-5'>
                 <div className='level-item'>
-                    <button className='button is-primary is-medium m-2 my-5'>Login</button>
+                    <button className='button is-primary is-medium my-5' style={{ width: '150px' }}>Login</button>
                 </div>
             </div>
 
