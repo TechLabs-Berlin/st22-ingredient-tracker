@@ -1,4 +1,14 @@
 .hero {
     background-image: url(./photo_veggies.jpg);
-    min-height: min-content;
+    background-color: #505050;
+    background-blend-mode: overlay;
+    background-size: cover;
+
 }
+
+/* 
+background-size: 100%;
+background-position: center;
+background-origin: border-box;
+background-repeat: space;
+background-attachment: local; */
