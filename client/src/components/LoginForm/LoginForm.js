@@ -80,21 +80,21 @@ function LoginForm() {
 
                 {/* Social Media Buttons */}
                 <p className='buttons is-flex-direction-column is-align-content-center'>
-                    <button className='button is-primary is-outlined' style={{ width: '225px', margin: '6px' }}>
+                    <button className='button is-primary is-outlined is-rounded' style={{ width: '225px', margin: '6px' }}>
                         <span className='icon is-small'>
                             <FaGoogle />
                         </span>
                         <span>Login with Google</span>
                     </button>
 
-                    <button className='button is-primary is-outlined' style={{ width: '225px', margin: '6px' }}>
+                    <button className='button is-primary is-outlined is-rounded' style={{ width: '225px', margin: '6px' }}>
                         <span className='icon is-small'>
                             <FaFacebook />
                         </span>
                         <span>Login with Facebook</span>
                     </button>
 
-                    <button className='button is-primary is-outlined' style={{ width: '225px', margin: '6px' }}>
+                    <button className='button is-primary is-outlined is-rounded' style={{ width: '225px', margin: '6px' }}>
                         <span className='icon is-small'>
                             <FaTwitter />
                         </span>
