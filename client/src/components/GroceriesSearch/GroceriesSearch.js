@@ -59,12 +59,12 @@ const GroceriesSearch = () => {
                             onChange={e => {
                                 setTerm(e.target.value);
                                 console.log(term);
-                                if (term === "") {
+                                if (e.target.value === "") {
                                     console.log("empty");
                                     listVisible = false;
-                                    renderedResults = [];
+                                    setResults([]);
                                 } else {
-                                    console.log(term);
+                                    console.log(e.target.value);
                                     listVisible = true;
                                 }
                             }}
@@ -75,7 +75,7 @@ const GroceriesSearch = () => {
                     </p>
                 </div>
                 <div class={`${listVisible ? "box" : ""}`}>
-                    {renderedResults}
+                    {results.length < 0 ? "" : renderedResults}
                 </div>
             
         </div>
