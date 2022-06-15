@@ -7,7 +7,7 @@ function HeroImage() {
     return (
         <div>
             {/* Hero Image and Button */}
-            <section className="hero is-halfheight">
+            <section className="hero is-large">
                 <div className="hero-body">
                     <div>
                         <p className="title is-size-2 has-text-white mb-5">
@@ -16,7 +16,7 @@ function HeroImage() {
                         <p className="subtitle has-text-white mb-6">
                             Ingreduce helps you reduce waste by providing healthy recipes using the ingredients you already have.
                         </p>
-                        <button className='button is-primary'>Try Today</button>
+                        <button className='button is-primary' style={{ width: '150px' }}>Try Today</button>
                     </div>
                 </div>
             </section>
@@ -47,7 +47,7 @@ function HeroImage() {
                 <div class="column"></div>
             </div> */}
 
-            <div className='container'>
+            <div className='container' id='ingredient_list'>
                 <div>
                     <p className='is-inline-block is-size-3 has-text-primary has-text-weight-bold'>1.</p>
                     <p className='is-inline-block is-size-5 has-text-weight-normal ml-2'>Add the ingredients you want to use.</p>

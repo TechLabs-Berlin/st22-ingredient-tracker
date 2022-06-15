@@ -1,9 +1,26 @@
 .hero {
-    background-image: url(./photo_veggies.jpg);
-    background-color: #505050;
+    background-image: url(./photo_beans.jpg);
+    background-color: #404040;
     background-blend-mode: overlay;
     background-size: cover;
 
+}
+
+#ingredient_list {
+    margin-top: 2em;
+
+}
+
+.hero-body {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* 
