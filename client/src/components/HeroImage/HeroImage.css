@@ -1,3 +1,4 @@
+/* Overlay of Hero Image */
 .hero {
     background-image: url(./photo_beans.jpg);
     background-color: #404040;
@@ -6,18 +7,8 @@
 
 }
 
-#ingredient_list {
-    margin-top: 2em;
-
-}
-
+/* Center Text */
 .hero-body {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.container {
     display: block;
     margin-left: auto;
     margin-right: auto;
