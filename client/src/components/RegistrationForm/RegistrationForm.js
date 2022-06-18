@@ -66,6 +66,22 @@ function RegistrationForm() {
                     </div>
                 </div>
 
+                {/* Terms and Conditions */}
+                < div className='' >
+                    {/* <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3> */}
+                    < input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)
+                    }></input >
+                    <label className="checkbox m-2 mb-4 has-text-grey" for="tac">I agree with the Terms & Conditions.</label>
+
+                </div >
+
+                {/* Register Button */}
+                < div className='level' >
+                    <div className='level-item'>
+                        <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
+                    </div>
+                </div >
+
                 {/* Social Media Login */}
                 <div className='m-4'>
 
@@ -120,7 +136,7 @@ function RegistrationForm() {
                             <span>Register with Facebook</span>
                         </button>
 
-                        <button className='button is-primary is-outlined is-rounded' style={{ width: '225px', margin: '6px' }}>
+                        <button className='button is-primary is-outlined is-rounded mb-5' style={{ width: '225px', margin: '6px' }}>
                             <span className='icon is-small'>
                                 <FaTwitter />
                             </span>
@@ -129,21 +145,6 @@ function RegistrationForm() {
                     </p>
                 </div>
 
-                {/* Terms and Conditions */}
-                < div className='' >
-                    {/* <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3> */}
-                    < input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)
-                    }></input >
-                    <label className="checkbox m-2 mb-4 has-text-grey" for="tac">I agree with the Terms & Conditions.</label>
-
-                </div >
-
-                {/* Register Button */}
-                < div className='level' >
-                    <div className='level-item'>
-                        <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
-                    </div>
-                </div >
             </div >
         </div >
 
