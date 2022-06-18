@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
+import ReactDOM from "react-dom";
 import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import './LoginForm.css'
 
-
 function LoginForm() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    function validateForm() {
+        return email.length > 0 && password.length > 0;
+    };
+
+    function handleSubmit(event) {
+        event.preventDefault();
+    };
 
     return (
         <div className='columns' id='loginForm'>
-            <div className='form card m-4 p-4'>
+            <div className='form card m-4 p-4' onSubmit={handleSubmit}>
                 {/* Title */}
                 <h1 className='title m-2 mb-6 has-text-primary'>Login</h1>
 
@@ -17,12 +27,12 @@ function LoginForm() {
                 <div>
                     <div className='email m-2 my-4'>
                         <label className='has-text-primary has-text-weight-semibold is-size-5' htmlFor='email'>Email</label>
-                        <input className='input is-primary is-medium' type='email' id='email' placeholder='Email' required></input>
+                        <input className='input is-primary is-medium' type='email' id='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required></input>
                     </div>
 
                     <div className='password m-2 my-4'>
                         <label className='has-text-primary has-text-weight-semibold is-size-5' htmlFor='password'>Password</label>
-                        <input className='input is-primary is-medium' type='password' id='password' placeholder='Password' required></input>
+                        <input className='input is-primary is-medium' type='password' id='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} required></input>
                         <p className='is-clickable is-size-7 has-text-grey m-2 mr-5' id='forgotPassword'>Forgot password?</p>
                     </div>
                 </div>
@@ -30,7 +40,7 @@ function LoginForm() {
                 {/* Login Button */}
                 <div className='level my-5'>
                     <div className='level-item'>
-                        <button className='button is-primary is-medium my-5' style={{ width: '150px' }}>Login</button>
+                        <button className='button is-primary is-medium my-5' style={{ width: '150px' }} type='submit' disabled={!validateForm()}>Login</button>
                     </div>
                 </div>
 
@@ -72,12 +82,6 @@ function LoginForm() {
                                 backgroundColor: 'hsl(0, 0%, 71%) '
                             }} />
                     </div>
-
-                    {/* <div className='is-flex is-align-items-center'>
-                    <hr style={{ width: "25%" }} id='hr'></hr>
-                    <p className='is-align-content-center has-text-weight-light'> OR </p>
-                    <hr style={{ width: "25%" }}></hr>
-                </div> */}
 
                     {/* Social Media Buttons */}
                     <p className='buttons is-flex-direction-column is-align-content-center'>
