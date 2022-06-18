@@ -6,7 +6,7 @@ import GroceryItem from "../GroceriesList/GroceriesList";
 const GroceriesSearch = () => {
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
-    const [list, setList] = useState(["test1", "test2"]);
+    const [list, setList] = useState([]);
 
     let listVisible = false;
 
@@ -42,11 +42,12 @@ const GroceriesSearch = () => {
 
     console.log(list);
 
-    const onAddBtnClick = event => {
-        setList(list.concat(<GroceryItem key={list.length}/>));
-    }
-
     const renderedResults = results.map((result) => {
+
+        const onAddBtnClick = event => {
+            setList(list.concat(<GroceryItem key={result.title}/>));
+        }
+
         return (
             <div class="columns buttons is-right">
                 <div class="column">{result.title}</div>   
@@ -90,7 +91,6 @@ const GroceriesSearch = () => {
                 <div class={`${listVisible ? "box" : ""}`}>
                     {results.length < 0 ? "" : renderedResults}
                 </div>
-            
         </div>
     );
 }
