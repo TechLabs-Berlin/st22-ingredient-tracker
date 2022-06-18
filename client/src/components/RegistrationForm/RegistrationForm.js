@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FaGoogle } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
 import './RegistrationForm.css'
 
 function RegistrationForm() {
@@ -63,22 +66,86 @@ function RegistrationForm() {
                     </div>
                 </div>
 
-                {/* Terms and Conditions */}
-                <div className=''>
-                    {/* <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3> */}
-                    <input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)}></input>
-                    <label className="checkbox m-2 mb-4 has-text-grey" for="tac">I agree with the Terms & Conditions.</label>
+                {/* Social Media Login */}
+                <div className='m-4'>
 
+                    {/* Separation Line */}
+                    <div className='mb-6'
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                        }}>
+
+                        <div
+                            style={{
+                                flex: 1,
+                                height: '1px',
+                                backgroundColor: 'hsl(0, 0%, 71%)'
+                            }} />
+
+                        <div>
+                            <p
+                                style={{
+                                    width: '70px',
+                                    textAlign: 'center',
+                                    color: 'hsl(0, 0%, 48%) '
+                                }}
+                                className='has-text-weight-light'>
+                                OR
+                            </p>
+                        </div>
+
+                        <div
+                            style={{
+                                flex: 1,
+                                height: '1px',
+                                backgroundColor: 'hsl(0, 0%, 71%) '
+                            }} />
+                    </div>
+
+                    {/* Social Media Buttons */}
+                    <p className='buttons is-flex-direction-column is-align-content-center'>
+                        <button className='button is-primary is-outlined is-rounded' style={{ width: '225px', margin: '6px' }}>
+                            <span className='icon is-small'>
+                                <FaGoogle />
+                            </span>
+                            <span>Register with Google</span>
+                        </button>
+
+                        <button className='button is-primary is-outlined is-rounded' style={{ width: '225px', margin: '6px' }}>
+                            <span className='icon is-small'>
+                                <FaFacebook />
+                            </span>
+                            <span>Register with Facebook</span>
+                        </button>
+
+                        <button className='button is-primary is-outlined is-rounded' style={{ width: '225px', margin: '6px' }}>
+                            <span className='icon is-small'>
+                                <FaTwitter />
+                            </span>
+                            <span>Register with Twitter</span>
+                        </button>
+                    </p>
                 </div>
 
+                {/* Terms and Conditions */}
+                < div className='' >
+                    {/* <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3> */}
+                    < input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)
+                    }></input >
+                    <label className="checkbox m-2 mb-4 has-text-grey" for="tac">I agree with the Terms & Conditions.</label>
+
+                </div >
+
                 {/* Register Button */}
-                <div className='level'>
+                < div className='level' >
                     <div className='level-item'>
                         <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div >
+            </div >
+        </div >
 
     )
 };
