@@ -25,18 +25,20 @@ const GroceriesList = ({groceries}) => {
 }
 */
 
+const GroceryItem = () => {
+    return (
+        <div class="box">
+            {groceries[0]}
+            <button class="delete is-small"></button>
+        </div> 
+    );
+}
+
 const GroceriesList = () => {
     return (
         <section class="box">
             <h3 class="subtitle has-text-primary">My Groceries</h3>
-            <div class="box">
-                butter
-                <button class="delete is-small"></button>
-            </div>   
-            <div class="box">
-                wheat flour
-                <button class="delete is-small"></button>
-            </div>
+            <GroceryItem />
         </section>
     );
 }

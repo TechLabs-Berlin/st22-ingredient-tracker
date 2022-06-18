@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import GroceriesList from "../GroceriesList/GroceriesList";
+import GroceryItem from "../GroceriesList/GroceriesList";
 
 const GroceriesSearch = () => {
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
+    const [list, setList] = useState(["test1", "test2"]);
+
     let listVisible = false;
 
     //run when component is first rendered and when the search term changes
@@ -37,6 +40,12 @@ const GroceriesSearch = () => {
         
     }, [term]);
 
+    console.log(list);
+
+    const onAddBtnClick = event => {
+        setList(list.concat(<GroceryItem key={list.length}/>));
+    }
+
     const renderedResults = results.map((result) => {
         return (
             <div class="columns buttons is-right">
@@ -45,7 +54,7 @@ const GroceriesSearch = () => {
                     <a 
                         class="button is-primary" 
                         action="submit"
-                        onClick={console.log("clicked")}
+                        onClick={onAddBtnClick}
                     >Add</a>
                 </div>
             </div>
@@ -64,11 +73,11 @@ const GroceriesSearch = () => {
                                 setTerm(e.target.value);
                                 console.log(term);
                                 if (e.target.value === "") {
-                                    console.log("empty");
+                                    //console.log("empty");
                                     listVisible = false;
                                     setResults([]);
                                 } else {
-                                    console.log(e.target.value);
+                                    //console.log(e.target.value);
                                     listVisible = true;
                                 }
                             }}
