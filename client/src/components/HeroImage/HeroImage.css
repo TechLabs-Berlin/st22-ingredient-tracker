@@ -1,7 +1,7 @@
 /* Overlay of Hero Image */
 .hero {
-    background-image: url(./photo_beans.jpg);
-    background-color: #404040;
+    background-image: url(./photo_dish.jpg);
+    background-color: #363636;
     background-blend-mode: overlay;
     background-size: cover;
 
