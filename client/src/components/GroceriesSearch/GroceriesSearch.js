@@ -42,7 +42,11 @@ const GroceriesSearch = () => {
             <div class="columns buttons is-right">
                 <div class="column">{result.title}</div>   
                 <div class="column is-one-quarter-mobile">
-                    <a class="button is-primary" action="submit">Add</a>
+                    <a 
+                        class="button is-primary" 
+                        action="submit"
+                        onClick={console.log("clicked")}
+                    >Add</a>
                 </div>
             </div>
         )

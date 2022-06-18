@@ -2,12 +2,12 @@ import React from "react";
 import DemoData from '../DemoComponent';
 import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
 import GroceriesList from "../GroceriesList/GroceriesList";
+import Header from "../Header/Header";
 
 function App () {
     return (
         <div className="App">
-            <h1 class="title">Ingreduce</h1>
-            <h2 class="subtitle">Landing Page</h2>
+            <Header />
             <GroceriesSearch />
             <GroceriesList />
             < DemoData />
