@@ -5,8 +5,7 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 function App() {
     return (
         <div className="App">
-            <h1>Ingredient Tracker Landing Page</h1>
-            < DemoData />
+            <DemoData />
             <RegistrationForm />
         </div>
     );
