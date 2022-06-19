@@ -7,8 +7,7 @@ let groceries = [
     {name: "zucchini", type: "vegetable", key: "zucchini"},
     {name: "cumin", type: "spice", key: "cumin"}];
 
-// will need to be able to map over whole array of items without hardcoding the index
-const GroceryItem = () => {
+const GroceryItems = () => {
     return (
         <>
             {groceries.map(item => {
@@ -28,7 +27,7 @@ const GroceriesList = () => {
     return (
         <section class="box">
             <h3 class="subtitle has-text-primary">My Groceries</h3>
-            <GroceryItem />
+            <GroceryItems />
         </section>
     );
 }

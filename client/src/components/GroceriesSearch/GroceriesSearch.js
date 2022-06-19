@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import GroceriesList from "../GroceriesList/GroceriesList";
-import GroceryItem from "../GroceriesList/GroceriesList";
+import GroceryItems from "../GroceriesList/GroceriesList";
 
 const GroceriesSearch = () => {
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
+    //in the initial state there already should be an array that has been saved before
     const [list, setList] = useState([]);
 
     let listVisible = false;
@@ -45,7 +46,7 @@ const GroceriesSearch = () => {
     const renderedResults = results.map((result) => {
 
         const onAddBtnClick = event => {
-            setList(list.concat(<GroceryItem key={result.title}/>));
+            setList(list.concat(<GroceryItems name={result.title} type={""} key={result.title}/>));
         }
 
         return (
