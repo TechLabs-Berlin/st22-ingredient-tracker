@@ -1,34 +1,17 @@
 import React from "react";
 import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
 
-let groceries = ["apples", "butter", "wheat flour"];
+let groceries = [
+    {name: "apples", type: "fruit"}, 
+    {name: "butter", type: "dairy"}, 
+    {name: "zucchini", type: "vegetable"}];
 
-const addIngredient = (ingredient) => {
-    groceries.push(ingredient);
-}
-
-/*
-const GroceriesList = ({groceries}) => {
-    const list = groceries.map((item) => {
-        return (
-            <div class="box">
-                <ul>
-                    <li class="box"><span>Test{item}</span>
-                        <a class="button is-danger is-outlined">
-                            <span class="icon is-small"><i class="fas fa-trash"></i></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        );
-    });
-}
-*/
-
+// will need to be able to map over whole array of items without hardcoding the index
 const GroceryItem = () => {
     return (
         <div class="box">
-            {groceries[0]}
+            {groceries[0].name}
+            <span class="tag">{groceries[0].type}</span>
             <button class="delete is-small"></button>
         </div> 
     );

@@ -74,11 +74,9 @@ const GroceriesSearch = () => {
                                 setTerm(e.target.value);
                                 console.log(term);
                                 if (e.target.value === "") {
-                                    //console.log("empty");
                                     listVisible = false;
                                     setResults([]);
                                 } else {
-                                    //console.log(e.target.value);
                                     listVisible = true;
                                 }
                             }}
