@@ -2,18 +2,25 @@ import React from "react";
 import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
 
 let groceries = [
-    {name: "apples", type: "fruit"}, 
-    {name: "butter", type: "dairy"}, 
-    {name: "zucchini", type: "vegetable"}];
+    {name: "apples", type: "fruit", key: "apples"}, 
+    {name: "butter", type: "dairy", key: "butter"}, 
+    {name: "zucchini", type: "vegetable", key: "zucchini"},
+    {name: "cumin", type: "spice", key: "cumin"}];
 
 // will need to be able to map over whole array of items without hardcoding the index
 const GroceryItem = () => {
     return (
-        <div class="box">
-            {groceries[0].name}
-            <span class="tag">{groceries[0].type}</span>
-            <button class="delete is-small"></button>
-        </div> 
+        <>
+            {groceries.map(item => {
+                return (
+                    <div class="box">
+                        {item.name}
+                        <span class="tag">{item.type}</span>
+                        <button class="delete is-small"></button>
+                    </div>
+                ) 
+            })}
+        </>
     );
 }
 
