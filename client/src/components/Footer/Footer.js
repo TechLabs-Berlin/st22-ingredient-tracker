@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <nav class="footer">
+        <nav class="">
                 
             <div class="navbar-menu columns">
                 <div class="navbar-brand column is-5">
