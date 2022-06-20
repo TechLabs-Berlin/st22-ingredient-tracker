@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
 
+/*
 let groceries = [
     {name: "apples", type: "fruit", key: "apples"}, 
     {name: "butter", type: "dairy", key: "butter"}, 
     {name: "zucchini", type: "vegetable", key: "zucchini"},
     {name: "cumin", type: "spice", key: "cumin"}];
+*/
 
 const GroceryItems = () => {
+
+    const [groceries, setGroceries] = useState([
+        {name: "apples", type: "fruit", key: "apples"}, 
+        {name: "butter", type: "dairy", key: "butter"}, 
+        {name: "zucchini", type: "vegetable", key: "zucchini"},
+        {name: "cumin", type: "spice", key: "cumin"}
+    ]);
+
+    const deleteItem = (itemKey) => {
+        console.log(itemKey);
+        setGroceries(groceries.filter((item) => item.key !== itemKey));
+    }
+
+    //deleteItem("butter");
+
     return (
         <>
             {groceries.map(item => {
@@ -15,7 +32,10 @@ const GroceryItems = () => {
                     <div class="box">
                         {item.name}
                         <span class="tag">{item.type}</span>
-                        <button class="delete is-small"></button>
+                        <button 
+                            class="delete is-small"
+                            onClick={event => deleteItem(item.key)}
+                        ></button>
                     </div>
                 ) 
             })}
@@ -31,6 +51,5 @@ const GroceriesList = () => {
         </section>
     );
 }
-
 
 export default GroceriesList;
