@@ -6,29 +6,21 @@ const Footer = () => {
                 
             <div class="navbar-menu columns">
                 <div class="navbar-brand column is-5">
-                    <div class="navbar-item">
+                    <div class="navbar-item ">
                         <img src="https://www.vhv.rs/dpng/d/82-821105_cooking-png-icon-food-transparent-png.png"/>
-                        <h1 class="subtitle">Ingreduce</h1>
+                        <h1 class="subtitle has-text-primary">Ingreduce</h1>
                     </div>
                 </div>
 
-                <div class="navbar-start">
-                    <a class="navbar-item has-text-weight-bold">
+                <div class="navbar-start column is-2">
+                    <a class="navbar-item has-text-weight-bold has-text-primary">
                         About
-                    </a>
-
-                    <a class="navbar-item has-text-weight-bold">
-                        Community
-                    </a>
-
-                    <a class="navbar-item has-text-weight-bold">
-                        Company
                     </a>
                 </div>
 
-                <div class="navbar-end">
+                <div class="navbar-end column">
                     <div class="navbar-item">
-                        ©Copyright
+                        ©Reduce, Inc. 2022. We love our users!
                     </div>
                 </div>
 
