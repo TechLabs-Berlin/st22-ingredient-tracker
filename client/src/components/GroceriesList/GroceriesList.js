@@ -19,7 +19,6 @@ const GroceryItems = () => {
     ]);
 
     const deleteItem = (itemKey) => {
-        console.log(itemKey);
         setGroceries(groceries.filter((item) => item.key !== itemKey));
     }
 
