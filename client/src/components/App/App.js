@@ -1,16 +1,25 @@
 import React from "react";
-import DemoData from '../DemoComponent';
 import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
 import GroceriesList from "../GroceriesList/GroceriesList";
+import DemoData from '../DemoComponent/DemoComponent';
+
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
+
 import Header from "../Header/Header";
 
-function App () {
+
+function App() {
     return (
         <div className="App">
+ 
+            <RegistrationForm />
+
             <Header />
-            <GroceriesSearch />
             <GroceriesList />
+            <GroceriesSearch />
+
             < DemoData />
+
         </div>
     );
 };

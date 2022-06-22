@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "client/build",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,8 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "/bigben",
-        "function": "bigben"
+        "source": "**",
+        "function": "app"
       }
     ]
   }

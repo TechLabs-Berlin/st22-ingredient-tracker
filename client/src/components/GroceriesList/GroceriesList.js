@@ -22,8 +22,6 @@ const GroceryItems = () => {
         setGroceries(groceries.filter((item) => item.key !== itemKey));
     }
 
-    //deleteItem("butter");
-
     return (
         <>
             {groceries.map(item => {
@@ -45,7 +43,7 @@ const GroceryItems = () => {
 const GroceriesList = () => {
     return (
         <section class="box">
-            <h3 class="subtitle has-text-primary">My Groceries</h3>
+            <h3 class="subtitle has-text-primary">My Inventory</h3>
             <GroceryItems />
         </section>
     );
