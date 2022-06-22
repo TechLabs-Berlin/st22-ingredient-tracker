@@ -4,6 +4,7 @@ import DemoData from '../DemoComponent/DemoComponent';
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
             <Header />
 
             < DemoData />
-
+            <Footer />
         </div>
     );
 };
