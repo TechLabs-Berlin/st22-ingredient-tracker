@@ -1,5 +1,5 @@
 import React from "react";
-import DemoData from '../DemoComponent';
+import DemoData from '../DemoComponent/DemoComponent';
 
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
@@ -11,10 +11,10 @@ function App() {
     return (
         <div className="App">
  
-            <DemoData />
             <RegistrationForm />
 
             <Header />
+
             < DemoData />
             <Footer />
         </div>
