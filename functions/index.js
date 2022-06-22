@@ -20,7 +20,7 @@ const functions = require('firebase-functions');
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
+app.get('/bigben', (req, res) => {
   const date = new Date();
   const hours = (date.getHours() % 12) + 1;  // London is UTC + 1hr;
   res.send(`
@@ -38,10 +38,30 @@ app.get('/', (req, res) => {
   </html>`);
 });
 
+// Firebase functions and Express.js syntax for custom demo API that is displayed in demo component
+
 app.get('/api', (req, res) => {
-  const date = new Date();
-  const hours = (date.getHours() % 12) + 1;  // London is UTC + 1hr;
-  res.json({bongs: 'BONG '.repeat(hours)});
+  const demoData = [
+    {
+      name: 'Apple',
+      type: 'Fruit'
+    },
+    {
+      name: 'Pear',
+      type: 'Fruit'
+    },
+    {
+      name: 'Tomato',
+      type: 'Fruit (technically)'
+    },
+  ];
+  res.json(demoData);
 });
+
+// app.get('/api', (req, res) => {
+//   const date = new Date();
+//   const hours = (date.getHours() % 12) + 1;  // London is UTC + 1hr;
+//   res.json({bongs: 'BONG '.repeat(hours)});
+// });
 
 exports.app = functions.https.onRequest(app);
