@@ -9,6 +9,9 @@ let groceries = [
     {name: "cumin", type: "spice", key: "cumin"}];
 */
 
+
+console.log(test)
+
 const GroceryItems = () => {
 
     const [groceries, setGroceries] = useState([
