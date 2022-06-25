@@ -21,7 +21,7 @@ function HeroImage() {
                         </p>
 
                         {/* Button */}
-                        <button className='button is-primary has-text-weight-semibold my-5 is-size-5' style={{ width: '150px' }} type='submit'>Try Today</button>
+                        <button className='button is-primary has-text-weight-semibold my-5 is-size-5' style={{ width: '200px' }} type='submit'>Try Today</button>
                     </div>
                 </div>
             </section>

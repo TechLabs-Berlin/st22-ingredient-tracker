@@ -5,6 +5,10 @@
     background-blend-mode: overlay;
     background-size: cover;
 
+    /* background-position: center; */
+    /* background-origin: border-box; */
+    /* background-repeat: space; */
+    /* background-attachment: local; */
 }
 
 /* Center Text */
@@ -13,10 +17,3 @@
     margin-left: auto;
     margin-right: auto;
 }
-
-/* 
-background-size: 100%;
-background-position: center;
-background-origin: border-box;
-background-repeat: space;
-background-attachment: local; */
