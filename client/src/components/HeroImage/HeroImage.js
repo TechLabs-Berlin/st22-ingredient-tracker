@@ -8,7 +8,7 @@ function HeroImage() {
             <section className="hero is-large">
                 <div className="hero-body">
                     <div>
-                        <p className="title is-size-1 is-size-3-mobile has-text-primary has-text-weight-bold my-5">
+                        <p className="title is-size-1 is-size-2-mobile has-text-primary has-text-weight-bold my-5">
                             Manage your pantry better!
                         </p>
                         <p className="is-size-4 is-size-5-mobile has-text-white mb-6">
