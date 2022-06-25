@@ -14,7 +14,7 @@ function HeroImage() {
                         <p className="is-size-4 is-size-5-mobile has-text-white mb-6">
                             Ingreduce helps you reduce waste by providing healthy recipes using the ingredients you already have.
                         </p>
-                        <button className='button is-primary' style={{ width: '150px' }}>Try Today</button>
+                        <button className='button is-primary has-text-weight-semibold my-5' style={{ width: '150px' }}>Try Today</button>
                     </div>
                 </div>
             </section>
