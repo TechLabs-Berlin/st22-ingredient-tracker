@@ -50,11 +50,11 @@ const GroceriesSearch = () => {
         }
 
         return (
-            <div class="columns buttons is-right">
-                <div class="column">{result.title}</div>   
-                <div class="column is-one-quarter-mobile">
+            <div className="columns buttons is-right">
+                <div className="column">{result.title}</div>   
+                <div className="column is-one-quarter-mobile">
                     <a 
-                        class="button is-primary" 
+                        className="button is-primary" 
                         action="submit"
                         onClick={onAddBtnClick}
                     >Add</a>
@@ -64,11 +64,11 @@ const GroceriesSearch = () => {
     });
 
     return (
-        <div class="box"> 
-            <label class="label has-text-primary">Search</label>
-                <div class="field">
-                    <p class="control has-icons-left has-icons-right">
-                        <span class="icon has-text-primary"><i class="fas fa-search"></i></span>
+        <div className="box"> 
+            <label className="label has-text-primary">Search</label>
+                <div className="field">
+                    <p className="control has-icons-left has-icons-right">
+                        <span className="icon has-text-primary"><i className="fas fa-search"></i></span>
                         <input 
                             value={term}
                             onChange={e => {
@@ -81,13 +81,13 @@ const GroceriesSearch = () => {
                                     listVisible = true;
                                 }
                             }}
-                            class="input is-rounded is-primary" 
+                            className="input is-rounded is-primary" 
                             type="search" 
                             placeholder="search ingredient"
                         />
                     </p>
                 </div>
-                <div class={`${listVisible ? "box" : ""}`}>
+                <div className={`${listVisible ? "box" : ""}`}>
                     {results.length < 0 ? "" : renderedResults}
                 </div>
         </div>

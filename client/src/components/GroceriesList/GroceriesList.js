@@ -9,9 +9,6 @@ let groceries = [
     {name: "cumin", type: "spice", key: "cumin"}];
 */
 
-
-console.log(test)
-
 const GroceryItems = () => {
 
     const [groceries, setGroceries] = useState([
@@ -27,13 +24,13 @@ const GroceryItems = () => {
 
     return (
         <>
-            {groceries.map(item => {
+            {groceries.map((item, itemIndex) => {
                 return (
-                    <div class="box">
+                    <div className="box" key={itemIndex}>
                         {item.name}
-                        <span class="tag">{item.type}</span>
+                        <span className="tag">{item.type}</span>
                         <button 
-                            class="delete is-small"
+                            className="delete is-small"
                             onClick={event => deleteItem(item.key)}
                         ></button>
                     </div>
@@ -45,8 +42,8 @@ const GroceryItems = () => {
 
 const GroceriesList = () => {
     return (
-        <section class="box">
-            <h3 class="subtitle has-text-primary">My Inventory</h3>
+        <section className="box">
+            <h3 className="subtitle has-text-primary">My Inventory</h3>
             <GroceryItems />
         </section>
     );

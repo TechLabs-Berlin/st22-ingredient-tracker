@@ -2,24 +2,24 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <nav class="">
+        <nav className="">
                 
-            <div class="navbar-menu columns">
-                <div class="navbar-brand column is-5">
-                    <div class="navbar-item ">
+            <div className="navbar-menu columns">
+                <div className="navbar-brand column is-5">
+                    <div className="navbar-item ">
                         <img src="https://www.vhv.rs/dpng/d/82-821105_cooking-png-icon-food-transparent-png.png"/>
-                        <h1 class="subtitle has-text-primary">Ingreduce</h1>
+                        <h1 className="subtitle has-text-primary">Ingreduce</h1>
                     </div>
                 </div>
 
-                <div class="navbar-start column is-2">
-                    <a class="navbar-item has-text-weight-bold has-text-primary">
+                <div className="navbar-start column is-2">
+                    <a className="navbar-item has-text-weight-bold has-text-primary">
                         About
                     </a>
                 </div>
 
-                <div class="navbar-end column">
-                    <div class="navbar-item">
+                <div className="navbar-end column">
+                    <div className="navbar-item">
                         ©Reduce, Inc. 2022. We love our users!
                     </div>
                 </div>
