@@ -1,12 +1,13 @@
 import React from "react";
 import DemoData from '../DemoComponent';
-import HeroImage from "../HeroImage/HeroImage";
+import HomepageInstructions from "../HomepageInstructions/HomepageInstructions";
 
 function App() {
     return (
         <div className="App">
             < DemoData />
-            <HeroImage />
+            <HomepageInstructions />
+
         </div>
     );
 };
