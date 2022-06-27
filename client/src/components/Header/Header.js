@@ -1,4 +1,5 @@
 import React from "react";
+import {BrowserRouter, Route, Link} from "react-router-dom";
 
 const Header = () => {
     return (
@@ -34,9 +35,9 @@ const Header = () => {
                             <a class="button has-text-primary">
                                 Log in
                             </a>
-                            <a class="button is-primary">
+                            <Link to="/registration" class="button is-primary">
                                 <strong>Register</strong>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

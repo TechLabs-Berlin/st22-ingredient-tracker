@@ -3,6 +3,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import './RegistrationForm.css'
+import {BrowserRouter, Route, Link} from "react-router-dom";
 
 function RegistrationForm() {
     const [username, setUsername] = useState("");
@@ -78,7 +79,9 @@ function RegistrationForm() {
                 {/* Register Button */}
                 < div className='level' >
                     <div className='level-item'>
-                        <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
+                        <Link to="/">
+                            <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
+                        </Link>
                     </div>
                 </div >
 
