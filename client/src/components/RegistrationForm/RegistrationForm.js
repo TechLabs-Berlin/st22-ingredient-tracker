@@ -72,7 +72,7 @@ function RegistrationForm() {
                     < input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)
                     }></input >
                     <label className="checkbox m-2 mb-4 has-text-grey" >I agree with the Terms & Conditions.</label>
-                    {/*for="tac"*/}
+                    {/*for="tac"    commented out because it threw an error (was part of the label above)*/}
                 </div >
 
                 {/* Register Button */}
