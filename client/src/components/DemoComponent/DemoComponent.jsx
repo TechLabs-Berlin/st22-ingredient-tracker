@@ -5,12 +5,17 @@ import './DemoComponent.css';
 const DemoData = () => {
     const [demo, setDemoData] = useState([]);
 
-    useEffect( async () => {
-        const response = await getDemoData();
-        if (response != null) {
-            console.log(response);
-            setDemoData(response.data)
+    useEffect(() => {
+        const getData = async () => {
+            const response = await getDemoData();
+            if (response != null) {
+                console.log(response);
+                setDemoData(response.data)
+            }
         }
+       
+        getData();
+        
     }, [])
 
     return (
