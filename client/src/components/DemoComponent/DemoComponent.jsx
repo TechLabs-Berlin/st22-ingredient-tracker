@@ -5,8 +5,6 @@ import './DemoComponent.css';
 const DemoData = () => {
     const [demo, setDemoData] = useState([]);
 
-
-   
     useEffect(() => {
         const getData = async () => {
             const response = await getDemoData();
