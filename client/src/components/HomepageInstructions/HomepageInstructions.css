@@ -6,4 +6,10 @@
     display: flex;
     flex-direction: column;
     align-items: left;
+    margin: 16px;
+}
+
+#steps {
+    display: flex;
+    align-items: center;
 }
