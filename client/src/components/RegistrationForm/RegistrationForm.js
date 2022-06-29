@@ -72,14 +72,14 @@ function RegistrationForm() {
                     {/* <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3> */}
                     < input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)
                     }></input >
-                    <label className="checkbox m-2 mb-4 has-text-grey" for="tac">I agree with the Terms & Conditions.</label>
-
+                    <label className="checkbox m-2 mb-4 has-text-grey" >I agree with the Terms & Conditions.</label>
+                    {/*for="tac"    commented out because it threw an error (was part of the label above)*/}
                 </div >
 
                 {/* Register Button */}
                 < div className='level' >
                     <div className='level-item'>
-                        <Link to="/">
+                        <Link to="/groceries">
                             <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
                         </Link>
                     </div>
