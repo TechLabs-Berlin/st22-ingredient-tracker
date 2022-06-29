@@ -52,7 +52,7 @@ def recipeinfodict(allrecipes_link):
         formatted_ingredient = item.text.strip()
         ingredient_list.append(formatted_ingredient)
     
-    ingredients = ", ".join(ingredient_list)
+    ingredients = "; ".join(ingredient_list)
 
     # Getting the instructions for recipe
 
