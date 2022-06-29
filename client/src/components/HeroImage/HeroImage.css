@@ -4,6 +4,7 @@
     background-color: #292929;
     background-blend-mode: overlay;
     background-size: cover;
+    background-position-x: center;
 
     /* background-position: center; */
     /* background-origin: border-box; */
@@ -17,3 +18,11 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Center Button for Mobile
+@media screen and (max-width: 446px) {
+    .btns {
+        text-align: center !important;
+        margin: auto !important;
+    }
+} */
