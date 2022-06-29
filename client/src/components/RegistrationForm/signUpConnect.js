@@ -1,3 +1,5 @@
+// all methods in client? then need to change firebase installation to add it to client node_modules folder? 
+
 import {
     getAuth,
     createUserWithEmailAndPassword,

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
-import './RegistrationForm.css'
+import './RegistrationForm.css';
+import { signUp } from './signUpConnect';
 
 function RegistrationForm() {
     const [username, setUsername] = useState("");
