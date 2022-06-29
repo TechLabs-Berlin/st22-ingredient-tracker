@@ -25,3 +25,5 @@ const signUp = async (email, password) => {
         return { error: error.message }
     }
 };
+
+export {signUp};
