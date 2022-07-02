@@ -16,14 +16,14 @@ function App() {
     return (
         <BrowserRouter>
             <div className="App">
-                {/* <Header />
+                <Header />
                 <Routes>
                     <Route path="/" element={<DemoData />} />
                     <Route path="registration" element={<RegistrationForm />} />
                     <Route path="groceries" element={<><GroceriesSearch /><GroceriesList /></>}></Route>
-                </Routes> */}
+                </Routes>
                 <RecipesOverview />
-                {/* <Footer /> */}
+                <Footer />
             </div>
         </BrowserRouter>
     );
