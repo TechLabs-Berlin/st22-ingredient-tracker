@@ -6,7 +6,7 @@ html {
 
 #registrationForm {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     text-align: left;
 }
