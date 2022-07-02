@@ -11,16 +11,20 @@ function RecipesOverview() {
             <div className='columns mt-5'>
 
                 <div className='column'>
-                    <div className='card is-clickable'>
+                    <div className='card is-clickable '>
                         <div className='card-image'>
                             <figure className='image'>
                                 <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
-                            <div className='media'>
+                            <div className='media-content has-text-left'>
                                 <p class="title is-4">Recipe Title</p>
                             </div>
+                        </div>
+                        <div className='card-footer'>
+                            <p className='card-footer-item'>Prep Time: 10 min</p>
+                            <p className='card-footer-item'>Cook Time: 30 min</p>
                         </div>
                     </div>
                 </div>
@@ -33,9 +37,13 @@ function RecipesOverview() {
                             </figure>
                         </div>
                         <div className='card-content'>
-                            <div className='media'>
+                            <div className='media-content has-text-left'>
                                 <p class="title is-4">Recipe Title</p>
                             </div>
+                        </div>
+                        <div className='card-footer'>
+                            <p className='card-footer-item'>Prep Time: 10 min</p>
+                            <p className='card-footer-item'>Cook Time: 30 min</p>
                         </div>
                     </div>
                 </div>
