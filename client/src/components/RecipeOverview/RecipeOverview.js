@@ -5,21 +5,21 @@ function RecipesOverview() {
     return (
         <div>
             <div className='mt-6'>
-                <h1 className='is-size-3 is-size-4-mobile has-text-black-ter has-text-weight-semibold'>Recipe results for *Chicken*</h1>
+                <h1 className='is-size-3 is-size-4-mobile has-text-weight-semibold has-text-primary'>Recipe results for *Chicken*</h1>
             </div>
             {/* First Row */}
             <div className='columns mt-5'>
 
                 <div className='column'>
-                    <div className='card is-clickable '>
+                    <div className='card is-clickable' id='card'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo' id='image'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
                             <div className='media-content has-text-left'>
-                                <p class="title is-4">Recipe Title</p>
+                                <p class="title is-4 has-text-primary">Recipe Title</p>
                             </div>
                         </div>
                         <div className='card-footer'>
@@ -30,15 +30,15 @@ function RecipesOverview() {
                 </div>
 
                 <div className='column'>
-                    <div className='card is-clickable'>
-                        <div className='card-image'>
-                            <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                    <div className='card is-clickable' id='card'>
+                        <div className='card-image' id='card-image'>
+                            <figure className='image' >
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo' id='image'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
                             <div className='media-content has-text-left'>
-                                <p class="title is-4">Recipe Title</p>
+                                <p class="title is-4 has-text-primary">Recipe Title</p>
                             </div>
                         </div>
                         <div className='card-footer'>
@@ -49,15 +49,15 @@ function RecipesOverview() {
                 </div>
 
                 <div className='column'>
-                    <div className='card is-clickable'>
+                    <div className='card is-clickable' id='card'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo' id='image-top'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
                             <div className='media'>
-                                <p class="title is-4">Recipe Title</p>
+                                <p class="title is-4 has-text-primary">Recipe Title</p>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -86,7 +86,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -101,7 +101,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -116,7 +116,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -131,7 +131,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -150,7 +150,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -165,7 +165,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -180,7 +180,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
@@ -195,7 +195,7 @@ function RecipesOverview() {
                     <div className='card is-clickable'>
                         <div className='card-image'>
                             <figure className='image'>
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt='recipe photo'></img>
+                                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='recipe photo'></img>
                             </figure>
                         </div>
                         <div className='card-content'>
