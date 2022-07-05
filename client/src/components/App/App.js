@@ -1,4 +1,5 @@
 import React from "react";
+import HeroImage from "../HeroImage/HeroImage";
 import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
 import GroceriesList from "../GroceriesList/GroceriesList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,8 +15,11 @@ import Groceries from "../Groceries/Groceries";
 
 function App() {
     return (
-        <BrowserRouter>
-            <div className="App">
+        <div className="App">
+            <DemoData />
+            <HeroImage />
+            <BrowserRouter>
+                <div className="App">
                     <Header />
                     <Routes>
                         <Route path="/" element={<DemoData />}/>
