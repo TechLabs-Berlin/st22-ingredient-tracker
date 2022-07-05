@@ -1,42 +1,43 @@
 import React from "react";
+import {BrowserRouter, Route, Link} from "react-router-dom";
 import logo from "../../images/logo.svg";
 
 const Header = () => {
     return (
         <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item">
+                <Link to="/" class="navbar-item">
                     <img src={logo} alt="Ingreduce logo"/>
-                </a>
+                </Link>
 
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div class="navbar-menu">
+            <div className="navbar-menu">
 
-                <div class="navbar-start">
-                    <a class="navbar-item has-text-primary">
+                <div className="navbar-start">
+                    <a className="navbar-item has-text-primary">
                         My Ingredients
                     </a>
 
-                    <a class="navbar-item has-text-primary">
+                    <a className="navbar-item has-text-primary">
                         My Recipes
                     </a>
                 </div>
 
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button has-text-primary">
+                <div className="navbar-end">
+                    <div className="navbar-item">
+                        <div className="buttons">
+                            <a className="button has-text-primary">
                                 Log in
                             </a>
-                            <a class="button is-primary">
+                            <Link to="/registration" class="button is-primary">
                                 <strong>Register</strong>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

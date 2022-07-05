@@ -1,13 +1,30 @@
 import React from "react";
-import DemoData from '../DemoComponent';
-import Header from "../Header/Header";
+import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
+import GroceriesList from "../GroceriesList/GroceriesList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App () {
+import DemoData from '../DemoComponent/DemoComponent';
+
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
+
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+
+function App() {
     return (
-        <div className="App">
-            <Header />
-            < DemoData />
-        </div>
+        <BrowserRouter>
+            <div className="App">
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<DemoData />}/>
+                        <Route path="registration" element={<RegistrationForm />}/>
+                        <Route path="groceries" element={<><GroceriesSearch/><GroceriesList/></>}></Route>
+                    </Routes>
+                    <br></br>
+                    <br></br>
+                <Footer />
+            </div>
+        </BrowserRouter>
     );
 };
 
