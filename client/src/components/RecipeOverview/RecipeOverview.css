@@ -4,20 +4,10 @@ html {
 
 #card {
     border: solid 1px hsl(171, 100%, 41%);
-    border-radius: 2rem;
 }
 
 #card-image {
     padding-top: 1em;
     padding-left: 1em;
     padding-right: 1em;
-}
-
-#image {
-    border-radius: 2rem;
-}
-
-#image-top {
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
 }
