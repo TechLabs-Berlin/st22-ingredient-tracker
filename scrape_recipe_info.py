@@ -138,4 +138,4 @@ for index in range(df.shape[0]):
     df.loc[index, 'images_url'] = recipeinfodict(df.loc[index, 'recipe_link'])['images_url']
     time.sleep(1)
 
-df.to_csv('recipe_database.csv')
+df.to_csv('recipe_database.csv', index=False)
