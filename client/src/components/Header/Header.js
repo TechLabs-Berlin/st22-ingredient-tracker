@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 
 const Header = () => {
     return (
-        <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-light is-fixed-top has-background-white" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <Link to="/" class="navbar-item">
                     <img src={logo} alt="Ingreduce logo"/>
@@ -32,11 +32,11 @@ const Header = () => {
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
-                            <a className="button has-text-primary">
+                            <a className="button is-primary">
                                 Log in
                             </a>
                             <Link to="/registration" class="button is-primary">
-                                <strong>Register</strong>
+                                Register
                             </Link>
                         </div>
                     </div>
