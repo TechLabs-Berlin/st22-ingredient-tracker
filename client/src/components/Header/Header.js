@@ -1,12 +1,12 @@
 import React from "react";
+import logo from "../../images/logo.svg";
 
 const Header = () => {
     return (
         <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item">
-                    <img src="https://www.vhv.rs/dpng/d/82-821105_cooking-png-icon-food-transparent-png.png"/>
-                    <h1 class="title">Ingreduce</h1>
+                    <img src={logo} alt="Ingreduce logo"/>
                 </a>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
