@@ -23,6 +23,8 @@ function App() {
                         <Route path="groceries" element={<><Groceries/></>}></Route>
                         <Route path="recipe_detail" element={<RecipeDetail />}/>
                     </Routes>
+                    <br></br>
+                    <br></br>
                 <Footer />
             </div>
         </BrowserRouter>
