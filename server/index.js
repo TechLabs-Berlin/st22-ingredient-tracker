@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const demoRouter = require('./routes/demoRoutes');
+const recepieRouter = require('./routes/recipesRoutes');
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(express.json());
 
 const PORT = 8080;
 
-app.use('', demoRouter);
+app.use('', demoRouter, recepieRouter);
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);

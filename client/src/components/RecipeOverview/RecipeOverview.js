@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getRecipesForIngredients } from './RecipeApi';
 import './RecipeOverview.css'
 
 
-const recipies = [{
-    title: "First Title",
-    imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
-    prepTime: 30,
-    cookTime: 60
-},
-{
-    title: "Second Title",
-    imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
-    prepTime: 120,
-    cookTime: 45
-}, {
-    title: "Thirds Title",
-    imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
-    prepTime: 30,
-    cookTime: 60
-}, {
-    title: "First Title",
-    imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
-    prepTime: 30,
-    cookTime: 60
-}];
+// const recipies = [{
+//     title: "First Title",
+//     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
+//     prepTime: 30,
+//     cookTime: 60
+// },
+// {
+//     title: "Second Title",
+//     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
+//     prepTime: 120,
+//     cookTime: 45
+// }, {
+//     title: "Thirds Title",
+//     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
+//     prepTime: 30,
+//     cookTime: 60
+// }, {
+//     title: "First Title",
+//     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
+//     prepTime: 30,
+//     cookTime: 60
+// }];
 
 function Recepie({ title, imageURL, prepTime, cookTime }) {
     return (
@@ -49,13 +50,23 @@ function Recepie({ title, imageURL, prepTime, cookTime }) {
 }
 
 function RecipesOverview() {
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        getRecipesForIngredients('tomatoes').then((recipesServerResponse) => {
+            setRecipes(recipesServerResponse.data);
+        })
+    }, [])
+
+    console.log(recipes);
+
     return (
         <div>
             {/* Recipe Results Title */}
             <div className='mt-6'>
                 <h1 className='is-size-3 is-size-4-mobile has-text-weight-semibold'>Recipe results for</h1>
             </div>
-            {recipies.map((recepie) =>
+            {recipes.map((recepie) =>
                 <Recepie
                     title={recepie.title}
                     imageURL={recepie.imageURL}
@@ -65,6 +76,7 @@ function RecipesOverview() {
             {/* First Row */}
         </div>
     )
+
 }
 
 export default RecipesOverview;
