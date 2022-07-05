@@ -35,8 +35,10 @@ const Header = () => {
                             <a className="button is-primary">
                                 Log in
                             </a>
-                            <Link to="/registration" class="button is-primary">
-                                Register
+
+                            <Link to="/registration" className="button is-primary">
+                                <strong>Register</strong>
+
                             </Link>
                         </div>
                     </div>
