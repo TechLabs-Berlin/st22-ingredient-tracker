@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Groceries = () => {
 
@@ -53,13 +53,13 @@ const Groceries = () => {
         const renderedResults = results.map((result) => {
     
             const onAddBtnClick = event => {
-                console.log("result " + result);
+                console.log("result: " + result.title);
                 setGroceries(groceries.concat(<GroceryItems name={result.title} type={""} key={result.title}/>));
             }
     
             return (
                 <div className="columns buttons is-right">
-                    <div className="column">{result.title}</div>   
+                    <div className="column" key={result.title}>{result.title}</div>   
                     <div className="column is-one-quarter-mobile">
                         <a 
                             className="button is-primary" 
@@ -81,7 +81,6 @@ const Groceries = () => {
                                 value={term}
                                 onChange={e => {
                                     setTerm(e.target.value);
-                                    console.log("hi");
                                     if (e.target.value === "") {
                                         listVisible = false;
                                         setResults([]);
@@ -102,7 +101,7 @@ const Groceries = () => {
         );
     }
 
-    const GroceryItems = () => {
+    const GroceryItems = (props) => {
     
         const deleteItem = (itemKey) => {
             setGroceries(groceries.filter((item) => item.key !== itemKey));
@@ -112,7 +111,7 @@ const Groceries = () => {
             <>
                 {groceries.map((item, itemIndex) => {
                     return (
-                        <div className="box" key={itemIndex}>
+                        <div className="button is-rounded" key={itemIndex}>
                             {item.name}
                             <span className="tag">{item.type}</span>
                             <button 
@@ -139,6 +138,8 @@ const Groceries = () => {
         <>
             <br></br>
             <Link to="/recipe_detail"><button className="button has-text-primary">Go to Recipe Detail</button></Link>
+            <br></br>
+            <button className="button is-primary">Find a recipe</button>
             <GroceriesList />
             <GroceriesSearch />
         </>
