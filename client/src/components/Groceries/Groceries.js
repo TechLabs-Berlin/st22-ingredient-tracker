@@ -99,7 +99,7 @@ const Groceries = () => {
         );
     }
 
-    const GroceryItem = (props) => {
+    const GroceryItems = (props) => {
     
         const deleteItem = (itemKey) => {
             setGroceries(groceries.filter((item) => item.key !== itemKey));
@@ -122,12 +122,36 @@ const Groceries = () => {
             </>
         );
     }
-    
-    const GroceriesList = () => {
+
+    //container for the inventory
+    const Inventory = () => {
         return (
             <section className="box">
                 <h3 className="subtitle has-text-primary">My Inventory</h3>
-                <GroceryItem />
+                <GroceryItems />
+            </section>
+        );
+    }
+
+    //one ingredient type section
+    const IngredientType = () => {
+        return (
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-header-title is-centered title is-5 has-text-primary">Vegetables & Greens</h3>
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
+                    </figure>
+                </div>
+            </div>
+        );
+    }
+
+    //container for ingredient sections by type
+    const IngredientsSection = () => {
+        return (
+            <section className="box">
+                <IngredientType />
             </section>
         );
     }
@@ -138,8 +162,9 @@ const Groceries = () => {
             <Link to="/recipe_detail"><button className="button has-text-primary">Go to Recipe Detail</button></Link>
             <br></br>
             <button className="button is-primary">Find a recipe</button>
-            <GroceriesList />
+            <Inventory />
             <GroceriesSearch />
+            <IngredientsSection />
         </>
     );
 }
