@@ -4,11 +4,9 @@ import {Link} from "react-router-dom";
 
 const Groceries = () => {
 
-    //in the initial state there already should be an array that has been saved before
-    //const [list, setList] = useState([]);
-
     let listVisible = false;
 
+    //in the initial state there already should be an array that has been saved before
     const [groceries, setGroceries] = useState([
         {name: "apples", type: "fruit", key: "apples"}, 
         {name: "butter", type: "dairy", key: "butter"}, 
@@ -54,7 +52,7 @@ const Groceries = () => {
     
             const onAddBtnClick = event => {
                 console.log("result: " + result.title);
-                setGroceries(groceries.concat(<GroceryItems name={result.title} type={""} key={result.title}/>));
+                setGroceries(groceries.concat({name: result.title, type:"", key: result.title}));
             }
     
             return (
