@@ -50,8 +50,8 @@ const Groceries = () => {
     
         const renderedResults = results.map((result) => {
     
+            //adds ingredient from search to inventory
             const onAddBtnClick = event => {
-                console.log("result: " + result.title);
                 setGroceries(groceries.concat({name: result.title, type:"", key: result.title}));
             }
     
@@ -99,7 +99,7 @@ const Groceries = () => {
         );
     }
 
-    const GroceryItems = (props) => {
+    const GroceryItem = (props) => {
     
         const deleteItem = (itemKey) => {
             setGroceries(groceries.filter((item) => item.key !== itemKey));
@@ -127,7 +127,7 @@ const Groceries = () => {
         return (
             <section className="box">
                 <h3 className="subtitle has-text-primary">My Inventory</h3>
-                <GroceryItems />
+                <GroceryItem />
             </section>
         );
     }
