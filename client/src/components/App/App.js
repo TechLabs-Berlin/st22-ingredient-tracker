@@ -12,16 +12,16 @@ import Groceries from "../Groceries/Groceries";
 function App() {
     return (
         <div className="App">
-             <BrowserRouter>
-                <Header />
-                <Routes>
-                    <Route path="/" element={<HeroImage />}/>
-                    <Route path="registration" element={<RegistrationForm />}/>
-                    <Route path="groceries" element={<Groceries/>}/>
-                    <Route path="recipe_detail" element={<RecipeDetail />}/>
-                </Routes>
-                <br></br>
-                <br></br>
+            <BrowserRouter>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<HeroImage />}/>
+                        <Route path="registration" element={<RegistrationForm />}/>
+                        <Route path="groceries" element={<><Groceries/></>}></Route>
+                        <Route path="recipe_detail" element={<RecipeDetail />}/>
+                    </Routes>
+                    <br></br>
+                    <br></br>
                 <Footer />
             </BrowserRouter>
         </div>
