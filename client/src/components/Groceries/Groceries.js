@@ -136,14 +136,25 @@ const Groceries = () => {
     //one ingredient type section
     const IngredientType = () => {
         return (
-            <div class="card">
-                <div class="card-content">
-                    <h3 class="card-header-title is-centered title is-5 has-text-primary">Vegetables & Greens</h3>
-                    <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
-                    </figure>
+            <div className="columns">
+                <div className="card column is-half">
+                    <div className="card-content">
+                        <h3 className="card-header-title is-centered title is-5 has-text-primary">Vegetables & Greens</h3>
+                        <figure className="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
+                        </figure>
+                    </div>
+                </div>
+                <div className="card column is-half">
+                    <div className="card-content">
+                        <h3 className="card-header-title is-centered title is-5 has-text-primary">Spices</h3>
+                        <figure className="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
+                        </figure>
+                    </div>
                 </div>
             </div>
+            
         );
     }
 
