@@ -19,6 +19,26 @@ const Groceries = () => {
         const [results, setResults] = useState([]);
 
         //run when component is first rendered and when the search term changes
+        //searches the edamam auto-complete api and saves the results in a State
+        useEffect(() => {
+            const search = async() => {
+                const {data} = await axios.get("https://api.edamam.com/auto-complete?app_id=00fa302d&app_key=8f64835541ddc5b406b34fcb4b83def9&", {
+                    params: {
+                        app_id: "00fa302d",
+                        app_key: "8f64835541ddc5b406b34fcb4b83def9",
+                        q: term,
+                        //limit doesn't work??
+                        limit: 5
+                }
+            });
+            console.log(data);
+
+            setResults(data);
+
+        };
+
+        //old useEffect() function where we made an request to the wikipedia API. I am keeping it for now as a reference.
+        /*
         useEffect(() => {
             const search = async() => {
                 const {data} = await axios.get("https://en.wikipedia.org/w/api.php", {
@@ -34,7 +54,9 @@ const Groceries = () => {
             setResults(data.query.search);
 
         };
+        */ 
 
+        // throttle search requests to unly update when the search term hasn't changed in 500 milliseconds
         const timeoutId = setTimeout(() => {
             //only search when there is a non-empty term set
             if (term) {
@@ -46,23 +68,26 @@ const Groceries = () => {
             clearTimeout(timeoutId);
         };
         
-    }, [term]);
+        }, [term]);
     
         const renderedResults = results.map((result) => {
     
             //adds ingredient from search to inventory
             const onAddBtnClick = event => {
-                setGroceries(groceries.concat({name: result.title, type:"", key: result.title}));
+                console.log(result);
+                //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
+                setGroceries(groceries.concat({name: result, type:"", key: result}));
             }
     
             return (
                 <div className="columns buttons is-right">
-                    <div className="column" key={result.title}>{result.title}</div>   
-                    <div className="column is-one-quarter-mobile">
+                    <div className="column" key={result}>{result}</div>   
+                    <div className="column is-one-quarter-mobile" key={result+"Key"}>
                         <a 
                             className="button is-primary" 
                             action="submit"
                             onClick={onAddBtnClick}
+                            key={result+"Link"}
                         >Add</a>
                     </div>
                 </div>
@@ -99,7 +124,7 @@ const Groceries = () => {
         );
     }
 
-    const GroceryItems = (props) => {
+    const InventoryItems = () => {
     
         const deleteItem = (itemKey) => {
             setGroceries(groceries.filter((item) => item.key !== itemKey));
@@ -111,10 +136,11 @@ const Groceries = () => {
                     return (
                         <div className="button is-rounded" key={itemIndex}>
                             {item.name}
-                            <span className="tag">{item.type}</span>
+                            <span className="tag" key={item+"span"}>{item.type}</span>
                             <button 
                                 className="delete is-small"
                                 onClick={event => deleteItem(item.key)}
+                                key={item+"button"}
                             ></button>
                         </div>
                     ) 
@@ -128,7 +154,7 @@ const Groceries = () => {
         return (
             <section className="box">
                 <h3 className="subtitle has-text-primary">My Inventory</h3>
-                <GroceryItems />
+                <InventoryItems />
             </section>
         );
     }
