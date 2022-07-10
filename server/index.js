@@ -3,12 +3,16 @@ const cors = require('cors');
 const demoRouter = require('./routes/demoRoutes');
 const pantryRouter = require('./src/routes/pantryRoutes');
 const userRouter = require('./src/routes/userRoutes');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.use(cors());
 
 app.use(express.json());
+
+// signed cookies don't hide information, but add data to it so authenticity can be verified if need be
+app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route 
 
 const PORT = 5000;
 
