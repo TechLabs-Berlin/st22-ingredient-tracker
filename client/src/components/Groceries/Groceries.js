@@ -76,7 +76,7 @@ const Groceries = () => {
     
             //adds ingredient from search to inventory
             const onAddBtnClick = event => {
-                console.log(result);
+                //console.log(result);
                 //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
                 setGroceries(groceries.concat({name: result, type:"", key: result, selected: false}));
             }
@@ -153,7 +153,7 @@ const Groceries = () => {
                 {groceries.map((item, itemIndex) => {
                     return (
                         <div 
-                            className="button is-rounded" 
+                            className={`${!item.selected ? "button is-rounded" : "button is-rounded is-primary is-light is-outlined"}`}
                             key={itemIndex}
                             onClick={event => selectItem(item)}
                             >{item.name}
