@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const demoRouter = require('./routes/demoRoutes');
+const pantryRouter = require('./src/routes/pantryRoutes');
+const userRouter = require('./src/routes/userRoutes');
 
 const app = express();
 
@@ -8,9 +10,11 @@ app.use(cors());
 
 app.use(express.json());
 
-const PORT = 8080;
+const PORT = 5000;
 
-app.use('', demoRouter);
+app.use('/demo', demoRouter);
+app.use('/pantry', pantryRouter);
+app.use('/user', userRouter);
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
