@@ -8,11 +8,13 @@ const Groceries = () => {
 
     //in the initial state there already should be an array that has been saved before
     const [groceries, setGroceries] = useState([
-        {name: "apples", type: "fruit", key: "apples"}, 
-        {name: "butter", type: "dairy", key: "butter"}, 
-        {name: "zucchini", type: "vegetable", key: "zucchini"},
-        {name: "cumin", type: "spice", key: "cumin"}
+        {name: "apples", type: "fruit", key: "apples", selected: false}, 
+        {name: "butter", type: "dairy", key: "butter", selected: false}, 
+        {name: "zucchini", type: "vegetable", key: "zucchini", selected: false},
+        {name: "cumin", type: "spice", key: "cumin", selected: false}
     ]);
+
+    let selectedItems = [];
 
     const GroceriesSearch = () => {
         const [term, setTerm] = useState("");
@@ -76,7 +78,7 @@ const Groceries = () => {
             const onAddBtnClick = event => {
                 console.log(result);
                 //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
-                setGroceries(groceries.concat({name: result, type:"", key: result}));
+                setGroceries(groceries.concat({name: result, type:"", key: result, selected: false}));
             }
     
             return (
@@ -94,6 +96,7 @@ const Groceries = () => {
             )
         });
     
+        // render search bar
         return (
             <div className="box"> 
                 <label className="label has-text-primary">Search</label>
@@ -102,9 +105,9 @@ const Groceries = () => {
                             <span className="icon has-text-primary"><i className="fas fa-search"></i></span>
                             <input 
                                 value={term}
-                                onChange={e => {
-                                    setTerm(e.target.value);
-                                    if (e.target.value === "") {
+                                onChange={event => {
+                                    setTerm(event.target.value);
+                                    if (event.target.value === "") {
                                         listVisible = false;
                                         setResults([]);
                                     } else {
@@ -129,19 +132,37 @@ const Groceries = () => {
         const deleteItem = (itemKey) => {
             setGroceries(groceries.filter((item) => item.key !== itemKey));
         }
+
+        const selectItem = (clickedItem) => {
+            if (!clickedItem.selected) {
+                console.log("select " + clickedItem.name);
+                clickedItem.selected = true;
+                selectedItems = selectedItems.concat(clickedItem);
+            } else {
+                console.log("deselect " + clickedItem.name);
+                selectedItems = selectedItems.filter((item) => item.key !== clickedItem.name);
+                clickedItem.selected = false;
+            }
+            console.log(`${clickedItem.name} = ${clickedItem.selected}`);
+            
+            console.log(selectedItems);
+        }
     
         return (
             <>
                 {groceries.map((item, itemIndex) => {
                     return (
-                        <div className="button is-rounded" key={itemIndex}>
-                            {item.name}
-                            <span className="tag" key={item+"span"}>{item.type}</span>
-                            <button 
-                                className="delete is-small"
-                                onClick={event => deleteItem(item.key)}
-                                key={item+"button"}
-                            ></button>
+                        <div 
+                            className="button is-rounded" 
+                            key={itemIndex}
+                            onClick={event => selectItem(item)}
+                            >{item.name}
+                                <span className="tag" key={item+"span"}>{item.type}</span>
+                                <button 
+                                    className="delete is-small"
+                                    onClick={event => deleteItem(item.key)}
+                                    key={item+"button"}
+                                ></button>
                         </div>
                     ) 
                 })}
