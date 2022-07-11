@@ -14,7 +14,7 @@ const Groceries = () => {
         {name: "cumin", type: "spice", key: "cumin", selected: false}
     ]);
 
-    let selectedItems = [];
+    const [selectedItems, setSelectedItems] = useState([]);
 
     const GroceriesSearch = () => {
         const [term, setTerm] = useState("");
@@ -33,7 +33,7 @@ const Groceries = () => {
                         limit: 5
                 }
             });
-            console.log(data);
+            //console.log(data);
 
             setResults(data);
 
@@ -137,10 +137,10 @@ const Groceries = () => {
             if (!clickedItem.selected) {
                 console.log("select " + clickedItem.name);
                 clickedItem.selected = true;
-                selectedItems = selectedItems.concat(clickedItem);
+                setSelectedItems(selectedItems.concat(clickedItem));
             } else {
                 console.log("deselect " + clickedItem.name);
-                selectedItems = selectedItems.filter((item) => item.key !== clickedItem.name);
+                setSelectedItems(selectedItems.filter((item) => item.key !== clickedItem.name));
                 clickedItem.selected = false;
             }
             console.log(`${clickedItem.name} = ${clickedItem.selected}`);
