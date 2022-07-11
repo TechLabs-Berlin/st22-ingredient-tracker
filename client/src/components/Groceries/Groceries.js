@@ -220,6 +220,8 @@ const Groceries = () => {
     return (
         <>
             <br></br>
+            <br></br>
+            <br></br>
             <Link to="/recipe_detail"><button className="button has-text-primary">Go to Recipe Detail</button></Link>
             <br></br>
             <button className="button is-primary">Find a recipe</button>
