@@ -145,8 +145,12 @@ const Groceries = () => {
             }
             console.log(`${clickedItem.name} = ${clickedItem.selected}`);
             
-            console.log(selectedItems);
+            //I think this console log is one step behind because the state just changes after the click
+            //console.log(selectedItems);
         }
+
+        //this console log shows the actual state of the selected item array
+        console.log(selectedItems);
     
         return (
             <>
