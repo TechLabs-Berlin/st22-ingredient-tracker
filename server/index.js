@@ -4,6 +4,19 @@ const demoRouter = require('./routes/demoRoutes');
 const pantryRouter = require('./src/routes/pantryRoutes');
 const userRouter = require('./src/routes/userRoutes');
 const cookieParser = require('cookie-parser');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+
+// percent encoded password
+
+const uri = "mongodb+srv://ingreduce_admin:<rice%26PASTA%3F%3D0Hmy>@ingreduce.nw3rh.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  console.log(`Connected to MongoDB Atlas`);
+  client.close();
+});
 
 const app = express();
 
