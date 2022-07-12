@@ -9,12 +9,14 @@ const { default: mongoose } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // percent encoded password for MongoDB Atlas
+// should be included in an .env instead of written in the .js
 
 const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// const client = new MongoClient(mongoAtlasUri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 // client.connect(err => {
-//   const collection = client.db("test").collection("devices");
+// //   const collection = client.db("ingreduce");
+//   const collection = client.db("ingreduce").collection("users");
 //   // perform actions on the collection object
 //   console.log(`Connected to MongoDB Atlas`);
 //   client.close();
@@ -42,33 +44,36 @@ try {
     console.log("could not connect");
   }
   
-  const dbConnection = mongoose.connection;
-  dbConnection.on("error", (err) => console.log(`Connection error ${err}`));
-  dbConnection.once("open", () => console.log("Connected to DB!"));
+//   const dbConnection = mongoose.connection;
+//   dbConnection.on("error", (err) => console.log(`Connection error ${err}`));
+//   dbConnection.once("open", () => console.log("Connected to DB!"));
 
 // temporary, to be replaced by front end data
+// should be routed to its own route
 
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
-app.get('/register' , (req, res) => {
-    res.render('register');
-});
+// app.get('/register' , (req, res) => {
+//     res.render('register');
+// });
 
-app.get('/' , (req, res) => {
+app.get('/home' , (req, res) => {
     res.render('home');
 });
 
 app.post('/register', async (req, res) => {
     const { password, username, email } = req.body;
     const hash = await bcrypt.hash(password, 12);
+    const creationDate = Date.now();
     const user = new User ({
         username,
         email,
-        password: hash
+        password: hash,
+        created: creationDate
     });
     await user.save();
-    res.redirect('/');
+    res.redirect('/home');
 })
 
 // signed cookies don't hide information, but add data to it so authenticity can be verified if need be

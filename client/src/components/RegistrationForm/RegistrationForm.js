@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
-import './RegistrationForm.css'
+import './RegistrationForm.css';
 import {BrowserRouter, Route, Link} from "react-router-dom";
+import axios from 'axios';
 
 function RegistrationForm() {
     const [username, setUsername] = useState("");
@@ -33,6 +34,15 @@ function RegistrationForm() {
 
     const handleSubmit = () => {
         console.log(username, email, password, confirmPassword);
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/register',
+            data: {
+                username: username,
+                email: email,
+                password: password
+            }
+          });
     }
 
 
