@@ -3,39 +3,52 @@
 // send it to Firebase/MongoDB atlas and associate with user
 
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-    username: 
+    username:
     {
         type: String,
         maxlength: 20,
         // unique: [true, 'Username has to be unique'],
-        // required: [true, 'Username cannot be empty']
+        required: [true, 'Username cannot be empty']
     },
-    email: 
+    email:
     {
         type: String,
         // unique: [true, 'Email has to be unique'],
-        // required: [true, 'Email cannot be empty']
+        required: [true, 'Email cannot be empty']
     },
-    password: 
+    password:
     {
         type: String,
         minlength: 6,
-        // required: [true, 'Password cannot be empty']
+        required: [true, 'Password cannot be empty']
     },
-    // pantry: [String],
+    pantry: [String],
     // favourites: [String],
     // userimg:
     // {
     //     data: Buffer,
     //     contentType: String
     // },
-    created: 
-    { 
+    created:
+    {
         type: Date,
         required: [true, 'Creation date is required']
     }
 });
+
+userSchema.statics.findAndValidate = async function (email, password) {
+    const user = await this.findOne({ email });
+    const validCredentials = await bcrypt.compare(password, user.password);
+    return isValid ? user : false;
+}
+
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    this.password = await bcrypt.hash(this.password, 12);
+    next();
+})
 
 module.exports = mongoose.model('User', userSchema);

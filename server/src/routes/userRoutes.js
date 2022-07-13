@@ -18,12 +18,11 @@ const bcrypt = require('bcrypt');
 
 userRouter.post('/register', async (req, res) => {
     const { password, username, email } = req.body;
-    const hash = await bcrypt.hash(password, 12);
     const creationDate = Date.now();
     const user = new User({
         username,
         email,
-        password: hash,
+        password,
         created: creationDate
     });
     await user.save();
@@ -40,10 +39,9 @@ userRouter.get('/login', (req, res) => {
 
 userRouter.post('/login', async (req, res) => {
     const { password, email } = req.body;
-    const user = await User.findOne({ email });
-    const validCredentials = await bcrypt.compare(password, user.password);
-    if (validCredentials) {
-        req.session.user_id = user._id;
+    const foundUser = await User.findAndValidate( password, email );
+    if (foundUser) {
+        req.session.user_id = foundUser._id;
         console.log(`User ${user.username} successfully logged in`);
         res.redirect('/user/secret')
     } else {
