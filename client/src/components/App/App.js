@@ -1,10 +1,6 @@
 import React from "react";
 import HeroImage from "../HeroImage/HeroImage";
-import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
-import GroceriesList from "../GroceriesList/GroceriesList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import DemoData from '../DemoComponent/DemoComponent';
 
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
@@ -17,18 +13,16 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <div className="App">
                     <Header />
                     <Routes>
-                        <Route path="/" element={<HeroImage />} />
-                        <Route path="registration" element={<RegistrationForm />} />
-                        <Route path="groceries" element={<><Groceries /></>}></Route>
-                        <Route path="recipe_detail" element={<RecipeDetail />} />
+                        <Route path="/" element={<HeroImage />}/>
+                        <Route path="registration" element={<RegistrationForm />}/>
+                        <Route path="groceries" element={<><Groceries/></>}></Route>
+                        <Route path="recipe_detail" element={<RecipeDetail />}/>
                     </Routes>
                     <br></br>
                     <br></br>
-                    <Footer />
-                </div>
+                <Footer />
             </BrowserRouter>
         </div>
     );

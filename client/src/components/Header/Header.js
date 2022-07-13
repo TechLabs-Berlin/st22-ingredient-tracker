@@ -1,12 +1,12 @@
 import React from "react";
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import logo from "../../images/logo.svg";
 
 const Header = () => {
     return (
-        <nav class="navbar is-light is-fixed-top has-background-white" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <Link to="/" class="navbar-item">
+        <nav className="navbar is-light is-fixed-top has-background-white" role="navigation" aria-label="main navigation">
+            <div className="navbar-brand">
+                <Link to="/" className="navbar-item">
                     <img src={logo} alt="Ingreduce logo"/>
                 </Link>
 
