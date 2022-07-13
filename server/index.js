@@ -4,14 +4,13 @@ const pantryRouter = require('./src/routes/pantryRoutes');
 const userRouter = require('./src/routes/userRoutes');
 const cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const User = require('./src/models/user');
 const { default: mongoose } = require('mongoose');
-const bcrypt = require('bcrypt');
 
 // percent encoded password for MongoDB Atlas
-// should be included in an .env instead of written in the .js
+// should be included in an .env instead of written in the .js, but for development purposes store it here
 
 const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/?retryWrites=true&w=majority";
+
 // const client = new MongoClient(mongoAtlasUri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 // client.connect(err => {
@@ -28,10 +27,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 
-// temporary local DB, to be replaced with the MongoDB Atlas address
 // MongooseServerSelectionError: connection <monitor> to 40.68.199.139:27017 closed | FOR DEVELOPMENT: had to give network access to all IP, change back later with dedicated server
-
-// mongoose.connect('mongodb://localhost:27017/demoIngreduce');
 
 try {
     // Connect to the MongoDB cluster
@@ -48,33 +44,8 @@ try {
 //   dbConnection.on("error", (err) => console.log(`Connection error ${err}`));
 //   dbConnection.once("open", () => console.log("Connected to DB!"));
 
-// temporary, to be replaced by front end data
-// should be routed to its own route
-
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
-
-// app.get('/register' , (req, res) => {
-//     res.render('register');
-// });
-
-app.get('/home' , (req, res) => {
-    res.render('home');
-});
-
-app.post('/register', async (req, res) => {
-    const { password, username, email } = req.body;
-    const hash = await bcrypt.hash(password, 12);
-    const creationDate = Date.now();
-    const user = new User ({
-        username,
-        email,
-        password: hash,
-        created: creationDate
-    });
-    await user.save();
-    res.redirect('/home');
-})
 
 // signed cookies don't hide information, but add data to it so authenticity can be verified if need be
 app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route 

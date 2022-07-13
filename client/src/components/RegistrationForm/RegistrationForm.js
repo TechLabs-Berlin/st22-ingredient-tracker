@@ -36,7 +36,7 @@ function RegistrationForm() {
         console.log(username, email, password, confirmPassword);
         axios({
             method: 'post',
-            url: 'http://localhost:5000/register',
+            url: 'http://localhost:5000/user/register',
             data: {
                 username: username,
                 email: email,
