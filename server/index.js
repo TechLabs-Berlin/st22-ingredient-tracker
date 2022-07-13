@@ -52,10 +52,19 @@ app.set('views', './src/views');
 // signed cookies don't hide information, but add data to it so authenticity can be verified if need be
 app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route 
 
-const PORT = 5000;
+const requireLogin = (req, res, next) => {
+  if (!req.session.user_id) {
+    console.log(`You don't have permission to see this`);
+    // redirect to localhost:3000/login with frontend?
+    return res.redirect('/login');
+  } 
+  next;
+}
 
 app.use('/pantry', pantryRouter);
 app.use('/user', userRouter);
+
+const PORT = 5000;
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
