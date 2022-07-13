@@ -1,14 +1,14 @@
 import React from "react";
 import {BrowserRouter, Route, Link} from "react-router-dom";
+import logo from "../../images/logo.svg";
 
 const Header = () => {
     return (
-        <nav className="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand">
-                <a className="navbar-item">
-                    <img src="https://www.vhv.rs/dpng/d/82-821105_cooking-png-icon-food-transparent-png.png"/>
-                    <h1 className="title">Ingreduce</h1>
-                </a>
+        <nav class="navbar is-light is-fixed-top has-background-white" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <Link to="/" class="navbar-item">
+                    <img src={logo} alt="Ingreduce logo"/>
+                </Link>
 
                 <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
                     <span aria-hidden="true"></span>
@@ -32,11 +32,13 @@ const Header = () => {
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
-                            <a className="button has-text-primary">
+                            <a className="button is-primary">
                                 Log in
                             </a>
-                            <Link to="/registration" class="button is-primary">
+
+                            <Link to="/registration" className="button is-primary">
                                 <strong>Register</strong>
+
                             </Link>
                         </div>
                     </div>

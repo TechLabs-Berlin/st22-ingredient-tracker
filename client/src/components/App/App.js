@@ -10,6 +10,8 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import RecipeDetail from "../RecipeDetail/RecipeDetail";
+import Groceries from "../Groceries/Groceries";
 
 function App() {
     return (
@@ -20,13 +22,15 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HeroImage />} />
                         <Route path="registration" element={<RegistrationForm />} />
-                        <Route path="groceries" element={<><GroceriesSearch /><GroceriesList /></>}></Route>
+                        <Route path="groceries" element={<><Groceries /></>}></Route>
+                        <Route path="recipe_detail" element={<RecipeDetail />} />
                     </Routes>
+                    <br></br>
+                    <br></br>
                     <Footer />
                 </div>
             </BrowserRouter>
         </div>
-
     );
 };
 
