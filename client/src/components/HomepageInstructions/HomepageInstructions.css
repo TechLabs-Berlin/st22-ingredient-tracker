@@ -1,0 +1,24 @@
+.tag {
+    width: 48px;
+    height: 48px;
+}
+
+#instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: white;
+}
+
+#steps {
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 446px) {
+    #numbers {
+        width: 40px;
+        height: 40px;
+    }
+}

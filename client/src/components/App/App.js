@@ -3,6 +3,7 @@ import HeroImage from "../HeroImage/HeroImage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import HomepageInstructions from "../HomepageInstructions/HomepageInstructions";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
