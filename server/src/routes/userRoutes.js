@@ -31,19 +31,19 @@ userRouter.post('/register', async (req, res) => {
     res.redirect('/')
 });
 
-userRouter.post('/login', async (req, res) => {
-    const { password, username, email } = req.body;
-    const hash = await bcrypt.hash(password, 12);
-    const creationDate = Date.now();
-    const user = new User ({
-        username,
-        email,
-        password: hash,
-        created: creationDate
-    });
-    await user.save();
-    console.log(`User ${user.username} successfully created`);
-    res.redirect('/')
+userRouter.get('/login', (req, res) => {
+    res.render('login')
+})
+
+userRouter.post('/login', async (req, res) => {    
+    const { password, email } = req.body;
+    const user = await User.findOne({ email });
+    const validCredentials = await bcrypt.compare(password, user.password);
+    if(validCredentials) {
+        res.send('Success')
+    } else {
+        res.send('Try again')
+    }
 });
 
 // userRouter.use((req, res, next) => {
