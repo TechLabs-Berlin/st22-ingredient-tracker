@@ -1,0 +1,29 @@
+/* Overlay of Hero Image */
+.hero {
+    background-image: url(./photo_dish.jpg);
+    background-color: #292929;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position-x: center;
+
+    /* background-position: center; */
+    /* background-origin: border-box; */
+    /* background-repeat: space; */
+    /* background-attachment: local; */
+}
+
+/* Center Text */
+.hero-body {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Center Button for Mobile
+@media screen and (max-width: 446px) {
+    .btns {
+        text-align: center !important;
+        margin: auto !important;
+    }
+} */
