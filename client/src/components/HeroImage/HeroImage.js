@@ -7,7 +7,7 @@ function HeroImage() {
     };
 
     return (
-        <div>
+        <div className='body'>
             {/* Hero Image */}
             <section className="hero is-large">
                 <div className="hero-body">
