@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import { getGroceries } from '../../API/groceries.api';
 
 const Groceries = () => {
 
     let listVisible = false;
 
+        const [groceries, setGroceries] = useState([]);
+    
+        useEffect(() => {
+            const getData = async () => {
+                const response = await getGroceries();
+                if (response != null) {
+                    console.log(response);
+                    setGroceries(response.data)
+                }
+            }
+           
+            getData();
+            
+        }, [])
+  
     //in the initial state there already should be an array that has been saved before
-    const [groceries, setGroceries] = useState([
-        {name: "apples", type: "fruit", key: "apples"}, 
-        {name: "butter", type: "dairy", key: "butter"}, 
-        {name: "zucchini", type: "vegetable", key: "zucchini"},
-        {name: "cumin", type: "spice", key: "cumin"}
-    ]);
+    
+    // const [groceries, setGroceries] = useState([
+    //     {name: "apples", type: "fruit", key: "apples"}, 
+    //     {name: "butter", type: "dairy", key: "butter"}, 
+    //     {name: "zucchini", type: "vegetable", key: "zucchini"},
+    //     {name: "cumin", type: "spice", key: "cumin"}
+    // ]);
 
     const GroceriesSearch = () => {
         const [term, setTerm] = useState("");
@@ -136,7 +153,6 @@ const Groceries = () => {
                     return (
                         <div className="button is-rounded" key={itemIndex}>
                             {item.name}
-                            <span className="tag" key={item+"span"}>{item.type}</span>
                             <button 
                                 className="delete is-small"
                                 onClick={event => deleteItem(item.key)}

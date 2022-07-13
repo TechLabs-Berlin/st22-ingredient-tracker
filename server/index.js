@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const pantryRouter = require('./src/routes/pantryRoutes');
+const groceriesRouter = require('./src/routes/groceriesRoutes');
 const userRouter = require('./src/routes/userRoutes');
 const cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -61,7 +61,7 @@ const requireLogin = (req, res, next) => {
   next;
 }
 
-app.use('/pantry', pantryRouter);
+app.use('/groceries', groceriesRouter);
 app.use('/user', userRouter);
 
 const PORT = 5000;

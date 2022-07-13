@@ -1,14 +1,14 @@
-// Pantry in here or own route?
+// groceries in here or own route?
 // Saved recipes in here as well?
 
 const express = require('express');
-const pantryRouter = express.Router();
+const groceriesRouter = express.Router();
 
-// Display data saved in DB for user pantry 
-// Post new/update/delete pantry data in DB 
+// Display data saved in DB for user groceries 
+// Post new/update/delete groceries data in DB 
 // Add/remove favourites
 
-const pantryData = [
+const groceriesData = [
     {
         name: 'Apple',
         type: 'Fruit'
@@ -23,9 +23,9 @@ const pantryData = [
     },
 ];
 
-pantryRouter.get('/current', async (req, res) => {
+groceriesRouter.get('/current', async (req, res) => {
     try {
-        const response = await res.send(pantryData);
+        const response = await res.send(groceriesData);
         console.log(response);
     }
     catch (err) {
@@ -33,4 +33,4 @@ pantryRouter.get('/current', async (req, res) => {
     }   
 });
 
-module.exports = pantryRouter;
+module.exports = groceriesRouter;
