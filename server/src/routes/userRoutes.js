@@ -27,6 +27,7 @@ userRouter.post('/register', async (req, res) => {
         created: creationDate
     });
     await user.save();
+    req.session.user_id = user._id;
     console.log(`User ${user.username} successfully created`);
     res.redirect('/')
 });
@@ -35,16 +36,31 @@ userRouter.get('/login', (req, res) => {
     res.render('login')
 })
 
+// With frontend: if should redirect to fe login page, else should redirect to '/' to allow for regular react routing to continue
+
 userRouter.post('/login', async (req, res) => {    
     const { password, email } = req.body;
     const user = await User.findOne({ email });
     const validCredentials = await bcrypt.compare(password, user.password);
     if(validCredentials) {
-        res.send('Success')
+        req.session.user_id = user._id;
+        console.log(`User ${user.username} successfully logged in`);
+        res.redirect('/userr/secret')
     } else {
-        res.send('Try again')
+        console.log(`A problem ocurred`);
+        res.redirect('/user/login')
     }
 });
+
+userRouter.get('/secret', (req, res) => {
+    if (!req.session.user_id) {
+      console.log(`You don't have permission to see this`);
+      res.redirect('/user/login');
+    } else {
+      console.log(`You have permission to see this`);
+      res.send('Secret');
+    }
+  });
 
 // userRouter.use((req, res, next) => {
 //     if (req.user.id.isUser) {
