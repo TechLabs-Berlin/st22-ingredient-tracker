@@ -14,13 +14,11 @@ import Footer from "../Footer/Footer";
 function App() {
     return (
         <div className="App">
-            <DemoData />
-            <HeroImage />
             <BrowserRouter>
                 <div className="App">
                     <Header />
                     <Routes>
-                        <Route path="/" element={<DemoData />} />
+                        <Route path="/" element={<HeroImage />} />
                         <Route path="registration" element={<RegistrationForm />} />
                         <Route path="groceries" element={<><GroceriesSearch /><GroceriesList /></>}></Route>
                     </Routes>
