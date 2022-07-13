@@ -13,7 +13,8 @@ const bcrypt = require('bcrypt');
 
 // CHECK THAT THE CORRECT USER IS SIGNED IN with middleware, otherwise by knowing their ID one could modify another user's profile
 
-// delete form data after save?
+// delete form data after save? rs server after registering would create user twice 
+// res.redirect('/') seems to have taken care of that issue without interfering with frontend routes
 
 userRouter.post('/register', async (req, res) => {
     const { password, username, email } = req.body;
@@ -25,10 +26,25 @@ userRouter.post('/register', async (req, res) => {
         password: hash,
         created: creationDate
     });
-    console.log(`User ${user.username} successfully created`);
     await user.save();
+    console.log(`User ${user.username} successfully created`);
     res.redirect('/')
-})
+});
+
+userRouter.post('/login', async (req, res) => {
+    const { password, username, email } = req.body;
+    const hash = await bcrypt.hash(password, 12);
+    const creationDate = Date.now();
+    const user = new User ({
+        username,
+        email,
+        password: hash,
+        created: creationDate
+    });
+    await user.save();
+    console.log(`User ${user.username} successfully created`);
+    res.redirect('/')
+});
 
 // userRouter.use((req, res, next) => {
 //     if (req.user.id.isUser) {
