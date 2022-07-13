@@ -8,6 +8,7 @@
     flex-direction: column;
     align-items: left;
     margin: 16px;
+    background-color: white;
 }
 
 #steps {

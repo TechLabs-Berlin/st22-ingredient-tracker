@@ -1,0 +1,12 @@
+html {
+    background-color: hsl(171, 100%, 41%);
+    min-height: 100vh;
+    margin: 2em;
+}
+
+#registrationForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
