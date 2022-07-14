@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeroImage.css'
+import {Link} from "react-router-dom";
 
 function HeroImage() {
     function handleSubmit(event) {
@@ -21,9 +22,9 @@ function HeroImage() {
                         </p>
 
                         {/* Button */}
-                        <div id='btn'>
+                        <Link to="/login"><div id='btn'>
                             <button className='button is-primary has-text-weight-semibold my-5 is-size-5 is-size-6-mobile' style={{ width: '150px' }} type='submit'>Try Today</button>
-                        </div>
+                        </div></Link>
                     </div>
                 </div>
             </section>
