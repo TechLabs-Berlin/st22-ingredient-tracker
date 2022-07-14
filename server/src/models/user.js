@@ -40,9 +40,15 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.statics.findAndValidate = async function (email, password) {
-    const user = await this.findOne({ email });
-    const validCredentials = await bcrypt.compare(password, user.password);
-    return validCredentials ? user : false;
+    try {
+        const user = await this.findOne({ email });
+        console.log(`Found user ${user.username}`);
+        const validCredentials = await bcrypt.compare(password, user.password);
+        return validCredentials ? user : false;
+    }
+    catch (err) {
+        console.log(`Error ocurred ${err}`);
+    }
 }
 
 // userSchema.statics.findAndGetGroceries = async function (user_id) {

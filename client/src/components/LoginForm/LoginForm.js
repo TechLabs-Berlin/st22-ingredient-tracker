@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
-import './LoginForm.css'
+import { Navigate, Link } from "react-router-dom";
+import './LoginForm.css';
+import axios from 'axios';
 
 function LoginForm() {
     const [email, setEmail] = useState("");
@@ -13,13 +15,38 @@ function LoginForm() {
         return email.length > 0 && password.length > 0;
     };
 
-    function handleSubmit(event) {
-        event.preventDefault();
-    };
+    const handleSubmit = async () => {
+        console.log(email);
+        try {
+            await axios({
+                method: 'post',
+                url: 'http://localhost:5000/user/login',
+                data: {
+                    email: email,
+                    password: password
+                }
+            });
+            return <Navigate to="/groceries" />
+        }
+        catch (err) {
+            console.log(err.message);
+
+            // Trying to redirect on error, but should leave error handling to later. Log in works, at least.
+            <Navigate to='/login'  />
+        }
+        // if (loginResponse.status === 200) {
+        //     console.log(loginResponse.status);
+        //     return loginResponse;
+        // } else {
+        //     console.log(loginResponse.status);
+        //     return
+        // }
+
+    }
 
     return (
         <div className='columns' id='loginForm'>
-            <div className='form card m-4 p-4' onSubmit={handleSubmit}>
+            <div className='form card m-4 p-4'>
                 {/* Title */}
                 <h1 className='title m-2 mb-6 has-text-primary'>Login</h1>
 
@@ -40,7 +67,9 @@ function LoginForm() {
                 {/* Login Button */}
                 <div className='level my-5'>
                     <div className='level-item'>
-                        <button className='button is-primary is-medium my-5' style={{ width: '150px' }} type='submit' disabled={!validateForm()}>Login</button>
+                        <Link to="/groceries">
+                            <button className='button is-primary is-medium my-5' style={{ width: '150px' }} onClick={() => handleSubmit()} type='submit' disabled={!validateForm()}>Login</button>
+                        </Link>
                     </div>
                 </div>
 
@@ -126,5 +155,3 @@ function LoginForm() {
 
 
 export default LoginForm;
-
-

@@ -28,7 +28,7 @@ userRouter.post('/register', async (req, res) => {
     await user.save();
     req.session.user_id = user._id;
     console.log(`User ${user.username} successfully created. Session ID: ${req.session.user_id}`);
-    res.json({ status: 'ok' })
+    res.json({ status: 200, message: 'User successfully created'})
     // next();
 });
 
@@ -36,18 +36,18 @@ userRouter.get('/login', (req, res) => {
     res.render('login')
 })
 
-// With frontend: if should redirect to fe login page, else should redirect to '/' to allow for regular react routing to continue
+// With frontend: it should redirect to fe login page, else should redirect to '/' to allow for regular react routing to continue
 
 userRouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const foundUser = await User.findAndValidate(email, password);
     if (foundUser) {
         req.session.user_id = foundUser._id;
-        console.log(`User ${foundUser.username} successfully logged in`);
-        res.redirect('/user/secret')
+        console.log(`User ${foundUser.username} successfully logged in. Session ID: ${req.session.user_id}`);
+        res.json({ status: 200, message: 'User successfully logged in'})
     } else {
-        console.log('A problem ocurred');
-        res.redirect('/user/login')
+        console.log('A problem occurred');
+        res.status(403).json({message: 'User login failed'});
     }
 });
 

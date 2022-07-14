@@ -34,7 +34,7 @@ function RegistrationForm() {
 
     const handleSubmit = async () => {
         console.log(username, email);
-        const registerResponse = await axios({
+        await axios({
             method: 'post',
             url: 'http://localhost:5000/user/register',
             data: {
@@ -43,10 +43,10 @@ function RegistrationForm() {
                 password: password
             }
         });
-        // const data = await response.json()
-        const registerData = await registerResponse
+
+        // const registerData = await registerResponse;
         //need to return response as below
-        return registerData.json();
+        // return registerData.json();
     }
 
 
