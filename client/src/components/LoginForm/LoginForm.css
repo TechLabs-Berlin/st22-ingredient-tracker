@@ -1,9 +1,14 @@
-#registrationForm {
+#forgotPassword {
+    position: absolute;
+    right: 2px;
+}
+
+html {
     background-color: hsl(171, 100%, 41%);
     min-height: 100vh;
 }
 
-#registrationForm {
+#loginForm {
     display: flex;
     align-items: center;
     justify-content: center;

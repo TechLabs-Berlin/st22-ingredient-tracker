@@ -5,6 +5,7 @@
     background-blend-mode: overlay;
     background-size: cover;
     background-position-x: center;
+    max-width: 100%;
 
     /* background-position: center; */
     /* background-origin: border-box; */
@@ -15,9 +16,7 @@
 /* Center Text */
 .hero-body {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
+    text-align: left !important;
 }
 
 /* Center Button for Mobile
@@ -27,3 +26,8 @@
         margin: auto !important;
     }
 } */
+
+
+.html {
+    margin: 0em;
+}

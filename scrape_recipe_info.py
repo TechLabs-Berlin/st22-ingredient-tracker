@@ -13,6 +13,11 @@ def recipeinfodict(allrecipes_link):
 
     name_tag = soup.title
     name = name_tag.text.split('|')[0].strip()
+    
+    # Getting the description of recipe
+
+    div_tag = soup.find('div', class_='recipe-summary elementFont__dek--within')
+    description = div_tag.find('p', class_='margin-0-auto').text.strip()
 
     # Getting the prep, cook and total times and serving(s) of recipe
 
@@ -72,20 +77,55 @@ def recipeinfodict(allrecipes_link):
     nutrition_tag = nutrition_section_tag.find('div', class_='section-body')
 
     nutrition = nutrition_tag.text.split('Full')[0].strip()# Getting the prep, cook and total times and serving(s) of recipe
-    
-    recipe_info = {'name': name, 'prep': prep, 'cook': cook, 'additional': additional, 'total': total, 'servings': servings, 'yield': yield_, 'ingredients': ingredients, 'instructions': instructions, 'nutrition': nutrition}
+
+    # Getting the images' urls of recipe
+
+    list_images_url = []
+
+    aside_tag = soup.find('aside', class_='recipe-tout-image recipe-info-items-3')
+    if aside_tag != None:
+        div_tag = aside_tag.find('div', class_='component lazy-image lazy-image-udf aspect_1x1 cache-only align-default')
+        if div_tag == None:
+            div_tag = aside_tag.find('div', class_='component lazy-image lazy-image-udf aspect_3x2 cache-only align-default')
+        if div_tag != None:    
+            list_images_url.append(div_tag['data-src'])
+
+
+    image_filmstrip = soup.find('div', class_='component image-filmstrip')
+
+    for image_slide in image_filmstrip.find_all('div', class_='image-slide')[1:]:
+        a_tag = image_slide.find('a', class_='ugc-photos-link')
+
+        div_tag = a_tag.find('div', class_='component lazy-image lazy-image-udf aspect_3x2')
+        if div_tag == None:
+            div_tag = a_tag.find('div', class_='component lazy-image lazy-image-udf aspect_3x4')
+        if div_tag == None:
+            div_tag = a_tag.find('div', class_='component lazy-image lazy-image-udf aspect_1x1')
+
+        if div_tag != None:
+            list_images_url.append(div_tag['data-src'])
+
+    if len(list_images_url) > 1:
+        images_url = '; '.join(list_images_url)
+    else:
+        images_url = list_images_url[0]
+
+    # Combining all of the info into a dict
+
+    recipe_info = {'name': name, 'description': description, 'prep': prep, 'cook': cook, 'additional': additional, 'total': total, 'servings': servings, 'yield': yield_, 'ingredients': ingredients, 'instructions': instructions, 'nutrition': nutrition, 'images_url': images_url}
     
     return recipe_info
 
 
 
-headers = ['recipe_link', 'name', 'prep', 'cook', 'additional', 'total', 'servings', 'yield', 'ingredients', 'instructions', 'nutrition']
+headers = ['recipe_link', 'name', 'description', 'prep', 'cook', 'additional', 'total', 'servings', 'yield', 'ingredients', 'instructions', 'nutrition', 'images_url']
 
-df = pd.read_csv('recipe_links.csv', names=headers)
+df = pd.read_csv('project_github/recipe_links.csv', names=headers)
 
 # Inputting recipe info into the DataFrame
 for index in range(df.shape[0]):
     df.loc[index, 'name'] = recipeinfodict(df.loc[index, 'recipe_link'])['name']
+    df.loc[index, 'description'] = recipeinfodict(df.loc[index, 'recipe_link'])['description']
     df.loc[index, 'prep'] = recipeinfodict(df.loc[index, 'recipe_link'])['prep']
     df.loc[index, 'cook'] = recipeinfodict(df.loc[index, 'recipe_link'])['cook']
     df.loc[index, 'additional'] = recipeinfodict(df.loc[index, 'recipe_link'])['additional']
@@ -95,6 +135,7 @@ for index in range(df.shape[0]):
     df.loc[index, 'ingredients'] = recipeinfodict(df.loc[index, 'recipe_link'])['ingredients']
     df.loc[index, 'instructions'] = recipeinfodict(df.loc[index, 'recipe_link'])['instructions']
     df.loc[index, 'nutrition'] = recipeinfodict(df.loc[index, 'recipe_link'])['nutrition']
-    time.sleep(3)
+    df.loc[index, 'images_url'] = recipeinfodict(df.loc[index, 'recipe_link'])['images_url']
+    time.sleep(1)
 
 df.to_csv('recipe_database.csv', index=False)
