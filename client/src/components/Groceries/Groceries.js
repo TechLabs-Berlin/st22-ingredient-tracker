@@ -28,12 +28,12 @@ const Groceries = () => {
         }, [])
   
     //in the initial state there already should be an array that has been saved before
-    const [groceries, setGroceries] = useState([
-        {name: "apples", key: "apples", selected: false}, 
-        {name: "butter", key: "butter", selected: false}, 
-        {name: "zucchini", key: "zucchini", selected: false},
-        {name: "cumin", key: "cumin", selected: false}
-    ]);
+    // const [groceries, setGroceries] = useState([
+    //     {name: "apples", key: "apples", selected: false}, 
+    //     {name: "butter", key: "butter", selected: false}, 
+    //     {name: "zucchini", key: "zucchini", selected: false},
+    //     {name: "cumin", key: "cumin", selected: false}
+    // ]);
 
     const [selectedItems, setSelectedItems] = useState([]);
 
@@ -177,15 +177,6 @@ const Groceries = () => {
             <>
                 {groceries.map((item, itemIndex) => {
                     return (
-<<<<<<< HEAD
-                        <div className="button is-rounded" key={itemIndex}>
-                            {item.name}
-                            <button 
-                                className="delete is-small"
-                                onClick={event => deleteItem(item.key)}
-                                key={item+"button"}
-                            ></button>
-=======
                         <div 
                             className={`${!item.selected ? "button is-rounded" : "button is-rounded is-primary is-light is-outlined"}`}
                             key={itemIndex}
@@ -196,7 +187,6 @@ const Groceries = () => {
                                     onClick={event => deleteItem(item.key)}
                                     key={item+"button"}
                                 ></button>
->>>>>>> main
                         </div>
                     ) 
                 })}

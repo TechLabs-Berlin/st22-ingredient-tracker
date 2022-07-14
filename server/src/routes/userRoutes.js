@@ -10,6 +10,7 @@ const express = require('express');
 const userRouter = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const { sessionizeUser } = require("../helpers/sessionHelpers.js");
 
 // CHECK THAT THE CORRECT USER IS SIGNED IN with middleware, otherwise by knowing their ID one could modify another user's profile
 
@@ -17,18 +18,23 @@ const bcrypt = require('bcrypt');
 // res.redirect('/') seems to have taken care of that issue without interfering with frontend routes
 
 userRouter.post('/register', async (req, res) => {
-    const { password, username, email } = req.body;
-    const creationDate = Date.now();
-    const user = new User({
-        username,
-        email,
-        password,
-        created: creationDate
-    });
-    await user.save();
-    req.session.user_id = user._id;
-    console.log(`User ${user.username} successfully created. Session ID: ${req.session.user_id}`);
-    res.json({ status: 200, message: 'User successfully created'})
+    try {
+        const { password, username, email } = req.body;
+        const creationDate = Date.now();
+        const newUser = new User({
+            username,
+            email,
+            password,
+            created: creationDate
+        });
+        const sessionUser = sessionizeUser(newUser);
+        await newUser.save();
+        req.session.user = sessionUser;        
+        console.log(`User ${user.username} successfully created. Session ID: ${sessionUser.userId}`);
+        res.status({ status: 200, message: 'User successfully created' }).send(sessionUser);
+    }catch (err) {
+        res.status(400).send(err);
+       }
     // next();
 });
 
@@ -42,12 +48,12 @@ userRouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const foundUser = await User.findAndValidate(email, password);
     if (foundUser) {
-        req.session.user_id = foundUser._id;
-        console.log(`User ${foundUser.username} successfully logged in. Session ID: ${req.session.user_id}`);
-        res.json({ status: 200, message: 'User successfully logged in'})
+        req.session.userID = foundUser._id;
+        console.log(`User ${foundUser.username} successfully logged in. Session ID: ${req.session.userID}`);
+        res.json({ status: 200, message: 'User successfully logged in' })
     } else {
         console.log('A problem occurred');
-        res.status(403).json({message: 'User login failed'});
+        res.status(403).json({ message: 'User login failed' });
     }
 });
 
@@ -58,7 +64,7 @@ userRouter.post('/logout', async (req, res) => {
 });
 
 userRouter.get('/secret', (req, res) => {
-    if (!req.session.user_id) {
+    if (!req.session.userID) {
         console.log(`You don't have permission to see this`);
         res.redirect('/user/login');
     } else {

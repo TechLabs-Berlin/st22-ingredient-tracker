@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const { default: mongoose } = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 
 // percent encoded password for MongoDB Atlas
 // should be included in an .env instead of written in the .js, but for development purposes store it here
@@ -22,50 +24,94 @@ const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingr
 //   client.close();
 // });
 
-const app = express();
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: 'secret' }));
+(async () => {
+  try {
+    // Connect to the MongoDB cluster
+    // MongooseServerSelectionError: connection <monitor> to 40.68.199.139:27017 closed | FOR DEVELOPMENT: had to give network access to all IP, change back later with dedicated server
 
-// MongooseServerSelectionError: connection <monitor> to 40.68.199.139:27017 closed | FOR DEVELOPMENT: had to give network access to all IP, change back later with dedicated server
+    await mongoose.connect(
+      mongoAtlasUri,
+      { useNewUrlParser: true, useUnifiedTopology: true },
+      () => console.log("Connected to MongoDB Atlas")
+    );
 
-try {
-  // Connect to the MongoDB cluster
-  mongoose.connect(
-    mongoAtlasUri,
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    () => console.log(" Mongoose is connected"),
-  );
-} catch (e) {
-  console.log("could not connect");
-}
+    const app = express();
+
+    // const MongoStore = connectmongo(session);
+
+    // const dbConnection = mongoose.connection;
+    // dbConnection.on("error", (err) => console.log(`Connection error ${err}`));
+    // dbConnection.once("open", () => console.log("Connected to DB!"));
+
+    app.use
+      (session({
+      name: 'Session',
+      secret: 'Secret',
+      saveUninitialized: false,
+      resave: false,
+      store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+        collection: 'session',
+        ttl: 60 * 60 * 24 * 7
+      }),
+      cookie: {
+        sameSite: true,
+        // secure: NODE_ENV === 'production',
+        maxAge: 1000 * 60 * 60 * 24 * 7
+      }
+    }));
+
+
+    app.use(cors());
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
+    app.use('/groceries', groceriesRouter);
+    app.use('/user', userRouter);
+
+    const PORT = 5000;
+
+    app.listen(PORT, () => {
+      console.log(`listening on port ${PORT}`);
+    })
+  } catch (e) {
+    console.log(e);
+  }
+})();
+
+
+
+// app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route
+
+// const requireLogin = (req, res, next) => {
+//   if (!req.session.user_id) {
+//     console.log(`You don't have permission to see this`);
+//     // redirect to localhost:3000/login with frontend?
+//     return res.redirect('/login');
+//   }
+//   next;
+// }
+
+
+
+
+// app.use(session({
+//   secret: 'cookie_secret',
+//   resave: true,
+//   saveUninitialized: true
+// }));
+
+
+
 
 //   const dbConnection = mongoose.connection;
 //   dbConnection.on("error", (err) => console.log(`Connection error ${err}`));
 //   dbConnection.once("open", () => console.log("Connected to DB!"));
 
-app.set('view engine', 'ejs');
-app.set('views', './src/views');
+// app.set('view engine', 'ejs');
+// app.set('views', './src/views');
 
 // signed cookies don't hide information, but add data to it so authenticity can be verified if need be
-app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route 
 
-const requireLogin = (req, res, next) => {
-  if (!req.session.user_id) {
-    console.log(`You don't have permission to see this`);
-    // redirect to localhost:3000/login with frontend?
-    return res.redirect('/login');
-  } 
-  next;
-}
 
-app.use('/groceries', groceriesRouter);
-app.use('/user', userRouter);
-
-const PORT = 5000;
-
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-})

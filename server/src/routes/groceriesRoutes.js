@@ -27,7 +27,7 @@ const groceriesData = [
 // const errMessage = [{name: 'Error: you must login to display your saved ingredients'}]
 
 // const groceriesData = () => {
-//     if (!req.session.user_id) {
+//     if (!req.session.userID) {
 //         console.log(`You don't have permission to see this`);
 //         res.redirect('/user/login');
 //     } else {
@@ -38,11 +38,11 @@ const groceriesData = [
 
 groceriesRouter.get('/current', async (req, res) => {
     try {
-        if (!req.session.user_id) {
-            console.log(`Please log in`);
+        if (!req.session.userID) {
+            console.log(`Please log in ${req.session.userID}`);
             res.status(511);
         } else {
-            const groceries = await User.findAndGetGroceries(req.session.user_id);
+            const groceries = await User.findAndGetGroceries(req.session.userID);
             console.log(`You have permission to see this`);
             res.send(groceries)
         }
