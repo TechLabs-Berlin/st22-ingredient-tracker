@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import { getGroceries } from '../../API/groceries.api';
+import "./Groceries.css"
 
 const Groceries = () => {
 
@@ -119,11 +120,10 @@ const Groceries = () => {
     
         // render search bar
         return (
-            <div className="box"> 
+            <div className="box" id="searchBox"> 
                 <label className="label has-text-primary">Search</label>
                     <div className="field">
-                        <p className="control has-icons-left has-icons-right">
-                            <span className="icon has-text-primary"><i className="fas fa-search"></i></span>
+                        <p className="control">
                             <input 
                                 value={term}
                                 onChange={event => {
@@ -177,8 +177,8 @@ const Groceries = () => {
             <>
                 {groceries.map((item, itemIndex) => {
                     return (
-                        <div 
-                            className={`${!item.selected ? "button is-rounded" : "button is-rounded is-primary is-light is-outlined"}`}
+                        <button 
+                            className={`${!item.selected ? "button is-rounded" : "button is-rounded is-warning is-light is-outlined"}`}
                             key={itemIndex}
                             onClick={event => selectItem(item)}
                             >{item.name}
@@ -187,7 +187,7 @@ const Groceries = () => {
                                     onClick={event => deleteItem(item.key)}
                                     key={item+"button"}
                                 ></button>
-                        </div>
+                        </button>
                     ) 
                 })}
             </>
@@ -197,8 +197,8 @@ const Groceries = () => {
     //container for the inventory
     const Inventory = () => {
         return (
-            <section className="box">
-                <h3 className="subtitle has-text-primary">My Inventory</h3>
+            <section className="box" id="inventory">
+                <h3 className="subtitle has-text-white">My Inventory</h3>
                 <InventoryItems />
             </section>
         );
@@ -239,17 +239,17 @@ const Groceries = () => {
     }
 
     return (
-        <>
+        <section id="groceries">
             <br></br>
             <br></br>
             <br></br>
             <Link to="/recipe_detail"><button className="button has-text-primary">Go to Recipe Detail</button></Link>
             <br></br>
-            <button className="button is-primary">Find a recipe</button>
+            <button className="button is-primary" id="findRecipeButton">Find a recipe</button>
             <Inventory />
             <GroceriesSearch />
             <IngredientsSection />
-        </>
+        </section>
     );
 }
 

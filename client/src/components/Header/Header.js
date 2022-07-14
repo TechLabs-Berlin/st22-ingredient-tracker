@@ -32,9 +32,9 @@ const Header = () => {
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
-                            <a className="button is-primary">
+                            <Link to="/login" className="button is-primary">
                                 Log in
-                            </a>
+                            </Link>
 
                             <Link to="/registration" className="button is-primary">
                                 <strong>Register</strong>

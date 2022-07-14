@@ -67,9 +67,7 @@ function LoginForm() {
                 {/* Login Button */}
                 <div className='level my-5'>
                     <div className='level-item'>
-                        <Link to="/groceries">
-                            <button className='button is-primary is-medium my-5' style={{ width: '150px' }} onClick={() => handleSubmit()} type='submit' disabled={!validateForm()}>Login</button>
-                        </Link>
+                        <Link to="/groceries"><button className='button is-primary is-medium my-5' style={{ width: '150px' }} onClick={() => handleSubmit()} type='submit' disabled={!validateForm()}>Login</button></Link>
                     </div>
                 </div>
 
@@ -143,7 +141,7 @@ function LoginForm() {
                     <div className='level-item'>
                         <div className='is-flex is-align-content-flex-start mt-6 mb-5'>
                             <p>Not a member yet?</p>
-                            <p className='is-clickable has-text-primary ml-1'>Register here.</p>
+                            <Link to="/registration"><p className='is-clickable has-text-primary ml-1'>Register here.</p></Link>
                         </div>
                     </div>
                 </div>
