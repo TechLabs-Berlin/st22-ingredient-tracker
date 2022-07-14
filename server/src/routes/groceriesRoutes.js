@@ -3,6 +3,7 @@
 
 const express = require('express');
 const groceriesRouter = express.Router();
+const User = require('../models/user');
 
 // Display data saved in DB for user groceries 
 // Post new/update/delete groceries data in DB 
@@ -23,14 +24,42 @@ const groceriesData = [
     },
 ];
 
+// const errMessage = [{name: 'Error: you must login to display your saved ingredients'}]
+
+// const groceriesData = () => {
+//     if (!req.session.user_id) {
+//         console.log(`You don't have permission to see this`);
+//         res.redirect('/user/login');
+//     } else {
+//         console.log(`You have permission to see this`);
+//         res.render('secret');
+//     }
+// };
+
 groceriesRouter.get('/current', async (req, res) => {
     try {
-        const response = await res.send(groceriesData);
-        console.log(response);
+        if (!req.session.user_id) {
+            console.log(`Please log in`);
+            res.status(511);
+        } else {
+            const groceries = await User.findAndGetGroceries(req.session.user_id);
+            console.log(`You have permission to see this`);
+            res.send(groceries)
+        }
     }
     catch (err) {
         console.log(err);
     }   
 });
+
+// groceriesRouter.get('/current', async (req, res) => {
+//     try {
+//         const response = await res.send(groceriesData);
+//         console.log(response);
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }   
+// });
 
 module.exports = groceriesRouter;

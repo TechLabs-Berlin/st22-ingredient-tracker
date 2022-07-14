@@ -15,6 +15,11 @@ const Groceries = () => {
                 if (response != null) {
                     console.log(response);
                     setGroceries(response.data)
+                // } else if (response.status = null) {
+                //     console.log([{name: 'Please log into your account and try again'}]);                    
+                //     setGroceries('Please log into your account to access your inventory')
+                // } else {                    
+                //     setGroceries('An error occurred')
                 }
             }
            

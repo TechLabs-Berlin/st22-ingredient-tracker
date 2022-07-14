@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         required: [true, 'Password cannot be empty']
     },
-    pantry: [String],
+    groceries: [String],
     // favourites: [String],
     // userimg:
     // {
@@ -42,8 +42,14 @@ const userSchema = new mongoose.Schema({
 userSchema.statics.findAndValidate = async function (email, password) {
     const user = await this.findOne({ email });
     const validCredentials = await bcrypt.compare(password, user.password);
-    return isValid ? user : false;
+    return validCredentials ? user : false;
 }
+
+// userSchema.statics.findAndGetGroceries = async function (user_id) {
+//     const getUserGroceries = await this.findOne({ user_id }).select('groceries');
+//     console.log(getUserGroceries);
+//     return getUserGroceries;
+// }
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();

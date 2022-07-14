@@ -3,7 +3,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import './RegistrationForm.css';
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import axios from 'axios';
 
 function RegistrationForm() {
@@ -32,9 +32,9 @@ function RegistrationForm() {
         }
     }
 
-    const handleSubmit = () => {
-        console.log(username, email, password, confirmPassword);
-        axios({
+    const handleSubmit = async () => {
+        console.log(username, email);
+        const registerResponse = await axios({
             method: 'post',
             url: 'http://localhost:5000/user/register',
             data: {
@@ -42,7 +42,11 @@ function RegistrationForm() {
                 email: email,
                 password: password
             }
-          });
+        });
+        // const data = await response.json()
+        const registerData = await registerResponse
+        //need to return response as below
+        return registerData.json();
     }
 
 
