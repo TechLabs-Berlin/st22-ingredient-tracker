@@ -10,7 +10,6 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import RecipesOverview from "../RecipeOverview/RecipeOverview";
 
 function App() {
     return (
@@ -22,7 +21,7 @@ function App() {
                     <Route path="registration" element={<RegistrationForm />} />
                     <Route path="groceries" element={<><GroceriesSearch /><GroceriesList /></>}></Route>
                 </Routes>
-                <RecipesOverview />
+                <RecipeOverview />
                 <Footer />
             </div>
         </BrowserRouter>

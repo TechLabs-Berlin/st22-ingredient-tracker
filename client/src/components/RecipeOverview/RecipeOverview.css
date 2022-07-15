@@ -2,12 +2,15 @@ html {
     background-color: white !important;
 }
 
-#card {
-    border: solid 1px hsl(171, 100%, 41%);
+.columns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
-#card-image {
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+#card {
+    border: solid 1px hsl(171, 100%, 41%);
 }
