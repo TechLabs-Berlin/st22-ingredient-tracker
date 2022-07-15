@@ -10,12 +10,16 @@ const express = require('express');
 const userRouter = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-const { sessionizeUser } = require("../helpers/sessionHelpers.js");
+// const { sessionizeUser } = require("../helpers/sessionHelpers.js");
 
 // CHECK THAT THE CORRECT USER IS SIGNED IN with middleware, otherwise by knowing their ID one could modify another user's profile
 
 // delete form data after save? rs server after registering would create user twice 
 // res.redirect('/') seems to have taken care of that issue without interfering with frontend routes
+
+function sessionizeUser(user) {
+    return { userId: user._id, username: user.username };
+  };
 
 userRouter.post('/register', async (req, res) => {
     try {
@@ -30,19 +34,18 @@ userRouter.post('/register', async (req, res) => {
         const sessionUser = sessionizeUser(newUser);
         await newUser.save();
         req.session.user = sessionUser;        
-        console.log(`User ${user.username} successfully created. Session ID: ${sessionUser.userId}`);
-        res.status({ status: 200, message: 'User successfully created' }).send(sessionUser);
+        console.log(req.session);
+        console.log(`User ${sessionUser.username} successfully created. Session ID: ${sessionUser.userId}`);
+        res.status(200).send(`User ${sessionUser.username} successfully created.`);
     }catch (err) {
-        res.status(400).send(err);
+        console.log(err);
+        res.status(400).send(err.message);
        }
     // next();
 });
 
-userRouter.get('/login', (req, res) => {
-    res.render('login')
-})
-
 // With frontend: it should redirect to fe login page, else should redirect to '/' to allow for regular react routing to continue
+// For now: redirecting within frontend depending on response status
 
 userRouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
