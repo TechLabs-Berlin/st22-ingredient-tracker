@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getRecipesForIngredients } from './RecipeApi';
 import './RecipeOverview.css'
 
-
 // const recipies = [{
 //     title: "First Title",
 //     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
@@ -15,7 +14,7 @@ import './RecipeOverview.css'
 //     prepTime: 120,
 //     cookTime: 45
 // }, {
-//     title: "Thirds Title",
+//     title: "Third Title",
 //     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
 //     prepTime: 30,
 //     cookTime: 60
@@ -30,25 +29,29 @@ function Recipe({ title, imageURL, prepTime, cookTime }) {
     return (
         <div>
             {/* Recipe Card */}
-            <div className='recipe_card'>
+            <div className='recipeCard'>
                 <div className='card is-clickable' id='card'>
+
                     {/* Recipe Image */}
                     <div className='card-image'>
                         <figure className='image'>
                             <img src={imageURL} alt='recipe photo'></img>
                         </figure>
                     </div>
+
                     {/* Recipe Title */}
                     <div className='card-content'>
                         <div className='media-content has-text-left'>
                             <p class="title is-4 has-text-primary">{title}</p>
                         </div>
                     </div>
+
                     {/* Prep Time and Total Time */}
                     <div className='card-footer'>
                         <p className='card-footer-item'>Prep Time: {prepTime} min.</p>
                         <p className='card-footer-item'>Total Time: {cookTime} min.</p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -63,8 +66,6 @@ function RecipesOverview() {
             setRecipes(recipesServerResponse.data);
         })
     }, [])
-
-    console.log(recipes);
 
     return (
         <div>
