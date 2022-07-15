@@ -10,6 +10,11 @@ import axios from 'axios';
 function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleErrorMessage = () => {
+        setErrorMessage("Incorrect username or password.");
+    }
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -26,13 +31,20 @@ function LoginForm() {
                     password: password
                 }
             });
-            return <Navigate to="/groceries" />
+
+            // For now: disabled link, redirect from frontend to next page when post request is successful. Still janky
+            // window.location.assign("/groceries");
+            window.location = "/groceries";
+            // return <Navigate to="/groceries" />
         }
         catch (err) {
             console.log(err.message);
+            handleErrorMessage();
+            // return false
 
-            // Trying to redirect on error, but should leave error handling to later. Log in works, at least.
-            <Navigate to='/login'  />
+            // Trying to redirect on error, but should leave error handling to later. Log in works, at least. Window.location is incredibly janky
+            // <Navigate to='/login'  />
+            // window.location = "/login";
         }
         // if (loginResponse.status === 200) {
         //     console.log(loginResponse.status);
@@ -49,9 +61,8 @@ function LoginForm() {
             <div className='form card m-4 p-4'>
                 {/* Title */}
                 <h1 className='title m-2 mb-6 has-text-primary'>Login</h1>
-
                 {/* Input Fields */}
-                <div>
+                <div id='loginErr'>
                     <div className='email m-2 my-4'>
                         <label className='has-text-primary has-text-weight-semibold is-size-5' htmlFor='email'>Email</label>
                         <input className='input is-primary is-medium' type='email' id='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required></input>
@@ -67,11 +78,26 @@ function LoginForm() {
                 {/* Login Button */}
                 <div className='level my-5'>
                     <div className='level-item'>
-                        <Link to="/groceries"><button className='button is-primary is-medium my-5' style={{ width: '150px' }} onClick={() => handleSubmit()} type='submit' disabled={!validateForm()}>Login</button></Link>
+                        {/* <Link to="/groceries"> */}
+                        <button className='button is-primary is-medium my-5' style={{ width: '150px' }} onClick={() => handleSubmit()} type='submit' disabled={!validateForm()}>Login</button>
+                        {/* </Link> */}
                     </div>
                 </div>
+                            {/* This should be styled very differently, ideally as a popup? */}
+                {errorMessage && <div className='is-flex-direction-column is-align-content-center mb-6'> <p
+                   style={{
+                    width: '100%',
+                    // textAlign: 'center',
+                    color: 'hsl(0, 100%, 40%)',
+                    position: 'absolute',
+                    top: '290px',
+                    left: '22.5px'
+                }}
+                    className='has-text-weight-light'>
+                    {errorMessage}
+                </p>  </div>}
 
-
+             
                 {/* Social Media Login */}
                 <div className='m-4'>
 
