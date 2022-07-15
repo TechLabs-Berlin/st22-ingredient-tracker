@@ -2,15 +2,18 @@ html {
     background-color: white !important;
 }
 
-.columns {
+.recipe_card {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
+    gap: 1em;
 }
 
 #card {
     border: solid 1px hsl(171, 100%, 41%);
+    width: 25%;
+    margin: 0.5em;
 }

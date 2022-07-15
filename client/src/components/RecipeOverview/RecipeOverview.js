@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getRecipesForIngredients } from './RecipeApi';
 import './RecipeOverview.css'
 
+
 // const recipies = [{
 //     title: "First Title",
 //     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
@@ -27,25 +28,27 @@ import './RecipeOverview.css'
 
 function Recipe({ title, imageURL, prepTime, cookTime }) {
     return (
-        <div className='is-flex-direction-row is-flex-wrap-wrap'>
+        <div>
             {/* Recipe Card */}
-            <div className='card is-clickable' id='card'>
-                {/* Recipe Image */}
-                <div className='card-image'>
-                    <figure className='image'>
-                        <img src={imageURL} alt='recipe photo'></img>
-                    </figure>
-                </div>
-                {/* Recipe Title */}
-                <div className='card-content'>
-                    <div className='media-content has-text-left'>
-                        <p class="title is-4 has-text-primary">{title}</p>
+            <div className='recipe_card'>
+                <div className='card is-clickable' id='card'>
+                    {/* Recipe Image */}
+                    <div className='card-image'>
+                        <figure className='image'>
+                            <img src={imageURL} alt='recipe photo'></img>
+                        </figure>
                     </div>
-                </div>
-                {/* Prep Time and Total Time */}
-                <div className='card-footer'>
-                    <p className='card-footer-item'>Prep Time: {prepTime} min.</p>
-                    <p className='card-footer-item'>Total Time: {cookTime} min.</p>
+                    {/* Recipe Title */}
+                    <div className='card-content'>
+                        <div className='media-content has-text-left'>
+                            <p class="title is-4 has-text-primary">{title}</p>
+                        </div>
+                    </div>
+                    {/* Prep Time and Total Time */}
+                    <div className='card-footer'>
+                        <p className='card-footer-item'>Prep Time: {prepTime} min.</p>
+                        <p className='card-footer-item'>Total Time: {cookTime} min.</p>
+                    </div>
                 </div>
             </div>
         </div>
