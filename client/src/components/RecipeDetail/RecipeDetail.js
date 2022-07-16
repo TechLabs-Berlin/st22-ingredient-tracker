@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import "./RecipeDetail.css"
 
 const RecipeDetail = () => {
     const demoRecipe = {
@@ -22,27 +23,27 @@ const RecipeDetail = () => {
             <br></br>
             <br></br>
             <Link to="/groceries"><button>Back to Groceries (later an arrow to RecipesOverview)</button></Link>
-            <div className="card">
+            <div className="card" id="recipeDetail">
                 <div className="card-image">
                     <figure className="image">
                         <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg" alt="Placeholder image"/>
                     </figure>
                 </div>
-                <div className="column">
+                <div>
                     <button className="button is-primary">Add to My Recipes</button>
                     <button className="button is-primary">Mark as completed</button>
                 </div>
                 <header className="card-header">
                     <h1 className="card-header-title title">{demoRecipe.name}</h1>  
                 </header>
-                <div className="columns">
-                        <div className="column">Preparation time: {demoRecipe.prep}</div>
-                        <div className="column">Cooking time: {demoRecipe.cook}</div>
-                        <div className="column">Total time: {demoRecipe.total}</div>
-                        <div className="column">Yield: {demoRecipe.yield}</div>
+                <div className="columns" id="stats">
+                        <div className="column"><strong>Preparation time:</strong> {demoRecipe.prep}</div>
+                        <div className="column"><strong>Cooking time:</strong> {demoRecipe.cook}</div>
+                        <div className="column"><strong>Total time:</strong> {demoRecipe.total}</div>
+                        <div className="column"><strong>Yield:</strong> {demoRecipe.yield}</div>
                 </div>
                 <div className="columns">
-                    <div className="column is-two-fifths has-background-primary has-text-white has-text-left card-content">
+                    <div className="column is-two-fifths has-background-primary has-text-white has-text-left card-content" id="ingredients">
                         <h2 className="subtitle has-text-white">Ingredients</h2>
                         <ul>
                             <li>{demoRecipe.ingredients}</li>
@@ -51,7 +52,7 @@ const RecipeDetail = () => {
                             <li>1/2 teaspoon cumin seeds</li>
                         </ul>
                     </div>
-                    <div className="column has-text-left card-content">
+                    <div className="column has-text-left card-content" id="directions">
                         <h2 className="subtitle has-text-primary">Directions</h2>
                         <p>{demoRecipe.instructions}</p>
                     </div>

@@ -1,0 +1,15 @@
+#ingredients {
+    padding: 2em;
+}
+
+#directions {
+    padding: 2em;
+}
+
+#stats {
+    padding: 1em 2em 0em 2em;
+}
+
+#recipeDetail .button {
+    margin: 1em 2em;
+}
