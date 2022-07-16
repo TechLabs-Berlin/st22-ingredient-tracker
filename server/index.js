@@ -1,5 +1,9 @@
 const express = require('express');
 const cors = require('cors');
+
+const demoRouter = require('./routes/demoRoutes');
+const recepieRouter = require('./routes/recipesRoutes');
+
 const groceriesRouter = require('./src/routes/groceriesRoutes');
 const userRouter = require('./src/routes/userRoutes');
 const cookieParser = require('cookie-parser');
@@ -9,12 +13,16 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 
+
 // percent encoded password for MongoDB Atlas
 // should be included in an .env instead of written in the .js, but for development purposes store it here
 
 const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/ingreduce?retryWrites=true&w=majority";
 
 // const client = new MongoClient(mongoAtlasUri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+
+app.use('', demoRouter, recepieRouter);
 
 // client.connect(err => {
 // //   const collection = client.db("ingreduce");
@@ -23,6 +31,7 @@ const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingr
 //   console.log(`Connected to MongoDB Atlas`);
 //   client.close();
 // });
+
 
 
 (async () => {

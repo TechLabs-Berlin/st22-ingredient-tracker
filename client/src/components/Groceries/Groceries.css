@@ -1,5 +1,9 @@
-#groceries {
-
+#searchRecipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #inventory {
@@ -9,4 +13,11 @@
 
 #searchBox {
     margin: 2em 5em 1em 5em;
+}
+
+#ingredientSection {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 4em;
 }
