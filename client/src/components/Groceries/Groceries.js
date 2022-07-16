@@ -1,19 +1,40 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import { getGroceries } from '../../API/groceries.api';
 import "./Groceries.css"
 
 const Groceries = () => {
 
     let listVisible = false;
 
+        const [groceries, setGroceries] = useState([]);
+    
+        useEffect(() => {
+            const getData = async () => {
+                const response = await getGroceries();
+                if (response != null) {
+                    console.log(response);
+                    setGroceries(response.data)
+                // } else if (response.status = null) {
+                //     console.log([{name: 'Please log into your account and try again'}]);                    
+                //     setGroceries('Please log into your account to access your inventory')
+                // } else {                    
+                //     setGroceries('An error occurred')
+                }
+            }
+           
+            getData();
+            
+        }, [])
+  
     //in the initial state there already should be an array that has been saved before
-    const [groceries, setGroceries] = useState([
-        {name: "apples", key: "apples", selected: false}, 
-        {name: "butter", key: "butter", selected: false}, 
-        {name: "zucchini", key: "zucchini", selected: false},
-        {name: "cumin", key: "cumin", selected: false}
-    ]);
+    // const [groceries, setGroceries] = useState([
+    //     {name: "apples", key: "apples", selected: false}, 
+    //     {name: "butter", key: "butter", selected: false}, 
+    //     {name: "zucchini", key: "zucchini", selected: false},
+    //     {name: "cumin", key: "cumin", selected: false}
+    // ]);
 
     const [selectedItems, setSelectedItems] = useState([]);
 

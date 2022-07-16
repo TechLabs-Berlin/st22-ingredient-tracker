@@ -61,6 +61,30 @@ app.get('/api', (req, res) => {
   res.json(demoData);
 });
 
+// Tryout
+
+app.get('/users', (req, res) => {
+  res.json(req.data);
+  console.log('FE data received!');
+  console.log(req.data);
+  console.log(req.body);
+});
+
+app.post('/users', (req, res) => {
+  res.json(req.body);
+  console.log('User added to database!');
+});
+
+// const url = 'localhost:5000/api/users/signup';   
+// const usersData= [];
+
+// let getData = () => {
+// app.post('/api/users/signup')
+//   //  .then(res => usersData.push(res.data))
+//    .then(res => console.log(res.data))
+//    .catch(err => console.log(err.data))
+// }
+
 // app.get('/api', (req, res) => {
 //   const date = new Date();
 //   const hours = (date.getHours() % 12) + 1;  // London is UTC + 1hr;
