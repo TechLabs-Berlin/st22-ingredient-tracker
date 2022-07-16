@@ -101,7 +101,7 @@ const Groceries = () => {
                 try {
                     console.log(result);
                     await axios({
-                        method: 'post',
+                        method: 'put',
                         withCredentials: true,
                         url: 'http://localhost:5000/groceries/current',
                         data: {
@@ -119,8 +119,6 @@ const Groceries = () => {
 
                 //console.log(result);
                 //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
-
-                // Aljoscha: I left this in to display the ingredient. The post request only adds it to the database but doesn't update the displayed ingredients by itself
                 // setGroceries(groceries.concat({name: result, key: result, selected: false}));
             }
 
@@ -171,8 +169,25 @@ const Groceries = () => {
 
     const InventoryItems = () => {
 
-        const deleteItem = (itemKey) => {
-            setGroceries(groceries.filter((item) => item.key !== itemKey));
+        const deleteItem = async (targetItem) => {
+            // const targetItem = item.name
+            try {
+                console.log(targetItem);
+                await axios({
+                    method: 'patch',
+                    withCredentials: true,
+                    url: 'http://localhost:5000/groceries/current',
+                    data: {
+                        name: targetItem
+                    }
+                });
+        
+                getData();
+            }
+            catch (err) {
+                console.log(err.message);
+            }
+            // setGroceries(groceries.filter((item) => item.key !== itemKey));
         }
 
         const selectItem = (clickedItem) => {
@@ -205,7 +220,7 @@ const Groceries = () => {
                         >{item.name}
                             <button
                                 className="delete is-small"
-                                onClick={event => deleteItem(item.key)}
+                                onClick={event => deleteItem(item)}
                                 key={item + "button"}
                             ></button>
                         </button>

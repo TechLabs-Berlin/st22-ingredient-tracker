@@ -70,16 +70,6 @@ userRouter.post('/logout', async (req, res) => {
     res.redirect('/user/login')
 });
 
-userRouter.get('/secret', (req, res) => {
-    if (!req.session.userID) {
-        console.log(`You don't have permission to see this`);
-        res.redirect('/user/login');
-    } else {
-        console.log(`You have permission to see this`);
-        res.render('secret');
-    }
-});
-
 // userRouter.use((req, res, next) => {
 //     if (req.user.id.isUser) {
 //         next();

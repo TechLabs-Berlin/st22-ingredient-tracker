@@ -38,7 +38,7 @@ groceriesRouter.get('/current', async (req, res) => {
     }
 });
 
-groceriesRouter.post('/current', async (req, res) => {
+groceriesRouter.put('/current', async (req, res) => {
     try {
         const { name } = req.body;
         if (!req.session.user.userId) {
@@ -49,6 +49,24 @@ groceriesRouter.post('/current', async (req, res) => {
             const foundGroceries = await User.findAndAddGroceries(req.session.user.userId, name);
             console.log(`Added to ${req.session.user.username}'s groceries: ${name}`);
             res.send(foundGroceries)
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+groceriesRouter.patch('/current', async (req, res) => {
+    try {
+        const { name } = req.body;
+        if (!req.session.user.userId) {
+            console.log(`Please log in`);
+            console.log(req.session);
+            res.status(511);
+        } else {
+            const deleteGroceries = await User.findAndDeleteFromGroceries(req.session.user.userId, name);
+            console.log(`Removed from ${req.session.user.username}'s groceries: ${name}`);
+            res.send(deleteGroceries)
         }
     }
     catch (err) {
