@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         required: [true, 'Password cannot be empty']
     },
-    groceries: [String],
+    groceries: [],
     // favourites: [String],
     // userimg:
     // {
@@ -51,6 +51,7 @@ userSchema.statics.findAndValidate = async function (email, password) {
         const user = await this.findOne({ email });
         console.log(`Found user ${user.username}`);
         const validCredentials = await bcrypt.compare(password, user.password);
+        console.log(`Credentials: ${validCredentials}`);
         return validCredentials ? user : false;
     }
     catch (err) {
@@ -62,11 +63,13 @@ userSchema.statics.findAndValidate = async function (email, password) {
 //     return await this.where(field).countDocuments() === 0;
 //   };
 
-// userSchema.statics.findAndGetGroceries = async function (user_id) {
-//     const getUserGroceries = await this.findOne({ user_id }).select('groceries');
-//     console.log(getUserGroceries);
-//     return getUserGroceries;
-// }
+userSchema.statics.findAndGetGroceries = async function (user_id) {
+    const getUserGroceries = await this.findOne({ user_id }).select('groceries');
+    // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
+    // const getGroceriesString = JSON.stringify(getUserGroceries);
+    console.log(`Found user and got groceries: ${getUserGroceries.groceries}`);
+    return getUserGroceries;
+}
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();

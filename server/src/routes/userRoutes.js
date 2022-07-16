@@ -19,7 +19,7 @@ const bcrypt = require('bcrypt');
 
 function sessionizeUser(user) {
     return { userId: user._id, username: user.username };
-  };
+};
 
 userRouter.post('/register', async (req, res) => {
     try {
@@ -33,14 +33,14 @@ userRouter.post('/register', async (req, res) => {
         });
         const sessionUser = sessionizeUser(newUser);
         await newUser.save();
-        req.session.user = sessionUser;        
+        req.session.user = sessionUser;
         console.log(req.session);
         console.log(`User ${sessionUser.username} successfully created. Session ID: ${sessionUser.userId}`);
         res.status(200).send(`User ${sessionUser.username} successfully created.`);
-    }catch (err) {
+    } catch (err) {
         console.log(err);
         res.status(400).send(err.message);
-       }
+    }
     // next();
 });
 
@@ -48,15 +48,19 @@ userRouter.post('/register', async (req, res) => {
 // For now: redirecting within frontend depending on response status
 
 userRouter.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    const foundUser = await User.findAndValidate(email, password);
-    if (foundUser) {
-        req.session.userID = foundUser._id;
-        console.log(`User ${foundUser.username} successfully logged in. Session ID: ${req.session.userID}`);
-        res.json({ status: 200, message: 'User successfully logged in' })
-    } else {
-        console.log('A problem occurred');
-        res.status(403).json({ message: 'User login failed' });
+    try {
+        const { email, password } = req.body;
+        const foundUser = await User.findAndValidate(email, password);
+        if (foundUser) {
+            const sessionUser = sessionizeUser(foundUser);
+            req.session.user = sessionUser;
+            console.log(req.session);
+            console.log(`User ${foundUser.username} successfully logged in. Session ID: ${sessionUser.userId}`);
+            res.status(200).send('User successfully logged in')
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err.message);
     }
 });
 

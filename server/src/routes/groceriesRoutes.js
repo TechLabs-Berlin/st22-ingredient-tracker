@@ -9,21 +9,6 @@ const User = require('../models/user');
 // Post new/update/delete groceries data in DB 
 // Add/remove favourites
 
-const groceriesData = [
-    {
-        name: 'Apple',
-        type: 'Fruit'
-    },
-    {
-        name: 'Pear',
-        type: 'Fruit'
-    },
-    {
-        name: 'Tomato',
-        type: 'Fruit (technically)'
-    },
-];
-
 // const errMessage = [{name: 'Error: you must login to display your saved ingredients'}]
 
 // const groceriesData = () => {
@@ -38,13 +23,14 @@ const groceriesData = [
 
 groceriesRouter.get('/current', async (req, res) => {
     try {
-        if (!req.session.userID) {
-            console.log(`Please log in ${req.session.userID}`);
+        if (!req.session.user.userId) {
+            console.log(`Please log in`);
+            console.log(req.session);
             res.status(511);
         } else {
-            const groceries = await User.findAndGetGroceries(req.session.userID);
-            console.log(`You have permission to see this`);
-            res.send(groceries)
+            const foundGroceries = await User.findAndGetGroceries(req.session.user.userId);
+            console.log(`You have permission to see this ${req.session.user.username}`);
+            res.send(foundGroceries)
         }
     }
     catch (err) {
