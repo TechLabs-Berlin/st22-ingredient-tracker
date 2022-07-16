@@ -118,7 +118,9 @@ const Groceries = () => {
 
                 //console.log(result);
                 //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
-                // setGroceries(groceries.concat({name: result, key: result, selected: false}));
+
+                // Aljoscha: I left this in to display the ingredient. The post request only adds it to the database but doesn't update the displayed ingredients by itself
+                setGroceries(groceries.concat({name: result, key: result, selected: false}));
             }
 
             return (
