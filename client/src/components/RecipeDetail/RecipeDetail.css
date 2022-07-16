@@ -1,0 +1,34 @@
+#ingredients {
+    padding: 2em;
+}
+
+#directions {
+    padding: 2em;
+}
+
+#stats {
+    padding: 1em 2em 0em 2em;
+}
+
+#recipeDetail .button {
+    margin: 1em;
+}
+
+.image {
+    height: 500px;
+    overflow: hidden;
+}
+
+.image img {
+    margin-top: -300px;
+}
+
+#recipeDetailButtons {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: -2em;
+    margin-right: 2em;
+}
