@@ -10,23 +10,22 @@ const Groceries = () => {
 
     const [groceries, setGroceries] = useState([]);
 
-    useEffect(() => {
-        const getData = async () => {
-            const response = await getGroceries();
-            if (response != null) {
-                // console.log(response);
-                // console.log(response.data.groceries);
-                setGroceries(response.data.groceries)
-            } else if (response.status = null) {
-                console.log([{ name: 'Please log into your account and try again' }]);
-                setGroceries('Please log into your account to access your inventory')
-            } else {
-                setGroceries('An error occurred')
-            }
+    const getData = async () => {
+        const response = await getGroceries();
+        if (response != null) {
+            // console.log(response);
+            // console.log(response.data.groceries);
+            setGroceries(response.data.groceries)
+        } else if (response.status = null) {
+            console.log([{ name: 'Please log into your account and try again' }]);
+            setGroceries('Please log into your account to access your inventory')
+        } else {
+            setGroceries('An error occurred')
         }
+    }
 
+    useEffect(() => {    
         getData();
-
     }, [])
 
     //in the initial state there already should be an array that has been saved before
@@ -109,6 +108,8 @@ const Groceries = () => {
                             name: result
                         }
                     });
+            
+                    getData();
                 }
                 catch (err) {
                     console.log(err.message);
@@ -120,7 +121,7 @@ const Groceries = () => {
                 //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
 
                 // Aljoscha: I left this in to display the ingredient. The post request only adds it to the database but doesn't update the displayed ingredients by itself
-                setGroceries(groceries.concat({name: result, key: result, selected: false}));
+                // setGroceries(groceries.concat({name: result, key: result, selected: false}));
             }
 
             return (
