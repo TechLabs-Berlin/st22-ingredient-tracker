@@ -18,6 +18,16 @@ const RecipeDetail = () => {
         "images_url":"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg; https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpublic-assets.meredithcorp.io%2F679c455ed74689800868fbbe020639f2%2F1653176636image.jpg; https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpublic-assets.meredithcorp.io%2F679c455ed74689800868fbbe020639f2%2F165310488620220520_204159.jpg; https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpublic-assets.meredithcorp.io%2F679c455ed74689800868fbbe020639f2%2F16450136607B0E9ECC-A28D-4F02-BAA9-F38C26122424.jpeg; https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpublic-assets.meredithcorp.io%2F679c455ed74689800868fbbe020639f2%2F164409795116440979333786672039001412349626.jpg"
     }
 
+    const makeIngredientArray = (ingredients) => {
+        const ingredientArray = ingredients.split('; ');
+        return ingredientArray;
+    }
+
+    const getFirstImage = (imageURLstrings) => {
+        const firstImage = imageURLstrings.split('; ');
+        return firstImage[0];
+    }
+
     return (
         <>
             <br></br>
@@ -26,7 +36,9 @@ const RecipeDetail = () => {
             <div className="card" id="recipeDetail">
                 <div className="card-image">
                     <figure className="image">
-                        <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg" alt="Placeholder image"/>
+                        <img 
+                            src={`${!demoRecipe.images_url ? "https://bulma.io/images/placeholders/1280x960.png":  getFirstImage(demoRecipe.images_url)}`}
+                            alt="Placeholder image"/>
                     </figure>
                 </div>
                 <div>
@@ -46,10 +58,12 @@ const RecipeDetail = () => {
                     <div className="column is-two-fifths has-background-primary has-text-white has-text-left card-content" id="ingredients">
                         <h2 className="subtitle has-text-white">Ingredients</h2>
                         <ul>
-                            <li>{demoRecipe.ingredients}</li>
-                            <li>1 Eggplant</li>
-                            <li>1 teaspoon vegetable oil</li>
-                            <li>1/2 teaspoon cumin seeds</li>
+                            {makeIngredientArray(demoRecipe.ingredients).map((ingredient, ingredientIndex) => {
+                                    return (
+                                        <li key={ingredientIndex}>{ingredient}</li>
+                                    )
+                                }
+                            )}
                         </ul>
                     </div>
                     <div className="column has-text-left card-content" id="directions">

@@ -13,3 +13,12 @@
 #recipeDetail .button {
     margin: 1em 2em;
 }
+
+.image {
+    height: 500px;
+    overflow: hidden;
+}
+
+.image img {
+    margin-top: -300px;
+}
