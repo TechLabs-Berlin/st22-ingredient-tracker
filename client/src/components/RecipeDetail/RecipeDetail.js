@@ -41,7 +41,7 @@ const RecipeDetail = () => {
                             alt="Placeholder image"/>
                     </figure>
                 </div>
-                <div>
+                <div id="recipeDetailButtons">
                     <button className="button is-primary">Add to My Recipes</button>
                     <button className="button is-primary">Mark as completed</button>
                 </div>

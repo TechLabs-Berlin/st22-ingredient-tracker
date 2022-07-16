@@ -11,7 +11,7 @@
 }
 
 #recipeDetail .button {
-    margin: 1em 2em;
+    margin: 1em;
 }
 
 .image {
@@ -21,4 +21,14 @@
 
 .image img {
     margin-top: -300px;
+}
+
+#recipeDetailButtons {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: -2em;
+    margin-right: 2em;
 }
