@@ -35,7 +35,25 @@ groceriesRouter.get('/current', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-    }   
+    }
+});
+
+groceriesRouter.post('/current', async (req, res) => {
+    try {
+        const { name } = req.body;
+        if (!req.session.user.userId) {
+            console.log(`Please log in`);
+            console.log(req.session);
+            res.status(511);
+        } else {
+            const foundGroceries = await User.findAndAddGroceries(req.session.user.userId, name);
+            console.log(`Added to ${req.session.user.username}'s groceries: ${name}`);
+            res.send(foundGroceries)
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
 });
 
 // groceriesRouter.get('/current', async (req, res) => {

@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Password cannot be empty']
     },
     groceries: [],
-    // favourites: [String],
+    favorites: [],
     // userimg:
     // {
     //     data: Buffer,
@@ -67,9 +67,20 @@ userSchema.statics.findAndGetGroceries = async function (user_id) {
     const getUserGroceries = await this.findOne({ user_id }).select('groceries');
     // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
     // const getGroceriesString = JSON.stringify(getUserGroceries);
-    console.log(`Found user and got groceries: ${getUserGroceries.groceries}`);
+    console.log(`Found user and got groceries: ${JSON.stringify(getUserGroceries.groceries)}`);
     return getUserGroceries;
-}
+};
+
+userSchema.statics.findAndAddGroceries = async function (user_id, name) {
+    const getUserGroceries = await this.updateOne(
+        { user_id },
+        {$push: { groceries: { name: name } } }
+        )
+    // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
+    // const getGroceriesString = JSON.stringify(getUserGroceries);
+    console.log(`Found user and got groceries: ${JSON.stringify(getUserGroceries.groceries)}`);
+    return getUserGroceries;
+};
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
