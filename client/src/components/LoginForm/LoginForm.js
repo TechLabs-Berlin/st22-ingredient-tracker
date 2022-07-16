@@ -25,6 +25,7 @@ function LoginForm() {
         try {
             await axios({
                 method: 'post',
+                withCredentials: true,
                 url: 'http://localhost:5000/user/login',
                 data: {
                     email: email,

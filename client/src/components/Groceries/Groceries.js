@@ -14,13 +14,14 @@ const Groceries = () => {
             const getData = async () => {
                 const response = await getGroceries();
                 if (response != null) {
-                    console.log(response);
-                    setGroceries(response.data)
-                // } else if (response.status = null) {
-                //     console.log([{name: 'Please log into your account and try again'}]);                    
-                //     setGroceries('Please log into your account to access your inventory')
-                // } else {                    
-                //     setGroceries('An error occurred')
+                    // console.log(response);
+                    // console.log(response.data.groceries);
+                    setGroceries(response.data.groceries)
+                } else if (response.status = null) {
+                    console.log([{name: 'Please log into your account and try again'}]);                    
+                    setGroceries('Please log into your account to access your inventory')
+                } else {                    
+                    setGroceries('An error occurred')
                 }
             }
            
