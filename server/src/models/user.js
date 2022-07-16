@@ -97,17 +97,16 @@ userSchema.statics.findAndAddGroceries = async function (user_id, name) {
 
 userSchema.statics.findAndDeleteFromGroceries = async function (user_id, target) {
     try {
-        console.log(target.name);
-        // const getUser = await this.findOne({ user_id });
-        // const targetIndex = getUser.groceries.findIndex(object => {
-        //     return object.name === target.name;
-        //   });
-        // console.log(getUser.groceries[targetIndex]); 
         const deleteFromUserGroceries = await this.updateOne(
             { user_id },
             { $pull: { groceries: { name: target.name} } }
         );
         return deleteFromUserGroceries;
+        // const getUser = await this.findOne({ user_id });
+        // const targetIndex = getUser.groceries.findIndex(object => {
+        //     return object.name === target.name;
+        //   });
+        // console.log(getUser.groceries[targetIndex]);         
         // getUser.groceries.splice(targetIndex, 1);
     }
     catch (err) {
@@ -123,5 +122,3 @@ userSchema.pre('save', async function (next) {
 })
 
 module.exports = mongoose.model('User', userSchema);
-// const User = mongoose.model('User', userSchema);
-// export default User;

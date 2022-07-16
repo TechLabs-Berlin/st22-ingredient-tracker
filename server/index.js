@@ -49,14 +49,14 @@ const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingr
         // key: 'Ingreduce',
         name: 'Session',
         secret: 'Secret',
-        saveUninitialized: true,
+        saveUninitialized: false,
         resave: true,
         // resave: false,
-        store: new MongoStore({
-          mongooseConnection: mongoose.connection,
-          collection: 'session',
-          ttl: 60 * 60 * 24 * 7
-        }),
+        // store: new MongoStore({
+        //   mongooseConnection: mongoose.connection,
+        //   collection: 'session',
+        //   ttl: 60 * 60 * 24 * 7
+        // }),
         cookie: {
           sameSite: true,
           signed: true,

@@ -10,11 +10,13 @@ const Groceries = () => {
 
     const [groceries, setGroceries] = useState([]);
 
+    // ---------------------------------------------------------------- userId in calls
+    // const getData = async (userId) => {
     const getData = async () => {
         const response = await getGroceries();
         if (response != null) {
             // console.log(response);
-            // console.log(response.data.groceries);
+            // console.log('Displayed groceries');
             setGroceries(response.data.groceries)
         } else if (response.status = null) {
             console.log([{ name: 'Please log into your account and try again' }]);
@@ -99,16 +101,17 @@ const Groceries = () => {
             //adds ingredient from search to inventory
             const onAddBtnClick = async () => {
                 try {
-                    console.log(result);
+                    // console.log(result);
                     await axios({
                         method: 'put',
                         withCredentials: true,
                         url: 'http://localhost:5000/groceries/current',
                         data: {
-                            name: result
+                            name: result,
+                            key: result // this takes care of frontend error messages that popped up in regards to React List items needing a key, ot somesuch
                         }
                     });
-            
+                    console.log(`Added ${result}`);
                     getData();
                 }
                 catch (err) {
@@ -172,7 +175,6 @@ const Groceries = () => {
         const deleteItem = async (targetItem) => {
             // const targetItem = item.name
             try {
-                console.log(targetItem);
                 await axios({
                     method: 'patch',
                     withCredentials: true,
@@ -181,7 +183,7 @@ const Groceries = () => {
                         name: targetItem
                     }
                 });
-        
+                console.log(`Removed ${targetItem.name}`);
                 getData();
             }
             catch (err) {
@@ -207,7 +209,7 @@ const Groceries = () => {
         }
 
         //this console log shows the actual state of the selected item array
-        console.log(selectedItems);
+        // console.log(selectedItems);
 
         return (
             <>

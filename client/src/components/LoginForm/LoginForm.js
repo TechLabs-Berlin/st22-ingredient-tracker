@@ -21,7 +21,7 @@ function LoginForm() {
     };
 
     const handleSubmit = async () => {
-        console.log(email);
+        // console.log(email);
         try {
             await axios({
                 method: 'post',

@@ -9,18 +9,6 @@ const User = require('../models/user');
 // Post new/update/delete groceries data in DB 
 // Add/remove favourites
 
-// const errMessage = [{name: 'Error: you must login to display your saved ingredients'}]
-
-// const groceriesData = () => {
-//     if (!req.session.userID) {
-//         console.log(`You don't have permission to see this`);
-//         res.redirect('/user/login');
-//     } else {
-//         console.log(`You have permission to see this`);
-//         res.render('secret');
-//     }
-// };
-
 groceriesRouter.get('/current', async (req, res) => {
     try {
         if (!req.session.user.userId) {
