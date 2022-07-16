@@ -173,25 +173,31 @@ const Groceries = () => {
         //this console log shows the actual state of the selected item array
         console.log(selectedItems);
     
-        return (
-            <>
-                {groceries.map((item, itemIndex) => {
-                    return (
-                        <button 
-                            className={`${!item.selected ? "button is-rounded" : "button is-rounded is-warning is-light is-outlined"}`}
-                            key={itemIndex}
-                            onClick={event => selectItem(item)}
-                            >{item.name}
-                                <button 
-                                    className="delete is-small"
-                                    onClick={event => deleteItem(item.key)}
-                                    key={item+"button"}
-                                ></button>
-                        </button>
-                    ) 
-                })}
-            </>
-        );
+        if (groceries.length < 1) {
+            return (
+                <p className=" is-danger">empty :( please add at least one item to your inventory</p>
+            )
+        } else {
+            return (
+                <>
+                    {groceries.map((item, itemIndex) => {
+                        return (
+                            <button 
+                                className={`${!item.selected ? "button is-rounded" : "button is-rounded is-warning is-light is-outlined"}`}
+                                key={itemIndex}
+                                onClick={event => selectItem(item)}
+                                >{item.name}
+                                    <button 
+                                        className="delete is-small"
+                                        onClick={event => deleteItem(item.key)}
+                                        key={item+"button"}
+                                    ></button>
+                            </button>
+                        ) 
+                    })}
+                </>
+            );
+        }
     }
 
     //container for the inventory
@@ -232,10 +238,29 @@ const Groceries = () => {
     //container for ingredient sections by type
     const IngredientsSection = () => {
         return (
-            <section className="box">
+            <section id="ingredientSection">
                 <IngredientType />
             </section>
         );
+    }
+
+    console.log(selectedItems.length);
+
+    const SearchRecipeButton = () => {
+        if (selectedItems.length === 0) {
+            return (
+                <section id="searchRecipe">
+                    <button className="button is-primary" disabled>Find a recipe</button>
+                    <p className="has-text-danger">You need to select at least one must-have ingredient before you search for a recipe!</p>
+                </section>
+            ) 
+        } else {
+            return (
+                <section id="searchRecipe">
+                    <button className="button is-primary">Find a recipe</button>
+                </section>
+            );
+        }
     }
 
     return (
@@ -243,12 +268,12 @@ const Groceries = () => {
             <br></br>
             <br></br>
             <br></br>
-            <Link to="/recipe_detail"><button className="button has-text-primary">Go to Recipe Detail</button></Link>
+            <Link to="/recipe_detail"><button className="button has-text-primary" id="findRecipeButton">Go to Recipe Detail</button></Link>
             <br></br>
-            <button className="button is-primary" id="findRecipeButton">Find a recipe</button>
+            <SearchRecipeButton />
             <Inventory />
             <GroceriesSearch />
-            <IngredientsSection />
+            {/*<IngredientsSection />*/}
         </section>
     );
 }

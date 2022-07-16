@@ -20,9 +20,9 @@ const Header = () => {
             <div className="navbar-menu">
 
                 <div className="navbar-start">
-                    <a className="navbar-item has-text-primary">
+                    <Link to="/groceries" className="navbar-item has-text-primary">
                         My Ingredients
-                    </a>
+                    </Link>
 
                     <a className="navbar-item has-text-primary">
                         My Recipes
