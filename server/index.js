@@ -1,43 +1,126 @@
 const express = require('express');
 const cors = require('cors');
+
 const demoRouter = require('./routes/demoRoutes');
 const recepieRouter = require('./routes/recipesRoutes');
 
-const app = express();
+const groceriesRouter = require('./src/routes/groceriesRoutes');
+const userRouter = require('./src/routes/userRoutes');
+const cookieParser = require('cookie-parser');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const { default: mongoose } = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
-app.use(cors());
 
-app.use(express.json());
 
-const PORT = 8080;
+// percent encoded password for MongoDB Atlas
+// should be included in an .env instead of written in the .js, but for development purposes store it here
+
+const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/ingreduce?retryWrites=true&w=majority";
+
+// const client = new MongoClient(mongoAtlasUri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
 
 app.use('', demoRouter, recepieRouter);
 
-app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`);
-})
-
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDX-L4ifNg3FOpwyanhAdeAYk2f7L5zxx0",
-//   authDomain: "bl-st22--ingredient-racker.firebaseapp.com",
-//   projectId: "bl-st22--ingredient-racker",
-//   storageBucket: "bl-st22--ingredient-racker.appspot.com",
-//   messagingSenderId: "638075870453",
-//   appId: "1:638075870453:web:452ce173e823326f4939bc",
-//   measurementId: "G-YVB5X9GK1L"
-// };
+// client.connect(err => {
+// //   const collection = client.db("ingreduce");
+//   const collection = client.db("ingreduce").collection("users");
+//   // perform actions on the collection object
+//   console.log(`Connected to MongoDB Atlas`);
+//   client.close();
+// });
 
 
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+
+(async () => {
+  try {
+    // Connect to the MongoDB cluster
+    // MongooseServerSelectionError: connection <monitor> to 40.68.199.139:27017 closed | FOR DEVELOPMENT: had to give network access to all IP, change back later with dedicated server
+
+    await mongoose.connect(
+      mongoAtlasUri,
+      { useNewUrlParser: true, useUnifiedTopology: true },
+      () => console.log("Connected to MongoDB Atlas")
+    );
+
+    const app = express();
+
+    // const MongoStore = connectmongo(session);
+
+    // const dbConnection = mongoose.connection;
+    // dbConnection.on("error", (err) => console.log(`Connection error ${err}`));
+    // dbConnection.once("open", () => console.log("Connected to DB!"));
+
+    app.use
+      (session({
+      name: 'Session',
+      secret: 'Secret',
+      saveUninitialized: false,
+      resave: false,
+      store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+        collection: 'session',
+        ttl: 60 * 60 * 24 * 7
+      }),
+      cookie: {
+        sameSite: true,
+        // secure: NODE_ENV === 'production',
+        maxAge: 1000 * 60 * 60 * 24 * 7
+      }
+    }));
+
+
+    app.use(cors());
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
+    app.use('/groceries', groceriesRouter);
+    app.use('/user', userRouter);
+
+    const PORT = 5000;
+
+    app.listen(PORT, () => {
+      console.log(`listening on port ${PORT}`);
+    })
+  } catch (e) {
+    console.log(e);
+  }
+})();
+
+
+
+// app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route
+
+// const requireLogin = (req, res, next) => {
+//   if (!req.session.user_id) {
+//     console.log(`You don't have permission to see this`);
+//     // redirect to localhost:3000/login with frontend?
+//     return res.redirect('/login');
+//   }
+//   next;
+// }
+
+
+
+
+// app.use(session({
+//   secret: 'cookie_secret',
+//   resave: true,
+//   saveUninitialized: true
+// }));
+
+
+
+
+//   const dbConnection = mongoose.connection;
+//   dbConnection.on("error", (err) => console.log(`Connection error ${err}`));
+//   dbConnection.once("open", () => console.log("Connected to DB!"));
+
+// app.set('view engine', 'ejs');
+// app.set('views', './src/views');
+
+// signed cookies don't hide information, but add data to it so authenticity can be verified if need be
+
+

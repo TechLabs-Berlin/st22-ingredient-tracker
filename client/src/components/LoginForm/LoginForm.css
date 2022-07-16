@@ -1,0 +1,16 @@
+#forgotPassword {
+    position: absolute;
+    right: 2px;
+}
+
+#loginForm {
+    background-color: hsl(171, 100%, 41%);
+    min-height: 100vh;
+}
+
+#loginForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}

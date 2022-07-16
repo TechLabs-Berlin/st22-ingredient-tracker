@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
-import './RegistrationForm.css'
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import './RegistrationForm.css';
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import axios from 'axios';
 
 function RegistrationForm() {
     const [username, setUsername] = useState("");
@@ -31,8 +32,43 @@ function RegistrationForm() {
         }
     }
 
-    const handleSubmit = () => {
-        console.log(username, email, password, confirmPassword);
+    function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    function validateForm() {
+        return username.length > 2  && validateEmail(email) === true && password.length > 5 && confirmPassword === password && termsAccepted;
+    };
+
+    const handleSubmit = async () => {
+        console.log(username, email);
+
+        try {
+            await axios({
+                method: 'post',
+                url: 'http://localhost:5000/user/register',
+                data: {
+                    username: username,
+                    email: email,
+                    password: password
+                }
+            });
+            // For now: disabled link, redirect from frontend to next page when post request is successful. Still janky
+            // window.location.assign("/groceries");        
+            console.log(`User ${username} registered successfully`);
+            window.location = "/groceries";
+            // return <Navigate to="/groceries" />
+        }
+        catch (err) {
+            console.log(err.message);
+            // handleErrorMessage();
+
+            // const registerData = await registerResponse;
+            //need to return response as below
+            // return registerData.json();
+        }
     }
 
 
@@ -72,16 +108,16 @@ function RegistrationForm() {
                     {/* <h3 className="is-size-6 m-2 mt-5 has-text-weight-medium has-text-grey">Terms & Conditions</h3> */}
                     < input className="m-2" type="checkbox" id="tac" onChange={(e) => handleInputChange(e)
                     }></input >
-                    <label className="checkbox m-2 mb-4 has-text-grey" >I agree with the Terms & Conditions.</label>
+                    <label for="tac" className="checkbox m-2 mb-4 has-text-grey" >I agree with the Terms & Conditions.</label>
                     {/*for="tac"    commented out because it threw an error (was part of the label above)*/}
                 </div >
 
                 {/* Register Button */}
                 < div className='level' >
                     <div className='level-item'>
-                        <Link to="/groceries">
-                            <button disabled={!termsAccepted} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
-                        </Link>
+                        {/* <Link to="/groceries"> */}
+                        <button disabled={!validateForm()} onClick={() => handleSubmit()} type="submit" className='button is-primary is-medium my-5' style={{ width: '150px' }}>Register</button>
+                        {/* </Link> */}
                     </div>
                 </div >
 

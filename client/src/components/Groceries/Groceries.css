@@ -1,0 +1,12 @@
+#groceries {
+
+}
+
+#inventory {
+    margin: 1em 3em 1em 3em;
+    background-color: hsl(171, 100%, 41%);
+}
+
+#searchBox {
+    margin: 2em 5em 1em 5em;
+}
