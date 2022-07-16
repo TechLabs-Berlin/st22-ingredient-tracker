@@ -56,6 +56,7 @@ userSchema.statics.findAndValidate = async function (email, password) {
     }
     catch (err) {
         console.log(`Error ocurred ${err}`);
+        throw true;
     }
 };
 
@@ -72,15 +73,24 @@ userSchema.statics.findAndGetGroceries = async function (user_id) {
 };
 
 userSchema.statics.findAndAddGroceries = async function (user_id, name) {
-    const getUserGroceries = await this.updateOne(
+    const updateUserGroceries = await this.updateOne(
         { user_id },
         {$push: { groceries: { name: name } } }
         )
     // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
     // const getGroceriesString = JSON.stringify(getUserGroceries);
-    console.log(`Found user and got groceries: ${JSON.stringify(getUserGroceries.groceries)}`);
-    return getUserGroceries;
+    console.log(`Found user and got groceries: ${name}`);
+    return updateUserGroceries;
 };
+
+// userSchema.statics.findAndDeleteGroceries = async function (user_id, name) {
+//     const getUserGroceries = await this.findOne({ user_id }).select('groceries');
+//     const deleteUserGroceries = await getUserGroceries.deleteOne({ name: name })
+//     // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
+//     // const getGroceriesString = JSON.stringify(getUserGroceries);
+//     console.log(`Found user and deleted groceries: ${name}`);
+//     return deleteUserGroceries;
+// };
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
