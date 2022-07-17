@@ -11,6 +11,8 @@ const User = require('../models/user');
 
 groceriesRouter.get('/current', async (req, res) => {
     try {
+        // const { userId } = req.session;
+        console.log(req.session.user.userId);
         if (!req.session.user.userId) {
             console.log(`Please log in`);
             console.log(req.session);
