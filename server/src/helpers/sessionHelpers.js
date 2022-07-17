@@ -1,3 +1,3 @@
-module.exports = sessionizeUser = user => {
-  return { userId: user.id, username: user.username };
+exports = function sessionizeUser(user) {
+  return { userId: user._id, username: user.username };
 };

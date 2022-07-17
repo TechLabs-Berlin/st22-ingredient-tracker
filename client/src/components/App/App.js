@@ -1,5 +1,9 @@
 import React from "react";
+// import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
+// import GroceriesList from "../GroceriesList/GroceriesList";
+import RecipeOverview from "../RecipeOverview/RecipeOverview";
 import HeroImage from "../HeroImage/HeroImage";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
@@ -21,6 +25,7 @@ function App() {
                         <Route path="login" element={<LoginForm />}/>
                         <Route path="registration" element={<RegistrationForm />}/>
                         <Route path="groceries" element={<Groceries/>}></Route>
+                        <Route path="recipe_overview" element={<RecipeOverview />}/>
                         <Route path="recipe_detail" element={<RecipeDetail />}/>
                     </Routes>
                     <br></br>
