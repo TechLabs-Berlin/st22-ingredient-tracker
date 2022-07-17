@@ -296,7 +296,7 @@ const Groceries = () => {
         } else {
             return (
                 <section id="searchRecipe">
-                    <Link to="/recipe_overview"><button className="button is-primary">Find a recipe</button></Link>
+                    <Link to="/recipe_overview" state={{ ingredients: selectedItems }}><button className="button is-primary">Find a recipe</button></Link>
                 </section>
             );
         }

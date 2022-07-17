@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from "react-router-dom";
-import { getRecipesForIngredients } from './RecipeApi';
-import './RecipeOverview.css'
+import { Link, useLocation } from "react-router-dom";
+import { getRecipesForIngredients } from '../../API/recipes.api';
+import './RecipeOverview.css';
 
 // const recipies = [{
 //     title: "First Title",
@@ -62,9 +62,25 @@ function Recipe({ title, imageURL, prepTime, cookTime }) {
 function RecipesOverview() {
     const [recipes, setRecipes] = useState([]);
 
+    // recover data sent by React State through link - instead of temporary storage in backend - or send data in Groceries and then receive the data in here?
+    const location = useLocation();
+    const { ingredients } = location.state;
+
+    // this logs twice for some reason - does the Groceries.js selection function create several arrays?
+    // console.log(JSON.stringify(ingredients));
+
+    let ingredientNames = ingredients.map(function (i) {
+        return i['name'];
+    });
+
+    // console.log(`Sending ${ingredientNames} to API`);
+
+    // Amount of results desired, just change it how it suits you best for the frontend. Could in theory give user option to choose how many recipes he wants to be shown/adapt it depending on computer screen/phone screen
+    const n = 9;
+
     useEffect(() => {
         // pass in (selectedIngredients, n)
-        getRecipesForIngredients('tomatoes').then((recipesServerResponse) => {
+        getRecipesForIngredients(ingredientNames, n).then((recipesServerResponse) => {
             setRecipes(recipesServerResponse.data);
         })
     }, [])
