@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getRecipesForIngredients } from './RecipeApi';
+import { getRecipesForIngredients } from '../../API/recipes.api';
 import './RecipeOverview.css'
 
 // const recipies = [{
@@ -62,6 +62,7 @@ function RecipesOverview() {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
+        // pass in (selectedIngredients, n)
         getRecipesForIngredients('tomatoes').then((recipesServerResponse) => {
             setRecipes(recipesServerResponse.data);
         })

@@ -2,7 +2,7 @@ const express = require('express');
 
 const recipesRouter = express.Router();
 
-const recipies = [{
+const recipes = [{
     title: "First Title",
     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
     prepTime: 30,
@@ -26,9 +26,25 @@ const recipies = [{
 }];
 
 recipesRouter.get('/recipes', async (req, res) => {
-    try {
-        const response = await res.send(recipies);
+    try {        
+        // query MongoDB Atlas recipe DB = check recipes with ingredient strings 
+        // send back n amount of recipe suggestions to server: entire object or just title, imageURL, cookTime, prepTime and ID?
+
+        const response = await res.send(recipes);
         console.log(response);
+    }
+    catch (err) {
+        console.log(err);
+    }   
+});
+
+recipesRouter.get('/recipes/:id', async (req, res) => {
+    try {
+        // query MongoDB Atlas recipe DB = check recipes with object ID
+        // send back target recipe object
+
+        // const response = await res.send(recipes);
+        // console.log(response);
     }
     catch (err) {
         console.log(err);
