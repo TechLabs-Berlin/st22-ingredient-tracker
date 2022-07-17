@@ -32,7 +32,7 @@ const RecipeDetail = () => {
         <>
             <br></br>
             <br></br>
-            <Link to="/groceries"><button>Back to Groceries (later an arrow to RecipesOverview)</button></Link>
+            <Link to="/recipe_overview"><button>Back to RecipesOverview</button></Link>
             <div className="card" id="recipeDetail">
                 <div className="card-image">
                     <figure className="image">
