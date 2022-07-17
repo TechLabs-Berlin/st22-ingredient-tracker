@@ -14,12 +14,12 @@
     margin: 1em;
 }
 
-.image {
+#recipeDetail .image {
     height: 500px;
     overflow: hidden;
 }
 
-.image img {
+#recipeDetail .image img {
     margin-top: -300px;
 }
 
