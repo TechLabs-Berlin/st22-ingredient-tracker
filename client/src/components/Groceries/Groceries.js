@@ -193,17 +193,17 @@ const Groceries = () => {
     };
 
     const selectItem = (clickedItem) => {
-      if (!clickedItem.selected) {
+      if (clickedItem.selected) {
+        setSelectedItems(
+          selectedItems.filter((item) => item.name !== clickedItem.name)
+        );
+        clickedItem.selected = false;
+      } else {
         //console.log("select " + clickedItem.name);
         clickedItem.selected = true;
         setSelectedItems(selectedItems.concat(clickedItem));
-      } else {
-        //console.log("deselect " + clickedItem.name);
-        setSelectedItems(
-          selectedItems.filter((item) => item.key !== clickedItem.name)
-        );
-        clickedItem.selected = false;
       }
+
       //console.log(`${clickedItem.name} = ${clickedItem.selected}`);
 
       //I think this console log is one step behind because the state just changes after the click
