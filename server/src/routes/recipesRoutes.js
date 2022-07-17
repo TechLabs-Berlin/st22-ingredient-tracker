@@ -25,7 +25,8 @@ const recipes = [{
     cookTime: 60
 }];
 
-recipesRouter.get('/recipes', async (req, res) => {
+// (/?q=${ ingredients })
+recipesRouter.get('/q', async (req, res) => {
     try {        
         // query MongoDB Atlas recipe DB = check recipes with ingredient strings 
         // send back n amount of recipe suggestions to server: entire object or just title, imageURL, cookTime, prepTime and ID?
@@ -38,7 +39,7 @@ recipesRouter.get('/recipes', async (req, res) => {
     }   
 });
 
-recipesRouter.get('/recipes/:id', async (req, res) => {
+recipesRouter.get('/:id', async (req, res) => {
     try {
         // query MongoDB Atlas recipe DB = check recipes with object ID
         // send back target recipe object
