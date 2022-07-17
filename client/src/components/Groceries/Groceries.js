@@ -296,7 +296,7 @@ const Groceries = () => {
         } else {
             return (
                 <section id="searchRecipe">
-                    <button className="button is-primary">Find a recipe</button>
+                    <Link to="/recipe_overview"><button className="button is-primary">Find a recipe</button></Link>
                 </section>
             );
         }
