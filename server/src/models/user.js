@@ -32,8 +32,8 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         required: [true, 'Password cannot be empty']
     },
-    groceries: [String],
-    // favourites: [String],
+    groceries: [],
+    favorites: [],
     // userimg:
     // {
     //     data: Buffer,
@@ -51,10 +51,12 @@ userSchema.statics.findAndValidate = async function (email, password) {
         const user = await this.findOne({ email });
         console.log(`Found user ${user.username}`);
         const validCredentials = await bcrypt.compare(password, user.password);
+        console.log(`Credentials: ${validCredentials}`);
         return validCredentials ? user : false;
     }
     catch (err) {
         console.log(`Error ocurred ${err}`);
+        throw true;
     }
 };
 
@@ -62,11 +64,56 @@ userSchema.statics.findAndValidate = async function (email, password) {
 //     return await this.where(field).countDocuments() === 0;
 //   };
 
-// userSchema.statics.findAndGetGroceries = async function (user_id) {
-//     const getUserGroceries = await this.findOne({ user_id }).select('groceries');
-//     console.log(getUserGroceries);
-//     return getUserGroceries;
-// }
+userSchema.statics.findAndGetGroceries = async function (user_id) {
+    try {
+        const getUserGroceries = await this.findOne({ user_id });
+        // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
+        // const getGroceriesString = JSON.stringify(getUserGroceries);
+        console.log(`Found user and got groceries: ${JSON.stringify(getUserGroceries.groceries)}`);
+        return getUserGroceries;
+    }
+    catch (err) {
+        console.log(`Error ocurred ${err}`);
+        throw true;
+    }
+};
+
+userSchema.statics.findAndAddGroceries = async function (user_id, name) {
+    try {
+        const updateUserGroceries = await this.updateOne(
+            { user_id },
+            { $push: { groceries: { name: name } } }
+        )
+        // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
+        // const getGroceriesString = JSON.stringify(getUserGroceries);
+        console.log(`Found user and added ingredient: ${name}`);
+        return updateUserGroceries;
+    }
+    catch (err) {
+        console.log(`Error ocurred ${err}`);
+        throw true;
+    }
+};
+
+userSchema.statics.findAndDeleteFromGroceries = async function (user_id, target) {
+    try {
+        const deleteFromUserGroceries = await this.updateOne(
+            { user_id },
+            { $pull: { groceries: { name: target.name} } }
+        );
+        return deleteFromUserGroceries;
+        // const getUser = await this.findOne({ user_id });
+        // const targetIndex = getUser.groceries.findIndex(object => {
+        //     return object.name === target.name;
+        //   });
+        // console.log(getUser.groceries[targetIndex]);         
+        // getUser.groceries.splice(targetIndex, 1);
+    }
+    catch (err) {
+        console.log(`Error ocurred ${err}`);
+        throw true;
+    }
+};
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
@@ -75,5 +122,3 @@ userSchema.pre('save', async function (next) {
 })
 
 module.exports = mongoose.model('User', userSchema);
-// const User = mongoose.model('User', userSchema);
-// export default User;

@@ -1,6 +1,6 @@
 import React from "react";
-import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
-import GroceriesList from "../GroceriesList/GroceriesList";
+// import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
+// import GroceriesList from "../GroceriesList/GroceriesList";
 import RecipeOverview from "../RecipeOverview/RecipeOverview";
 import HeroImage from "../HeroImage/HeroImage";
 

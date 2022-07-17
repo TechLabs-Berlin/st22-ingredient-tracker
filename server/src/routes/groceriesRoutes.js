@@ -9,47 +9,57 @@ const User = require('../models/user');
 // Post new/update/delete groceries data in DB 
 // Add/remove favourites
 
-const groceriesData = [
-    {
-        name: 'Apple',
-        type: 'Fruit'
-    },
-    {
-        name: 'Pear',
-        type: 'Fruit'
-    },
-    {
-        name: 'Tomato',
-        type: 'Fruit (technically)'
-    },
-];
-
-// const errMessage = [{name: 'Error: you must login to display your saved ingredients'}]
-
-// const groceriesData = () => {
-//     if (!req.session.userID) {
-//         console.log(`You don't have permission to see this`);
-//         res.redirect('/user/login');
-//     } else {
-//         console.log(`You have permission to see this`);
-//         res.render('secret');
-//     }
-// };
-
 groceriesRouter.get('/current', async (req, res) => {
     try {
-        if (!req.session.userID) {
-            console.log(`Please log in ${req.session.userID}`);
+        if (!req.session.user.userId) {
+            console.log(`Please log in`);
+            console.log(req.session);
             res.status(511);
         } else {
-            const groceries = await User.findAndGetGroceries(req.session.userID);
-            console.log(`You have permission to see this`);
-            res.send(groceries)
+            const foundGroceries = await User.findAndGetGroceries(req.session.user.userId);
+            console.log(`You have permission to see this ${req.session.user.username}`);
+            res.send(foundGroceries)
         }
     }
     catch (err) {
         console.log(err);
-    }   
+    }
+});
+
+groceriesRouter.put('/current', async (req, res) => {
+    try {
+        const { name } = req.body;
+        if (!req.session.user.userId) {
+            console.log(`Please log in`);
+            console.log(req.session);
+            res.status(511);
+        } else {
+            const foundGroceries = await User.findAndAddGroceries(req.session.user.userId, name);
+            console.log(`Added to ${req.session.user.username}'s groceries: ${name}`);
+            res.send(foundGroceries)
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+groceriesRouter.patch('/current', async (req, res) => {
+    try {
+        const { name } = req.body;
+        if (!req.session.user.userId) {
+            console.log(`Please log in`);
+            console.log(req.session);
+            res.status(511);
+        } else {
+            const deleteGroceries = await User.findAndDeleteFromGroceries(req.session.user.userId, name);
+            console.log(`Removed from ${req.session.user.username}'s groceries: ${name}`);
+            res.send(deleteGroceries)
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
 });
 
 // groceriesRouter.get('/current', async (req, res) => {

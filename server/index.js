@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const demoRouter = require('./routes/demoRoutes');
-const recepieRouter = require('./routes/recipesRoutes');
+const recipesRouter = require('./src/routes/recipesRoutes');
 
 const groceriesRouter = require('./src/routes/groceriesRoutes');
 const userRouter = require('./src/routes/userRoutes');
@@ -20,9 +19,6 @@ const MongoStore = require('connect-mongo')(session);
 const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/ingreduce?retryWrites=true&w=majority";
 
 // const client = new MongoClient(mongoAtlasUri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
-
-app.use('', demoRouter, recepieRouter);
 
 // client.connect(err => {
 // //   const collection = client.db("ingreduce");
@@ -55,29 +51,38 @@ app.use('', demoRouter, recepieRouter);
 
     app.use
       (session({
-      name: 'Session',
-      secret: 'Secret',
-      saveUninitialized: false,
-      resave: false,
-      store: new MongoStore({
-        mongooseConnection: mongoose.connection,
-        collection: 'session',
-        ttl: 60 * 60 * 24 * 7
-      }),
-      cookie: {
-        sameSite: true,
-        // secure: NODE_ENV === 'production',
-        maxAge: 1000 * 60 * 60 * 24 * 7
-      }
-    }));
+        // key: 'Ingreduce',
+        name: 'Session',
+        secret: 'Secret',
+        saveUninitialized: false,
+        resave: true,
+        // resave: false,
+        // store: new MongoStore({
+        //   mongooseConnection: mongoose.connection,
+        //   collection: 'session',
+        //   ttl: 60 * 60 * 24 * 7
+        // }),
+        cookie: {
+          sameSite: true,
+          signed: true,
+          // secure: 'false',
+          maxAge: 1000 * 60 * 60 * 24 * 7
+        }
+      }));
 
 
-    app.use(cors());
+
+    app.use(cors({ credentials: true, origin: true }));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
     app.use('/groceries', groceriesRouter);
     app.use('/user', userRouter);
+    app.use('/recipes', recipesRouter);
+
+    app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route
+
+    // app.set('trust proxy', 1);
 
     const PORT = 5000;
 
@@ -91,7 +96,7 @@ app.use('', demoRouter, recepieRouter);
 
 
 
-// app.use(cookieParser('secretsignthatshouldbestoredin.env')); // requires { signed : true } in route
+
 
 // const requireLogin = (req, res, next) => {
 //   if (!req.session.user_id) {
