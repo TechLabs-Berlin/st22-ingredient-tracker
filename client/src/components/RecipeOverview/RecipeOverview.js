@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from "react-router-dom";
 import { getRecipesForIngredients } from './RecipeApi';
 import './RecipeOverview.css'
 
@@ -70,6 +71,10 @@ function RecipesOverview() {
     return (
         <div>
             {/* Recipe Results Title */}
+            <br></br>
+            <br></br>
+            <br></br>
+            <Link to="/groceries"><button className="button is-primary">Back to My Ingredients</button></Link>
             <div className='mt-6'>
                 <h1 className='is-size-3 is-size-4-mobile has-text-weight-semibold mb-4'>Our recipe suggestions:</h1>
             </div>

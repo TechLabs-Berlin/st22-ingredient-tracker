@@ -64,12 +64,12 @@ userSchema.statics.findAndValidate = async function (email, password) {
 //     return await this.where(field).countDocuments() === 0;
 //   };
 
-userSchema.statics.findAndGetGroceries = async function (user_id) {
+userSchema.statics.findAndGetGroceries = async function (userId) {
     try {
-        const getUserGroceries = await this.findOne({ user_id });
+        let getUserGroceries = await this.findOne({ _id : userId });
         // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
         // const getGroceriesString = JSON.stringify(getUserGroceries);
-        console.log(`Found user and got groceries: ${JSON.stringify(getUserGroceries.groceries)}`);
+        console.log(`Found user ${JSON.stringify(getUserGroceries.username)} and got groceries: ${JSON.stringify(getUserGroceries.groceries)}`);
         return getUserGroceries;
     }
     catch (err) {
@@ -78,13 +78,13 @@ userSchema.statics.findAndGetGroceries = async function (user_id) {
     }
 };
 
-userSchema.statics.findAndAddGroceries = async function (user_id, name) {
+userSchema.statics.findAndAddGroceries = async function (userId, name) {
     try {
         const updateUserGroceries = await this.updateOne(
-            { user_id },
+            { _id : userId },
             { $push: { groceries: { name: name } } }
         )
-        // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
+        // const getUserGroceries = await this.findOne({ _id : userId }).select({ array: "groceries" });
         // const getGroceriesString = JSON.stringify(getUserGroceries);
         console.log(`Found user and added ingredient: ${name}`);
         return updateUserGroceries;
@@ -95,14 +95,14 @@ userSchema.statics.findAndAddGroceries = async function (user_id, name) {
     }
 };
 
-userSchema.statics.findAndDeleteFromGroceries = async function (user_id, target) {
+userSchema.statics.findAndDeleteFromGroceries = async function (userId, target) {
     try {
         const deleteFromUserGroceries = await this.updateOne(
-            { user_id },
+            { _id : userId },
             { $pull: { groceries: { name: target.name} } }
         );
         return deleteFromUserGroceries;
-        // const getUser = await this.findOne({ user_id });
+        // const getUser = await this.findOne({ _id : userId });
         // const targetIndex = getUser.groceries.findIndex(object => {
         //     return object.name === target.name;
         //   });

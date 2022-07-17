@@ -307,8 +307,23 @@ const Groceries = () => {
 
   console.log(selectedItems.length);
 
-  const SearchRecipeButton = () => {
+const SearchRecipeButton = () => {
     const shouldPreventSearch = selectedItems.length === 0;
+
+    return (
+      <section id="searchRecipe">
+        <button className="button is-primary" disabled={shouldPreventSearch}>
+          Find a recipe
+        </button>
+        {shouldPreventSearch && (
+          <p className="has-text-danger">
+            You need to select at least one must-have ingredient before you
+            search for a recipe!
+          </p>
+        )}
+      </section>
+    );
+  };
 
     return (
       <section id="searchRecipe">
