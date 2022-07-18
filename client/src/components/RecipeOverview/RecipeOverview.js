@@ -27,6 +27,7 @@ import './RecipeOverview.css';
 // }];
 
 function Recipe({ title, imageURL, prepTime, cookTime }) {
+
     return (
         <div>
             {/* Recipe Card */}
@@ -36,7 +37,9 @@ function Recipe({ title, imageURL, prepTime, cookTime }) {
                     {/* Recipe Image */}
                     <div className='card-image'>
                         <figure className='image'>
-                            <img src={imageURL} alt='recipe photo'></img>
+                            <img
+                                src={`${!imageURL ? "https://bulma.io/images/placeholders/1280x960.png" : imageURL}`}
+                                alt='recipe photo'></img>
                         </figure>
                     </div>
 
@@ -76,7 +79,7 @@ function RecipesOverview() {
     // console.log(`Sending ${ingredientNames} to API`);
 
     // Amount of results desired, just change it how it suits you best for the frontend. Could in theory give user option to choose how many recipes he wants to be shown/adapt it depending on computer screen/phone screen
-    const n = 9;
+    const n = 4;
 
     useEffect(() => {
         // pass in (selectedIngredients, n)
@@ -84,6 +87,12 @@ function RecipesOverview() {
             setRecipes(recipesServerResponse.data);
         })
     }, [])
+
+
+    const getFirstImage = (imageURLstrings) => {
+        const firstImage = imageURLstrings.split('; ');
+        return firstImage[0];
+    }
 
     return (
         <div>
@@ -97,10 +106,10 @@ function RecipesOverview() {
             </div>
             {recipes.map((recipe) =>
                 <Recipe
-                    title={recipe.title}
-                    imageURL={recipe.imageURL}
-                    cookTime={recipe.cookTime}
-                    prepTime={recipe.prepTime}
+                    title={recipe.name}
+                    imageURL={getFirstImage(recipe.images_url)}
+                    cookTime={recipe.cook}
+                    prepTime={recipe.prep}
                 />)}
         </div>
     )
