@@ -1,1 +1,2 @@
-mongoimport --uri mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/ingreduce --collection recipeTest --jsonArray --type json --file ./recipe_database.json
+mongoimport --uri mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/ingreduce --collection recipeOld --jsonArray --type json --file ./recipe_database.json
+mongoimport --uri mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/ingreduce --collection recipeTest --jsonArray --type json --file ./recipes_db.json

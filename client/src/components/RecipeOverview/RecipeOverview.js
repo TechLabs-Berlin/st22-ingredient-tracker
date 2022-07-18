@@ -89,10 +89,10 @@ function RecipesOverview() {
     }, [])
 
 
-    const getFirstImage = (imageURLstrings) => {
-        const firstImage = imageURLstrings.split('; ');
-        return firstImage[0];
-    }
+    // const getFirstImage = (imageURLstrings) => {
+    //     const firstImage = imageURLstrings.split('; ');
+    //     return firstImage[0];
+    // }
 
     return (
         <div>
@@ -107,7 +107,7 @@ function RecipesOverview() {
             {recipes.map((recipe) =>
                 <Recipe
                     title={recipe.name}
-                    imageURL={getFirstImage(recipe.images_url)}
+                    imageURL={recipe.image_url}
                     cookTime={recipe.cook}
                     prepTime={recipe.prep}
                 />)}
