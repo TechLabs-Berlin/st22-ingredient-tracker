@@ -119,7 +119,6 @@ const Groceries = () => {
         // Previous frontend solution
 
         //console.log(result);
-        //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
         // setGroceries(groceries.concat({name: result, key: result, selected: false}));
       };
 
@@ -307,37 +306,22 @@ const Groceries = () => {
 
   console.log(selectedItems.length);
 
-const SearchRecipeButton = () => {
-    const shouldPreventSearch = selectedItems.length === 0;
+  const SearchRecipeButton = () => {
+      const shouldPreventSearch = selectedItems.length === 0;
 
-    return (
-      <section id="searchRecipe">
-        <button className="button is-primary" disabled={shouldPreventSearch}>
-          Find a recipe
-        </button>
-        {shouldPreventSearch && (
-          <p className="has-text-danger">
-            You need to select at least one must-have ingredient before you
-            search for a recipe!
-          </p>
-        )}
-      </section>
-    );
-  };
-
-    return (
-      <section id="searchRecipe">
-        <button className="button is-primary" disabled={shouldPreventSearch}>
-          Find a recipe
-        </button>
-        {shouldPreventSearch && (
-          <p className="has-text-danger">
-            You need to select at least one must-have ingredient before you
-            search for a recipe!
-          </p>
-        )}
-      </section>
-    );
+      return (
+        <section id="searchRecipe">
+          <button className="button is-primary" disabled={shouldPreventSearch}>
+            Find a recipe
+          </button>
+          {shouldPreventSearch && (
+            <p className="has-text-danger">
+              You need to select at least one must-have ingredient before you
+              search for a recipe!
+            </p>
+          )}
+        </section>
+      );
   };
 
   return (
