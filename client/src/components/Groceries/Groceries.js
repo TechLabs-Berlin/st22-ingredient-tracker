@@ -124,21 +124,25 @@ const Groceries = () => {
                 //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
                 // setGroceries(groceries.concat({name: result, key: result, selected: false}));
             }
-
+            
             return (
-                <div className="columns buttons is-right">
-                    <div className="column" key={result}>{result}</div>
-                    <div className="column is-one-quarter-mobile" key={result + "Key"}>
-                        <a
-                            className="button is-primary"
-                            action="submit"
-                            onClick={onAddBtnClick}
-                            key={result + "Link"}
-                        >Add</a>
-                    </div>
+              <div className="columns buttons is-right">
+                <div className="column" key={result}>
+                  {result}
                 </div>
-            )
-        });
+                <div className="column is-one-quarter-mobile" key={result + "Key"}>
+                  <a
+                    className="button is-primary"
+                    action="submit"
+                    onClick={onAddBtnClick}
+                    key={result + "Link"}
+                  >
+                    Add
+                  </a>
+                </div>
+              </div>
+            );
+          });
 
         // render search bar
         return (
