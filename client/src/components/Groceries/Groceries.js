@@ -203,7 +203,7 @@ const Groceries = () => {
                 setSelectedItems(selectedItems.concat(clickedItem));
             } else {
                 //console.log("deselect " + clickedItem.name);
-                setSelectedItems(selectedItems.filter((item) => item.key !== clickedItem.name));
+                setSelectedItems(selectedItems.filter((item) => item.name !== clickedItem.name));
                 clickedItem.selected = false;
             }
             //console.log(`${clickedItem.name} = ${clickedItem.selected}`);
@@ -231,7 +231,9 @@ const Groceries = () => {
                                 >{item.name}
                                     <button 
                                         className="delete is-small"
-                                        onClick={event => deleteItem(item)} // this works with my backend routes
+                                        onClick={event => {
+                                          event.stopPropagation(); 
+                                          deleteItem(item);}} // this works with my backend routes
                                         // onClick={event => deleteItem(item.key)}
                                         key={item+"button"}
                                     ></button>
