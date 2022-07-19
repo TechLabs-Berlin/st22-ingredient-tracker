@@ -94,8 +94,6 @@ const RecipeDetail = () => {
                     <div className="column is-two-fifths has-background-primary has-text-white has-text-left card-content" id="ingredients">
                         <h2 className="subtitle has-text-white">Ingredients</h2>
                         <ul>
-                            <li>{recipe.ingredients}</li>
-
                             {/* for some reason this creates an error when first loading the page. Disabling the code displays the page and then enabling again maps the ingredients 
                             says "recipe.ingredients is undefined" even though just using recipe.ingredients works fine
                             running any method on .ingredients seems to cause this issue */}
