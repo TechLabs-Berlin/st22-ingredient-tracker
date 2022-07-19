@@ -17,3 +17,23 @@ export async function getRecipesForIngredients(ingredientNames, n) {
         console.log(error);
     }
 }
+
+export async function getRecipeForId(id) {
+    try {
+        // console.log(`Sending ${id} for recipe show route to server`);
+        console.log('Received')
+        // console.log(id)
+
+        // old code: turn ingredientNames into correctly formatted string for the request --------------------------------
+        // const ingredientQuery = ingredientNames.map(function (i) {
+        //     return i;
+        //     // return i.replace(/\s+/g, '_');
+        // }).join("+");
+
+        const foundRecipe = await axios.get(`http://localhost:5000/recipes/show/${id}`, { withCredentials: true }); 
+        console.log(foundRecipe);
+        return foundRecipe;
+    } catch (error) {
+        console.log(error);
+    }
+}
