@@ -1,3 +1,7 @@
+#recipeDetail {
+    
+}
+
 #ingredients {
     padding: 2em;
 }
@@ -19,11 +23,12 @@
     overflow: hidden;
 }
 
-#recipeDetail .image {
-}
-
 #recipeDetail .image img {
     margin: -13% 0;
+}
+
+#resultBox{
+    max-width: 500px;
 }
 
 #recipeDetailButtons {
@@ -34,4 +39,12 @@
     margin-top: 1em;
     margin-bottom: -2em;
     margin-right: 2em;
+}
+
+#backToOverview {
+    position: relative;
+    top: 75px;
+    left: 50px;
+    z-index: 1;
+    width:150px;
 }

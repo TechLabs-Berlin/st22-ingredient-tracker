@@ -16,3 +16,8 @@ html {
     width: 25%;
     margin: 0.5em;
 }
+
+#backToIngredients {
+    width: 150px;
+    margin: 70px 30px 10px;
+}

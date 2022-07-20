@@ -30,14 +30,6 @@ const Groceries = () => {
         getData();
     }, [])
 
-    //in the initial state there already should be an array that has been saved before
-    // const [groceries, setGroceries] = useState([
-    //     {name: "apples", key: "apples", selected: false}, 
-    //     {name: "butter", key: "butter", selected: false}, 
-    //     {name: "zucchini", key: "zucchini", selected: false},
-    //     {name: "cumin", key: "cumin", selected: false}
-    // ]);
-
     const [selectedItems, setSelectedItems] = useState([]);
 
     const GroceriesSearch = () => {
@@ -126,13 +118,14 @@ const Groceries = () => {
             }
             
             return (
-              <div className="columns buttons is-right">
-                <div className="column" key={result}>
+              <div  id="searchResult">
+                <div key={result}>
                   {result}
                 </div>
-                <div className="column is-one-quarter-mobile" key={result + "Key"}>
+                <div key={result + "Key"}>
                   <a
                     className="button is-primary"
+                    id="addButton"
                     action="submit"
                     onClick={onAddBtnClick}
                     key={result + "Link"}
@@ -167,7 +160,7 @@ const Groceries = () => {
                         />
                     </p>
                 </div>
-                <div className={`${listVisible ? "box" : ""}`}>
+                <div className={`${listVisible ? "box" : ""}`} id="resultBox">
                     {results.length < 0 ? "" : renderedResults}
                 </div>
             </div>
@@ -217,7 +210,7 @@ const Groceries = () => {
     
         if (groceries.length < 1) {
             return (
-                <p className=" is-danger">empty :( please add at least one item to your inventory</p>
+                <p className=" is-danger">Your inventory is empty! Please add at least one item to your inventory.</p>
             )
         } else {
             return (
@@ -310,11 +303,6 @@ const Groceries = () => {
 
     return (
         <section id="groceries">
-            <br></br>
-            <br></br>
-            <br></br>
-            <Link to="/recipe_detail"><button className="button has-text-primary" id="findRecipeButton">Go to Recipe Detail</button></Link>
-            <br></br>
             <SearchRecipeButton />
             <Inventory />
             <GroceriesSearch />

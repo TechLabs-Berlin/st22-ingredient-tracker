@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import logo from "../../images/logo.svg";
+import "./Header.css"
 
 const Header = () => {
     return (
@@ -31,6 +32,7 @@ const Header = () => {
 
                 <div className="navbar-end">
                     <div className="navbar-item">
+                        <p id="username-display" className="has-text-primary">logged in as <i><span>Username</span></i></p>
                         <div className="buttons">
                             <Link to="/login" className="button is-primary">
                                 Log in

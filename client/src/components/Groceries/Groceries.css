@@ -1,18 +1,26 @@
+#groceries {
+    margin-top: 75px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #searchRecipe {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100%;
 }
 
 #inventory {
     margin: 1em 3em 1em 3em;
     background-color: hsl(171, 100%, 41%);
+    width: 100%;
 }
 
-#searchBox {
-    margin: 2em 5em 1em 5em;
+#inventory .button {
+    margin: 5px;
 }
 
 #ingredientSection {
@@ -20,4 +28,15 @@
     flex-direction: column;
     max-width: 600px;
     margin: 4em;
+}
+
+#searchBox {
+    margin: 2em auto;
+    width: 600px;
+}
+
+#searchResult {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }

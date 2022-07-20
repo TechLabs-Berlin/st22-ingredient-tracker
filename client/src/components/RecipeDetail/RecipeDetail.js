@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./RecipeDetail.css"
 import { getRecipeForId } from '../../API/recipes.api';
 import placeholder_fullHD from "../../images/placeholder_fullHD.png";
+import backArrow from "../../images/backArrow.png";
 
 const RecipeDetail = () => {
 
@@ -51,12 +52,10 @@ const RecipeDetail = () => {
     // }
 
     return (
-        <>
-            <br></br>
-            <br></br>
+        <section id="recipeDetail">
             {/* <Link to="/recipe_overview" state={{ ingredients: selectedItems }}><button>Back to RecipesOverview</button></Link> */}
-            <Link to="/recipe_overview" state={{ ingredients: selectedItems }}><button>Back to RecipesOverview</button></Link>
-            <div className="card" id="recipeDetail">
+            <Link to="/recipe_overview" state={{ ingredients: selectedItems }}><img id="backToOverview" src={backArrow} alt="back to results"/></Link>
+            <div className="card">
                 <div className="card-image">
                     <figure className="image">
                         {recipe.image_url && <img src={recipe.image_url} alt="recipe image" />}
@@ -99,15 +98,7 @@ const RecipeDetail = () => {
                     </div>
                 </div>
             </div>
-            <br></br>
-            <section className="container">
-                <h1 className="subtitle has-text-white">SUGGESTIONS</h1>
-                <p>Here will be some cards from the RecipeOverview page?</p>
-
-            </section>
-            <br></br>
-            <br></br>
-        </>
+        </section>
     );
 }
 
