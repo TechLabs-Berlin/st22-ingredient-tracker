@@ -43,7 +43,6 @@ function Recipe({ title, imageURL, prepTime, cookTime, targetId }) {
         <div>
             {/* Recipe Card */}
             <div className='recipeCard'>
-                {/* <Link to="/recipe_detail" state={{ id: targetId, selectedItems: ingredients }}> */}
                 <Link to="/recipe_detail" state={{ id: targetId, selectedItems: ingredients }}>
                     <div className='card is-clickable' id='card'>
                         {/* Recipe Image */}
