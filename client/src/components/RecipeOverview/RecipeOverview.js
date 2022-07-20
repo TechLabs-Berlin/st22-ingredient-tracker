@@ -116,7 +116,7 @@ function RecipesOverview() {
         <div>
             {/* Recipe Results Title */}
             <Link to="/groceries"><img id="backToIngredients" src={backArrow} alt="back to ingredients"/></Link>
-            <div className='title'>
+            <div className='title' id="recipeOverview-title">
                 <h1 className='is-size-3 is-size-4-mobile has-text-weight-semibold mb-4'>Our recipe suggestions:</h1>
             </div>
             <section className="box" id="recipeOverview">
