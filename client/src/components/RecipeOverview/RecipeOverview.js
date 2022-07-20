@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { getRecipesForIngredients } from '../../API/recipes.api';
 import './RecipeOverview.css';
+import placeholder_fullHD from "../../images/placeholder_fullHD.png";
+import backArrow from "../../images/backArrow.png";
 
 // const recipies = [{
 //     title: "First Title",
@@ -48,7 +50,7 @@ function Recipe({ title, imageURL, prepTime, cookTime, targetId }) {
                         <div className='card-image'>
                             <figure className='image'>
                                 <img
-                                    src={`${!imageURL ? "https://bulma.io/images/placeholders/1280x960.png" : imageURL}`}
+                                    src={`${!imageURL ? placeholder_fullHD : imageURL}`}
                                     alt='recipe photo'></img>
                             </figure>
                         </div>
@@ -114,10 +116,7 @@ function RecipesOverview() {
     return (
         <div>
             {/* Recipe Results Title */}
-            <br></br>
-            <br></br>
-            <br></br>
-            <Link to="/groceries"><button className="button is-primary">Back to My Ingredients</button></Link>
+            <Link to="/groceries"><img id="backToIngredients" src={backArrow} alt="back to ingredients"/></Link>
             <div className='mt-6'>
                 <h1 className='is-size-3 is-size-4-mobile has-text-weight-semibold mb-4'>Our recipe suggestions:</h1>
             </div>
