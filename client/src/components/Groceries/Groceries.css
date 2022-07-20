@@ -23,13 +23,6 @@
     margin: 5px;
 }
 
-#ingredientSection {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: 4em;
-}
-
 #searchBox {
     margin: 2em auto;
     width: 600px;
@@ -40,3 +33,12 @@
     justify-content: space-between;
     padding: 10px;
 }
+
+/*
+#ingredientSection {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 4em;
+}
+*/
