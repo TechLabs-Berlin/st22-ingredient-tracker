@@ -39,8 +39,8 @@
 
 #backToOverview {
     position: relative;
-    top: 75px;
-    left: 50px;
+    top: 70px;
+    left: 30px;
     z-index: 1;
     width:150px;
 }
