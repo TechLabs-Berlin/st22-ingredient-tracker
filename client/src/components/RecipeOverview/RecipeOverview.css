@@ -2,28 +2,36 @@ html {
     background-color: white !important;
 }
 
-/*
-.recipe_card {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-content: flex-start;
-}*/
-
-#card {
-    border: solid 1px hsl(171, 100%, 41%);
-    margin: 0.5em;
-}
-
 #recipeOverview {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;    
+    justify-content: flex-start;
 }
 
-#recipeOverview .card-image {
-    min-width: 300px;
+#recipeOverview .card {
+    margin: .5vw;
+    border: solid 1px hsl(171, 100%, 41%);
+    /* margin: 2.5em; */
+    width: 23vw;
+    flex: 1 0;
+}
+
+
+#recipeOverview .card-image img {
+    width: 100%;
+    height: 35vh;        
+    object-fit: cover;    
+}
+
+#recipeOverview .card-content {
+    display: flex;
+    height: 6rem;
+    padding: 0;
+    align-items: center;
+}
+
+#recipeOverview .card-content p {
+    text-align: center;
 }
 
 #backToIngredients {

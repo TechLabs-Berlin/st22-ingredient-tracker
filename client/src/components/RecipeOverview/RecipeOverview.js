@@ -44,7 +44,7 @@ function Recipe({ title, imageURL, prepTime, totalTime, targetId }) {
             {/* Recipe Card */}
             <div className='recipeCard'>
                 <Link to="/recipe_detail" state={{ id: targetId, selectedItems: ingredients }}>
-                    <div className='card is-clickable' id='card'>
+                    <div className='card is-clickable' class='card'>
                         {/* Recipe Image */}
                         <div className='card-image'>
                             <figure className='image'>
@@ -63,8 +63,8 @@ function Recipe({ title, imageURL, prepTime, totalTime, targetId }) {
 
                         {/* Prep Time and Total Time */}
                         <div className='card-footer'>
-                            <p className='card-footer-item'>Prep Time: {prepTime}.</p>
-                            <p className='card-footer-item'>Total Time: {totalTime}.</p>
+                            <p className='card-footer-item'>Prep: {prepTime}.</p>
+                            <p className='card-footer-item'>Total: {totalTime}.</p>
                             {/*<p className='card-footer-item'>ID: {targetId}.</p>*/}
                         </div>
 
@@ -97,7 +97,7 @@ function RecipesOverview() {
     // console.log(`Sending ${ingredientNames} to API`);
 
     // Amount of results desired, just change it how it suits you best for the frontend. Could in theory give user option to choose how many recipes he wants to be shown/adapt it depending on computer screen/phone screen
-    const n = 4;
+    const n = 8;
 
     useEffect(() => {
         // pass in (selectedIngredients, n)
