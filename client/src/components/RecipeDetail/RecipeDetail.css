@@ -14,13 +14,16 @@
     margin: 1em;
 }
 
-#recipeDetail .image {
+#recipeDetail .card-image {
     height: 500px;
     overflow: hidden;
 }
 
+#recipeDetail .image {
+}
+
 #recipeDetail .image img {
-    margin-top: -300px;
+    margin: -13% 0;
 }
 
 #recipeDetailButtons {
