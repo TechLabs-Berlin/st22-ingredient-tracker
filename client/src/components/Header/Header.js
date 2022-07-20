@@ -1,26 +1,70 @@
-import React from "react";
-import {Link, useLocation} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "./Header.css"
+import { getUserBySession } from "../../API/user.api";
+import axios from 'axios';
 
 const Header = () => {
 
     let id = '';
-    let selectedItems = [ 'thiswillalwaysjustreturnundefined' ];
+    let selectedItems = ['thiswillalwaysjustreturnundefined'];
     const location = useLocation();
 
-    if (!location.state) {
-        console.log('No ID received');
-    } else {
-        id = location.state.id;
-        selectedItems = location.state.selectedItems;
+    const handleLogout = async () => {
+        try {
+            console.log('Sending post to logout');
+            await axios({
+                method: 'post',
+                withCredentials: true,
+                url: 'http://localhost:5000/user/logout',
+            });
+            // window.location.reload(true);
+            // setUser(null);
+            window.location = "/login";
+        }
+        catch (err) {
+            console.log(err.message);
+        }
     }
+
+    const [user, setUser] = useState([]);
+
+    const getData = async () => {
+        const response = await getUserBySession();
+        if (response != null) {
+            console.log('Found user:', response);
+            // console.log('Displayed groceries');
+            setUser(response.data)
+        } else if (response.status = null) {
+            console.log([{ name: 'Please log into your account and try again' }]);
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    function userGreeting(user) {
+        return <p id="username-display" className="has-text-primary">Welcome back, <i><span>{user.username}</span></i></p>;
+    }
+
+    function guestGreeting() {
+        return <p id="username-display" className="has-text-primary">Please log in</p>;
+    }
+
+    // if (!location.state) {
+    //     console.log('No ID received');
+    // } else {
+    //     id = location.state.id;
+    //     selectedItems = location.state.selectedItems;
+    // }
 
     return (
         <nav className="navbar is-light is-fixed-top has-background-white" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <Link to="/" className="navbar-item">
-                    <img src={logo} alt="Ingreduce logo"/>
+                    <img src={logo} alt="Ingreduce logo" />
                 </Link>
 
                 <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -41,25 +85,25 @@ const Header = () => {
                         My Recipes
                     </a>
                 </div>
-
                 <div className="navbar-end">
                     <div className="navbar-item">
-                        <p id="username-display" className="has-text-primary">logged in as <i><span>Username</span></i></p>
+                        {user.username && userGreeting(user)}
+                        {!user.username && guestGreeting()}
+                        {/* <p id="username-display" className="has-text-primary">logged in as <i><span>{user.username}</span></i></p> */}
                         <div className="buttons">
-                            <Link to="/login" className="button is-primary">
-                                Log in
-                            </Link>
-
+                            {!user.username && <Link to="/login" className="button is-primary">Login</Link>}
+                            {user.username && <button onClick={() => handleLogout()} className="button is-primary">Logout</button>}
+                            {/* {!user.username &&  */}
                             <Link to="/registration" className="button is-primary">
                                 <strong>Register</strong>
-
                             </Link>
+                            {/* } */}
                         </div>
                     </div>
                 </div>
 
             </div>
-      
+
         </nav>
     );
 }
