@@ -59,7 +59,7 @@ function LoginForm() {
 
     return (
         <div className='columns' id='loginForm'>
-            <div className='form card m-4 p-4'>
+            <div className='form card p-4' id="form">
                 {/* Title */}
                 <h1 className='title m-2 mb-6 has-text-primary'>Login</h1>
                 {/* Input Fields */}
@@ -100,7 +100,7 @@ function LoginForm() {
 
              
                 {/* Social Media Login */}
-                <div className='m-4'>
+                <div>
 
                     {/* Separation Line */}
                     <div className='mb-6'

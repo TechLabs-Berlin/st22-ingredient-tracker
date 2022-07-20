@@ -75,7 +75,7 @@ function RegistrationForm() {
 
     return (
         <div className='columns' id="registrationForm">
-            <div className="form card m-4 p-4">
+            <div className="form card p-4" id="form">
 
                 {/* Title and Subtitle */}
                 <h1 className="title m-2 has-text-primary">Registration Form</h1>

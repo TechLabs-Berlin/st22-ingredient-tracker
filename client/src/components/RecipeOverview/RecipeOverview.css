@@ -2,6 +2,10 @@ html {
     background-color: white !important;
 }
 
+#recipeOverview-title {
+    padding-left: 16px;
+}
+
 #recipeOverview {
     display: flex;
     flex-wrap: wrap;    
