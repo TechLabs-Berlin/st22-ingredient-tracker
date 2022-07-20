@@ -7,16 +7,16 @@ import placeholder_fullHD from "../../images/placeholder_fullHD.png";
 const RecipeDetail = () => {
 
     let id = '';
-    // let selectedItems = [ 'thiswillalwaysjustreturnundefined' ];
+    let selectedItems = [ 'thiswillalwaysjustreturnundefined' ];
     const location = useLocation();
 
     if (!location.state) {
         console.log('No ID received');
     } else {
         id = location.state.id;
-        // selectedItems = location.state.selectedItems;
+        selectedItems = location.state.selectedItems;
         // console.log('Sending');
-        // console.log(id);
+        console.log(selectedItems);
     }
 
     console.log(id);
@@ -55,7 +55,7 @@ const RecipeDetail = () => {
             <br></br>
             <br></br>
             {/* <Link to="/recipe_overview" state={{ ingredients: selectedItems }}><button>Back to RecipesOverview</button></Link> */}
-            <Link to="/recipe_overview"><button>Back to RecipesOverview</button></Link>
+            <Link to="/recipe_overview" state={{ ingredients: selectedItems }}><button>Back to RecipesOverview</button></Link>
             <div className="card" id="recipeDetail">
                 <div className="card-image">
                     <figure className="image">
