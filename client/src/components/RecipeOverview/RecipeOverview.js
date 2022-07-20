@@ -65,7 +65,7 @@ function Recipe({ title, imageURL, prepTime, cookTime, targetId }) {
                         <div className='card-footer'>
                             <p className='card-footer-item'>Prep Time: {prepTime}.</p>
                             <p className='card-footer-item'>Total Time: {cookTime}.</p>
-                            <p className='card-footer-item'>ID: {targetId}.</p>
+                            {/*<p className='card-footer-item'>ID: {targetId}.</p>*/}
                         </div>
 
                     </div>
@@ -116,17 +116,21 @@ function RecipesOverview() {
         <div>
             {/* Recipe Results Title */}
             <Link to="/groceries"><img id="backToIngredients" src={backArrow} alt="back to ingredients"/></Link>
-            <div className='mt-6'>
+            <div className='title'>
                 <h1 className='is-size-3 is-size-4-mobile has-text-weight-semibold mb-4'>Our recipe suggestions:</h1>
             </div>
-            {recipes.map((recipe) =>
-                <Recipe
-                    targetId={recipe._id}
-                    title={recipe.name}
-                    imageURL={recipe.image_url}
-                    cookTime={recipe.cook}
-                    prepTime={recipe.prep}
-                />)}
+            <section className="box" id="recipeOverview">
+                {recipes.map((recipe) =>
+                    <Recipe
+                        targetId={recipe._id}
+                        title={recipe.name}
+                        imageURL={recipe.image_url}
+                        cookTime={recipe.cook}
+                        prepTime={recipe.prep}
+                    />)
+                }
+            </section>
+            
         </div>
     )
 
