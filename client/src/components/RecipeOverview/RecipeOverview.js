@@ -9,26 +9,26 @@ import backArrow from "../../images/backArrow.png";
 //     title: "First Title",
 //     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
 //     prepTime: 30,
-//     cookTime: 60
+//     totalTime: 60
 // },
 // {
 //     title: "Second Title",
 //     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
 //     prepTime: 120,
-//     cookTime: 45
+//     totalTime: 45
 // }, {
 //     title: "Third Title",
 //     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
 //     prepTime: 30,
-//     cookTime: 60
+//     totalTime: 60
 // }, {
 //     title: "First Title",
 //     imageURL: 'https://bulma.io/images/placeholders/1280x960.png',
 //     prepTime: 30,
-//     cookTime: 60
+//     totalTime: 60
 // }];
 
-function Recipe({ title, imageURL, prepTime, cookTime, targetId }) {
+function Recipe({ title, imageURL, prepTime, totalTime, targetId }) {
 
      // recover data sent by React State through link - doing this twice to keep selected ingredients even when navigating back and forth between detail and overview
      let ingredients = [ 'thiswillalwaysjustreturnundefined' ];
@@ -44,7 +44,7 @@ function Recipe({ title, imageURL, prepTime, cookTime, targetId }) {
             {/* Recipe Card */}
             <div className='recipeCard'>
                 <Link to="/recipe_detail" state={{ id: targetId, selectedItems: ingredients }}>
-                    <div className='card is-clickable' id='card'>
+                    <div className='card is-clickable' class='card'>
                         {/* Recipe Image */}
                         <div className='card-image'>
                             <figure className='image'>
@@ -63,8 +63,8 @@ function Recipe({ title, imageURL, prepTime, cookTime, targetId }) {
 
                         {/* Prep Time and Total Time */}
                         <div className='card-footer'>
-                            <p className='card-footer-item'>Prep Time: {prepTime}.</p>
-                            <p className='card-footer-item'>Total Time: {cookTime}.</p>
+                            <p className='card-footer-item'>Prep: {prepTime}.</p>
+                            <p className='card-footer-item'>Total: {totalTime}.</p>
                             {/*<p className='card-footer-item'>ID: {targetId}.</p>*/}
                         </div>
 
@@ -97,7 +97,7 @@ function RecipesOverview() {
     // console.log(`Sending ${ingredientNames} to API`);
 
     // Amount of results desired, just change it how it suits you best for the frontend. Could in theory give user option to choose how many recipes he wants to be shown/adapt it depending on computer screen/phone screen
-    const n = 4;
+    const n = 8;
 
     useEffect(() => {
         // pass in (selectedIngredients, n)
@@ -125,7 +125,7 @@ function RecipesOverview() {
                         targetId={recipe._id}
                         title={recipe.name}
                         imageURL={recipe.image_url}
-                        cookTime={recipe.cook}
+                        totalTime={recipe.total}
                         prepTime={recipe.prep}
                     />)
                 }

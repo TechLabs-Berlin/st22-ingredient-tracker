@@ -67,7 +67,27 @@ userRouter.post('/login', async (req, res) => {
 userRouter.post('/logout', async (req, res) => {
     req.session.destroy();
     console.log('User logged out');
-    res.redirect('/user/login')
+    res.status(200).send('User logged out');
+});
+
+
+userRouter.get('/current', async (req, res) => {
+    try {
+        // const { userId } = req.session;
+        console.log(req.session.user.userId);
+        if (!req.session.user.userId) {
+            console.log(`Please log in`);
+            console.log(req.session);
+            res.status(511);
+        } else {
+            const foundUser = await User.findAndGetUser(req.session.user.userId); // this returns the entire user object anyway so I'll just use it here
+            console.log(`Found user ${foundUser.username} and sending ${foundUser.username} data`);
+            res.send(foundUser)
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
 });
 
 // userRouter.use((req, res, next) => {

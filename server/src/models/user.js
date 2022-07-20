@@ -78,6 +78,20 @@ userSchema.statics.findAndGetGroceries = async function (userId) {
     }
 };
 
+userSchema.statics.findAndGetUser = async function (userId) {
+    try {
+        let getUserGroceries = await this.findOne({ _id : userId });
+        // const getUserGroceries = await this.findOne({ user_id }).select({ array: "groceries" });
+        // const getGroceriesString = JSON.stringify(getUserGroceries);
+        console.log(`Found user ${JSON.stringify(getUserGroceries.username)}`);
+        return getUserGroceries;
+    }
+    catch (err) {
+        console.log(`Error ocurred ${err}`);
+        throw true;
+    }
+};
+
 userSchema.statics.findAndAddGroceries = async function (userId, name) {
     try {
         const updateUserGroceries = await this.updateOne(
