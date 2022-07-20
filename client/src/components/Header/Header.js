@@ -1,9 +1,21 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "./Header.css"
 
 const Header = () => {
+
+    let id = '';
+    let selectedItems = [ 'thiswillalwaysjustreturnundefined' ];
+    const location = useLocation();
+
+    if (!location.state) {
+        console.log('No ID received');
+    } else {
+        id = location.state.id;
+        selectedItems = location.state.selectedItems;
+    }
+
     return (
         <nav className="navbar is-light is-fixed-top has-background-white" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
@@ -21,7 +33,7 @@ const Header = () => {
             <div className="navbar-menu">
 
                 <div className="navbar-start">
-                    <Link to="/groceries" className="navbar-item has-text-primary">
+                    <Link to="/groceries" state={{ ingredients: selectedItems }} className="navbar-item has-text-primary">
                         My Ingredients
                     </Link>
 
