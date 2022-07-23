@@ -6,6 +6,10 @@ Ingreduce is a project part of the TechLabs Berlin 2022 Summer Term.
 
 ***
 
+## User Research
+
+To learn more about what UX research was done, check out their work in [Notion](https://www.notion.so/UX-deliverables-2d6db60d41a84f73a4df3329db37f4ce) and their prototype in [Figma](https://www.figma.com/proto/P7CEImsQcuiLVwQxIOwni7/Ingreduce?node-id=282%3A225&scaling=scale-down&page-id=161%3A15&starting-point-node-id=282%3A225)!
+
 ## Setup
 
 To clone and run this application, from your command line:
