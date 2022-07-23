@@ -10,7 +10,9 @@ Ingreduce is a project part of the TechLabs Berlin 2022 Summer Term.
 
 **1. Clone Git Repository**
 
-git clone https://github.com/TechLabs-Berlin/st22-ingredient-tracker
+>git clone https://github.com/TechLabs-Berlin/st22-ingredient-tracker
+
+&copy;
 
 ##  Team
 
