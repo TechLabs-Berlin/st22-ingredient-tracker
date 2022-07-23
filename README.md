@@ -97,7 +97,7 @@ Celine Zhou
 
 ### UX Design
 
-Alpigiray, Elsy Aranda
+Alpgiray Uğurlu, Elsy Aranda
 
 ### Web Development
 
