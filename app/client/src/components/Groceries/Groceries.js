@@ -11,12 +11,9 @@ const Groceries = () => {
     const [groceries, setGroceries] = useState([]);
 
     // ---------------------------------------------------------------- userId in calls
-    // const getData = async (userId) => {
     const getData = async () => {
         const response = await getGroceries();
         if (response != null) {
-            // console.log(response);
-            // console.log('Displayed groceries');
             setGroceries(response.data.groceries)
         } else if (response.status = null) {
             console.log([{ name: 'Please log into your account and try again' }]);
@@ -46,30 +43,10 @@ const Groceries = () => {
                         limit: 5
                     }
                 });
-                //console.log(data);
 
                 setResults(data);
 
             };
-
-            //old useEffect() function where we made an request to the wikipedia API. I am keeping it for now as a reference.
-            /*
-            useEffect(() => {
-                const search = async() => {
-                    const {data} = await axios.get("https://en.wikipedia.org/w/api.php", {
-                        params: {
-                            action: "query",
-                            list: "search",
-                            origin: "*",
-                            format: "json",
-                            srsearch: term
-                        }
-                    });
-    
-                setResults(data.query.search);
-    
-            };
-            */
 
             // throttle search requests to unly update when the search term hasn't changed in 500 milliseconds
             const timeoutId = setTimeout(() => {
@@ -90,7 +67,6 @@ const Groceries = () => {
             //adds ingredient from search to inventory
             const onAddBtnClick = async () => {
                 try {
-                    // console.log(result);
                     await axios({
                         method: 'put',
                         withCredentials: true,
@@ -107,11 +83,6 @@ const Groceries = () => {
                     console.log(err.message);
                 }
 
-                // Previous frontend solution
-
-                //console.log(result);
-                //"type" is not used yet - just included in case we will need it. So when adding the ingredient, so far only an empty string will be given as type placeholder
-                // setGroceries(groceries.concat({name: result, key: result, selected: false}));
             }
             
             return (
@@ -186,7 +157,6 @@ const Groceries = () => {
     const InventoryItems = () => {
 
         const deleteItem = async (targetItem) => {
-            // const targetItem = item.name
             try {
                 await axios({
                     method: 'patch',
@@ -202,27 +172,17 @@ const Groceries = () => {
             catch (err) {
                 console.log(err.message);
             }
-            // setGroceries(groceries.filter((item) => item.key !== itemKey));
         }
 
         const selectItem = (clickedItem) => {
             if (!clickedItem.selected) {
-                //console.log("select " + clickedItem.name);
                 clickedItem.selected = true;
                 setSelectedItems(selectedItems.concat(clickedItem));
             } else {
-                //console.log("deselect " + clickedItem.name);
                 setSelectedItems(selectedItems.filter((item) => item.name !== clickedItem.name));
                 clickedItem.selected = false;
             }
-            //console.log(`${clickedItem.name} = ${clickedItem.selected}`);
-
-            //I think this console log is one step behind because the state just changes after the click
-            //console.log(selectedItems);
         }
-
-        //this console log shows the actual state of the selected item array
-        console.log(selectedItems);
     
         if (groceries.length < 1) {
             return (
@@ -243,7 +203,6 @@ const Groceries = () => {
                                         onClick={event => {
                                           event.stopPropagation(); 
                                           deleteItem(item);}} // this works with my backend routes
-                                        // onClick={event => deleteItem(item.key)}
                                         key={item+"button"}
                                     ></button>
                             </button>
@@ -297,8 +256,6 @@ const Groceries = () => {
             </section>
         );
     }
-
-    console.log(selectedItems.length);
 
     const SearchRecipeButton = () => {
         if (selectedItems.length === 0) {

@@ -45,11 +45,6 @@ const RecipeDetail = () => {
     return ingredientArray;
   };
 
-  // const getFirstImage = (imageURLstrings) => {
-  //     const firstImage = imageURLstrings.split('; ');
-  //     return firstImage[0];
-  // }
-
   return (
     <section id="recipeDetail">
       <Link to="/recipe_overview" state={{ ingredients: selectedItems }}>

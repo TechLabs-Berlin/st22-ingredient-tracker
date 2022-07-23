@@ -19,8 +19,6 @@ const Header = () => {
                 withCredentials: true,
                 url: 'http://localhost:5000/user/logout',
             });
-            // window.location.reload(true);
-            // setUser(null);
             window.location = "/login";
         }
         catch (err) {
@@ -34,7 +32,6 @@ const Header = () => {
         const response = await getUserBySession();
         if (response != null) {
             console.log('Found user:', response);
-            // console.log('Displayed groceries');
             setUser(response.data)
         } else if (response.status = null) {
             console.log([{ name: 'Please log into your account and try again' }]);
@@ -52,13 +49,6 @@ const Header = () => {
     function guestGreeting() {
         return <p id="username-display" className="has-text-primary">Please log in</p>;
     }
-
-    // if (!location.state) {
-    //     console.log('No ID received');
-    // } else {
-    //     id = location.state.id;
-    //     selectedItems = location.state.selectedItems;
-    // }
 
     return (
         <nav className="navbar is-light is-fixed-top has-background-white" role="navigation" aria-label="main navigation">
@@ -89,15 +79,12 @@ const Header = () => {
                     <div className="navbar-item">
                         {user.username && userGreeting(user)}
                         {!user.username && guestGreeting()}
-                        {/* <p id="username-display" className="has-text-primary">logged in as <i><span>{user.username}</span></i></p> */}
                         <div className="buttons">
                             {!user.username && <Link to="/login" className="button is-primary">Login</Link>}
                             {user.username && <button onClick={() => handleLogout()} className="button is-primary">Logout</button>}
-                            {/* {!user.username &&  */}
                             <Link to="/registration" className="button is-primary">
                                 <strong>Register</strong>
                             </Link>
-                            {/* } */}
                         </div>
                     </div>
                 </div>
