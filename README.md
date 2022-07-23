@@ -10,7 +10,7 @@ Ingreduce is a project part of the TechLabs Berlin 2022 Summer Term.
 
 To clone and run this application, from your command line:
 
-**1. Clone Git Repository**
+**1. Clone git repository**
 
 ```bash
 git clone https://github.com/TechLabs-Berlin/st22-ingredient-tracker
@@ -22,23 +22,23 @@ git clone https://github.com/TechLabs-Berlin/st22-ingredient-tracker
 cd st22-ingredient-tracker
 ```
 
-**3. Install dependencies**
+**3. Navigate to app folder**
+
+```bash
+cd app
+```
+
+**4. Navigate to client folder**
+
+```bash
+cd client
+```
+
+**5. Install local development dependencies**
 
 ```bash
 npm i
 ```
-
-**4. Navigate to app folder**
-
-```bash
-cd app
-````
-
-**5. Navigate to client folder**
-
-```bash
-cd client
-````
 
 **6. Start local development - Front End**
 
@@ -50,12 +50,19 @@ npm start
 
 ```bash
 cd ..
-````
+```
+
 ```bash
 cd server
 ```
 
-**8.Start local server - Back End**
+**8. Install server dependencies**
+
+```bash
+npm i
+```
+
+**9. Start local server - Back End**
 
 ```bash
 npm start
