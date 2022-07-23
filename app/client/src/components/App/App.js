@@ -1,15 +1,11 @@
 import React from "react";
-// import GroceriesSearch from "../GroceriesSearch/GroceriesSearch";
-// import GroceriesList from "../GroceriesList/GroceriesList";
-import RecipeOverview from "../RecipeOverview/RecipeOverview";
-import HeroImage from "../HeroImage/HeroImage";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import LoginForm from "../LoginForm/LoginForm";
 import HomepageInstructions from "../HomepageInstructions/HomepageInstructions";
-
+import RecipeOverview from "../RecipeOverview/RecipeOverview";
+import HeroImage from "../HeroImage/HeroImage";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import RecipeDetail from "../RecipeDetail/RecipeDetail";
@@ -28,8 +24,6 @@ function App() {
                         <Route path="recipe_overview" element={<RecipeOverview />}/>
                         <Route path="recipe_detail" element={<RecipeDetail />}/>
                     </Routes>
-                    <br></br>
-                    <br></br>
                 <Footer />
             </BrowserRouter>
         </div>
