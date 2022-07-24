@@ -205,7 +205,7 @@ Here, there are certainly many things that I can improve:
 
 #### Analysis and Visualization
 
-I conducted a brief and non-comprehensive analysis on the reason(s) why our web app has less recipes viewed. I complemented it with some visualizations in the form of tables and graphs. More specifically, I explored how the likes on recipes may have impacted the views of recipes. Most of the analysis was based on simple analysis of available data (in the mock data). However, I also had to find the number of recipes liked over time. This information was not readily available. 
+I conducted a brief and non-comprehensive analysis on the reason(s) why our web app has been less recipes viewed overtime. I complemented it with some visualizations in the form of tables and graphs. More specifically, I explored how the likes on recipes may have impacted the views of recipes. Most of the analysis was based on simple analysis of available data (in the mock data). However, I also had to find the number of recipes liked over time. This information was not readily available. 
 
 I had to omit some interesting analysis because my analysis is based on a dataset that I created. It would be awkward to state that 'around 10% of the recipes viewed seem to be made by the user, when I clearly set the probability of this event.
 
@@ -215,4 +215,4 @@ This analysis could have been continued and led to more interesting insights. Th
 
 This marks the end of our (intense) Techlabs experience. We've all learned a lot in a very short period of time. Once again, we'd like to give some special thanks to the TechLabs Berlin team, including Laura, Stephanie, Basan, Daniel, Mihailo, Juliana, Zubin, Alba, Soma and all other volunteers for the support and knowledge shared throughout the whole term.
 
-Elsy Aranda, Aljoscha Beiers, Catarina Louza, Sarita Schenkermayr, Alpgiray Uğurlu, , Celine Zhou.
+By Elsy Aranda, Aljoscha Beiers, Catarina Louza, Sarita Schenkermayr, Alpgiray Uğurlu, Celine Zhou.
