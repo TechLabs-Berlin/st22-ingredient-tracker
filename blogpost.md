@@ -67,12 +67,12 @@ Working on the backend for Ingreduce was quite the journey. For backend specific
 Over these first few weeks our mentor introduced me to Firebase, which I worried might make my work all too easy -  after all, as a Backend-as-a-Service development platform, it comes prepackaged with many of the solutions that I had expected to create from scratch. I couldn't have been more wrong: I tried to stick to the traditional client and server folder structure and ended up creating a Frankenstein's Monster kind of Firebase-meets-traditional-backend curiosity. After many trial runs and lots of research (and electing to not go for the more common seeming setup of Firebase within the client folder) I decided that the best course of action was to ditch Firebase and instead go back to using Node.js, Express.js and MongoDB.
 
 Intital Firebase successes:
-![FirebaseHostingSetup](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/wd/Firebase.jpg)
+![FirebaseHostingSetup](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/wd/Firebase.JPG)
 
 I want to use this opportunity to thank the TechLabs track leads Basan and Zubin, in particular. Basan helped me come to this difficult (and late) decision, and both of them provided me with invaluable insights that pushed me ahead as I had to (re)write my entire backend within the last two-and-a-half weeks of the project. The required backend to achieve the Ingreduce MVP was not too complicated, thankfully, so I was able to create the necessary functionalities within this cramped time frame. Of course, there were many roadblocks along the way (sessions were especially uncooperative, in the beginning), but I'm happy with the final result. It was gratifying to connect my backend logic and database setup with the frontend through my APIs, and I even learned a thing or two about React along the way. At the end, I even had some spare time left to add some extra functionalities (such as a personalized welcome message depending on login status) and refine some of the frontend styling alongside my fellow web developers.
 
 Activity of our MongoDBAtlas database:
-![MongoDBActivity](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/wd/Mongo.jpg)
+![MongoDBActivity](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/wd/Mongo.JPG)
 
 Besides our backlog, one thing I feel regretful about is that I didn't manage to fully deploy our website - some of its functionalities are deployed via Heroku, however the swap from local to remote has once again sparked the rebellious and unyielding spirit of Express sessions, rendering the website overall unusable in its deployed state. 
 
