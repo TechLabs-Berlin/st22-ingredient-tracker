@@ -1,3 +1,3 @@
+# st22-ingredient-tracker
 Ingreduce is a website that provides recipe suggestions based on the ingredients you have at hand. Our focus is reducing food waste; we are different from traditional websites with our intelligent ingredient-based search. After entering the ingredients you have at home, you receive recipe recommendations based solely on those, removing the need to run to the supermarket for missing groceries while improving your food inventory management. You can save registered ingredients and selected recipes in your profile for future reference. 
-
 Ingreduce is a project part of the TechLabs Berlin 2022 Summer Term, created by TechLabs students from the User Experience, Web Development, and Data Science tracks.
