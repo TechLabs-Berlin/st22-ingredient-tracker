@@ -6,43 +6,43 @@ Hello! We are a team of 6, all learners of tech skills (Data Science, UX Design,
 
 UX biggest challenge was the limited amount of time available for the whole project that wouldn’t allow us to have a solid User Research and Wireframes before the Web Development team would start working. So we had to rush the User Research while we started working on the Wireframes already.  For the User Research we use a Google survey that would allow us to share it with a wider range of people in a short amount of time.
 
-![alt text](ux/1-User Research.png)
-![alt text](ux/2- User Research.png)
-![alt text](ux/3- User Research.png)
-![alt text](ux/4- User Research.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/1.PNG.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/2.PNG.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/3.PNG.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/4.PNG.png)
 
 We could see that the vast majority of the interviewees chose to cook at home because it is cheaper and healthier. Even though cooking with the ingredients you already have didn’t seem to be a strong factor of choice, we still believe people would prefer that over shopping for ingredients. Also we felt encouraged by the percentage of people that use websites to look for recipes online. 
 
 While creating our Personas, User Stories and Scenarios, we realized our ingredient tracking website could be used by a wide range of people, from students who want to save money, to professionals that are environmentally aware to parents who want to cook healthy and have to be efficient with their time and have limited amount of time to go shopping. 
 
-![alt text](ux/UserStories.PNG.png)
-![alt text](ux/asimplelist for our project.png)
-![alt text](ux/Ben_Persona 1.png)
-![alt text](ux/Larissa_Person 2.png)
-![alt text](ux/Anna_Persona 3.png)
-![alt text](images/ux/scenario1.png)
-![alt text](images/ux/scenario2.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/UserStories.PNG.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/asimplelist.PNG.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Ben_Persona%25201.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Larissa_Person%25202.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Anna_Persona%25203.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/scenario1.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/scenario2.png)
 
 Cheap and healthy were important factors for the people we surveyed. However, we also know that cooking with ingredients you already have would help combat food waste, which is an increasing problem in both developed and developing economies. So we chose “environmentally concious” as a main value for our website which we would want to transmit to our users to differentiate our website further. So for the design, we decided to go for a simple and clean website with green as the main color in the palette to reflect on its environmental values as well as the health benefits. We would also use a more environmental messaging, starting on the Homepage.
 
-![alt text](images/ux/Screenshot%202022-07-21%20at%2018.16.02.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Screenshot%25202022-07-21%2520at%252018.16.02.png)
 
 Deciding on the actual features of the website was difficult. As a team we wanted some advanced features such as filters per kind of cuisine but we knew we had to trim them to decide on a MVP for this project. So we decided we needed the user to be registered to record their ingredients for the next time they need a recipe. We also decided on having a Dashboard or Ingredient Page as the first landing page once logged in so the user could add ingredients to their inventory before looking for a recipe. Then the user would be offered a list of recipes that include the ingredients they currently have. We also decided on adding a Congratulatory Message that would display once the user marked the recipe as Done to encourage them to keep using our website thus combating food waste. 
 
-![alt text](images/ux/userflow.PNG.png)
-![alt text](images/ux/Screenshot%202022-07-21%20at%2018.21.52.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/userflow.PNG.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Screenshot%25202022-07-21%2520at%252018.21.52.png)
 
 Creating the Wireframes was a continuous feedback loop between Alpy and Elsy as well as the Web Developers, so many changes were made along the way. From there, moving  to the Prototype helped us picture what the website could actually look like, even before the WD were ready with the MVP. It helped us confirm the user flow we had selected and give us an idea of how intuitive the website could be.
 
-![alt text](images/ux/Screenshot%202022-07-21%20at%2018.25.17.png)
-![alt text](images/ux/Screenshot%202022-07-21%20at%2018.25.40.png)
-![alt text](images/ux/Screenshot%202022-07-21%20at%2018.26.09.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Screenshot%25202022-07-21%2520at%252018.25.17.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Screenshot%25202022-07-21%2520at%252018.25.40.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/Screenshot%25202022-07-21%2520at%252018.26.09.png)
 
 Finally we were ready to test our prototype and we chose three people with different backgrounds for the testing. We sent them the link for the prototype in Figma for testing. Although we had to explain it wasn’t the actual website,  they all in all agreed the prototype was pretty clear and intuitive. 
 
-![alt text](images/ux/User%20Tests%201-%20Natalia.png)
-![alt text](images/ux/User%20Tests%202-%20Adam.png)
-![alt text](images/ux/User%20Tests%203-%20Adriana.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/User%2520Tests%25201-%2520Natalia.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/User%2520Tests%25202-%2520Adam.png)
+![alt text](https://github.com/TechLabs-Berlin/st22-ingredient-tracker/blob/main/images/ux/User%2520Tests%25203-%2520Adriana.png)
 
 ## Web development
 
