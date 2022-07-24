@@ -1,13 +1,6 @@
-// groceries in here or own route?
-// Saved recipes in here as well?
-
 const express = require('express');
 const groceriesRouter = express.Router();
 const User = require('../models/user');
-
-// Display data saved in DB for user groceries 
-// Post new/update/delete groceries data in DB 
-// Add/remove favourites
 
 groceriesRouter.get('/current', async (req, res) => {
     try {
@@ -63,15 +56,5 @@ groceriesRouter.patch('/current', async (req, res) => {
         console.log(err);
     }
 });
-
-// groceriesRouter.get('/current', async (req, res) => {
-//     try {
-//         const response = await res.send(groceriesData);
-//         console.log(response);
-//     }
-//     catch (err) {
-//         console.log(err);
-//     }   
-// });
 
 module.exports = groceriesRouter;
