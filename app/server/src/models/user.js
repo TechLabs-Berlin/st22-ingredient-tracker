@@ -1,7 +1,3 @@
-// username, email and password 
-// pantry and favourites 
-// send it to Firebase/MongoDB atlas and associate with user
-
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -60,10 +56,6 @@ userSchema.statics.findAndValidate = async function (email, password) {
     }
 };
 
-// userSchema.statics.doesNotExist = async function (field) {
-//     return await this.where(field).countDocuments() === 0;
-//   };
-
 userSchema.statics.findAndGetGroceries = async function (userId) {
     try {
         let getUserGroceries = await this.findOne({ _id : userId });
@@ -98,8 +90,6 @@ userSchema.statics.findAndAddGroceries = async function (userId, name) {
             { _id : userId },
             { $push: { groceries: { name: name } } }
         )
-        // const getUserGroceries = await this.findOne({ _id : userId }).select({ array: "groceries" });
-        // const getGroceriesString = JSON.stringify(getUserGroceries);
         console.log(`Found user and added ingredient: ${name}`);
         return updateUserGroceries;
     }
@@ -116,12 +106,6 @@ userSchema.statics.findAndDeleteFromGroceries = async function (userId, target) 
             { $pull: { groceries: { name: target.name} } }
         );
         return deleteFromUserGroceries;
-        // const getUser = await this.findOne({ _id : userId });
-        // const targetIndex = getUser.groceries.findIndex(object => {
-        //     return object.name === target.name;
-        //   });
-        // console.log(getUser.groceries[targetIndex]);         
-        // getUser.groceries.splice(targetIndex, 1);
     }
     catch (err) {
         console.log(`Error ocurred ${err}`);

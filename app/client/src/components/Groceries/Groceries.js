@@ -111,24 +111,6 @@ const Groceries = () => {
                 <label className="label has-text-primary">Search</label>
                 <div className="field">
                     <p className="control">
-                        { groceries.length <= 0 &&
-                        <input disabled
-                            value={term}
-                            onChange={event => {
-                                setTerm(event.target.value);
-                                if (event.target.value === "") {
-                                    listVisible = false;
-                                    setResults([]);
-                                } else {
-                                    listVisible = true;
-                                }
-                            }}
-                            className="input is-rounded is-primary"
-                            type="search"
-                            placeholder="please log in first"
-                        />
-                        }
-                        { groceries.length > 0 &&
                         <input 
                             value={term}
                             onChange={event => {
@@ -143,8 +125,7 @@ const Groceries = () => {
                             className="input is-rounded is-primary"
                             type="search"
                             placeholder="search ingredients"
-                        />
-                        }
+                        />                        
                     </p>
                 </div>
                 <div className={`${listVisible ? "box" : ""}`} id="resultBox">

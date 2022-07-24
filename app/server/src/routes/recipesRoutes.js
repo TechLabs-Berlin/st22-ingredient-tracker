@@ -12,8 +12,6 @@ recipesRouter.get('/search', async (req, res) => {
 
     const targetRecipes = await findAllRecipes(targetIngredients, n);
     console.log('Recipes found:', targetRecipes.length);
-
-    // res.send: just the necessary data for FE compoment
     res.send(targetRecipes);
 })
 
@@ -47,7 +45,7 @@ const findAllRecipes = async (targetIngredients, n) => {
 
         // I tried a variety of versions where I tried to dynamically filter or otherwise loop through the ingredients string of the recipe object
         // I didn't manage to make any of them work, might be easier if ingredients were stored as an array of strings instead of one giant string 
-        // Just to make it work at all: using the hard coded approach for up to 5 ingredients. Right now dataset is very limited anyway (~430 entries)
+        // Just to make it work at all: using the hard coded approach for up to 5 ingredients. Right now dataset is very limited anyway (~4000 entries)
         // Ideally: python script that recommends recipes integrated here
 
         // -------------------------------------------------------------------------------------------------------------------------------------------
@@ -84,8 +82,6 @@ const findAllRecipes = async (targetIngredients, n) => {
             recipe.ingredients.includes(target1) && recipe.ingredients.includes(target2) && recipe.ingredients.includes(target3) && recipe.ingredients.includes(target4) && recipe.ingredients.includes(target5)
         )
         console.log(`Filtered recipes found: ${filteredRecipes.length}`);
-        // console.log(`Filtered recipes ids: ${JSON.stringify(filteredRecipes)}`);
-        // console.log(`Filtered recipes ids: ${JSON.stringify(filteredRecipes[0]._id)}`);
 
         let filteredRecipesIds = [];
 
