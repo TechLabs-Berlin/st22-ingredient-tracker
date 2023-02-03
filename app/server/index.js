@@ -13,10 +13,12 @@ const MongoStore = require('connect-mongo')(session);
 
 
 
-// percent encoded password for MongoDB Atlas
-// should be included in an .env instead of written in the .js, but for development purposes store it here
-
-const mongoAtlasUri = "mongodb+srv://ingreduce_admin:rice%26PASTA%3F%3D0Hmy@ingreduce.nw3rh.mongodb.net/ingreduce?retryWrites=true&w=majority";
+// percent encoded password for MongoDB Atlas: e.g. a "&" should be written as %26
+// see: https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding
+// should be included in an .env instead of written in the .js directly for security reasons (fully exposed on GitHub)
+// see: https://www.mongodb.com/docs/manual/reference/connection-string/
+  
+const mongoAtlasUri = "mongodb+srv://ingreduce_admin:encodedpassword@ingreduce.nw3rh.mongodb.net/ingreduce?retryWrites=true&w=majority";
 
 (async () => {
   try {
